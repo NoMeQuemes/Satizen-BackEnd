@@ -1,5 +1,5 @@
-﻿using ContactoPacientes.Modelos;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Satizen_Api.models.Dto;
 
 namespace Satizen_Api.Datos
 {
@@ -11,5 +11,8 @@ namespace Satizen_Api.Datos
         }
 
         public DbSet<Contacto> Contactos { get; set; }
+
+     
+      
     }
 }

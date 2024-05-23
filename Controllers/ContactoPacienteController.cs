@@ -1,96 +1,133 @@
 ﻿using Satizen_Api.Datos;
-using Satizen_Api.Models;
-using Satizen_Api.Models.Dto;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Net;
+using Microsoft.EntityFrameworkCore;
+using Satizen_Api.models.Dto;
 namespace Satizen_Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ContactoPacienteController : ControllerBase
     {
+        private readonly ApplicationDbContext _dbContext;
         private readonly ILogger<ContactoPacienteController> _logger;
-        public ContactoPacienteController(ILogger<ContactoPacienteController>logger)
+        private readonly ApiResponse _response;
+
+        public ContactoPacienteController(ApplicationDbContext dbContext, ILogger<ContactoPacienteController> logger)
         {
+            _dbContext = dbContext;
             _logger = logger;
+            _response = new ApiResponse();
         }
+
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<ContactoDto>> GetContactoPacientes()
+        [Route("ListarContactos")]
+        public async Task<ActionResult<ApiResponse>> GetContactos()
         {
-            _logger.LogInformation("Obtener los ContactoPaciente");
-            return Ok(ContactoStore.contactoList);
+            try
+            {
+                _logger.LogInformation("Obtener los Contactos");
+
+                _response.Resultado = await _dbContext.Contactos
+                                              .Where(u => u.eliminado == null)
+                                              .ToListAsync();
+                _response.statusCode = HttpStatusCode.OK;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
         }
 
-        [HttpGet("{id:int}", Name = "GetContacto")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<ContactoDto> GetContactos(int id)
-        {
-            if (id == 0)
-            {
-                _logger.LogError("Error al traer ContactoPaciente con Id" + id);
-                return BadRequest();
-            }
-            var contacto = ContactoStore.contactoList.FirstOrDefault(v => v.idContacto == id);
 
+        [HttpGet("{id}", Name = "GetContacto")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<ContactoDto> GetContacto(int id)
+        {
+            var contacto = _dbContext.Contactos.FirstOrDefault(c => c.idContacto == id);
             if (contacto == null)
             {
                 return NotFound();
             }
-
             return Ok(contacto);
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<ContactoDto> CrearContacto([FromBody] ContactoDto contactoDto)
+        [Route("CrearContacto")]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> CrearContacto([FromBody] ContactoDto contactoDto)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-            }
+                if (contactoDto == null)
+                {
+                    return BadRequest(contactoDto);
+                }
+                else if (contactoDto.idContacto > 0)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError);
+                }
 
-            if (contactoDto == null)
+                Contacto modelo = new()
+                {
+                    idContacto = contactoDto.idContacto,
+                    
+                    celularPaciente= contactoDto.celularPaciente,
+                    celularAcompananteP = contactoDto.celularAcompananteP,
+                    FechaInicioValidez = contactoDto.FechaInicioValidez,
+                    estadoContacto = contactoDto.estadoContacto,
+                   
+                };
+
+                await _dbContext.Contactos.AddAsync(modelo);
+                await _dbContext.SaveChangesAsync();
+                _response.Resultado = modelo;
+                _response.statusCode = HttpStatusCode.Created;
+
+                return (_response);
+            }
+            catch (Exception ex)
             {
-                return BadRequest(contactoDto);
-            }
-            if (contactoDto.idContacto > 0)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-            contactoDto.idContacto = ContactoStore.contactoList.OrderByDescending(v => v.idContacto).
-                FirstOrDefault().idContacto + 1;
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
 
-            ContactoStore.contactoList.Add(contactoDto);
-
-            return CreatedAtRoute("GetContacto", new { id = contactoDto.idContacto }, contactoDto);
+            }
+            return _response;
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpPatch]
+        [Route("EliminarUsuario/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DesactivarContacto(int id)
         {
-            if (id <= 0)
+            if (id == 0)
             {
                 return BadRequest();
             }
-            var contacto = ContactoStore.contactoList.FirstOrDefault(v => v.idContacto == id);
+
+            var contacto = await _dbContext.Contactos.FirstOrDefaultAsync(v => v.idContacto == id);
+
             if (contacto == null)
             {
                 return NotFound();
             }
-            ContactoStore.contactoList.Remove(contacto);
+
+            // Desactivar el usuario estableciendo la fecha actual en estadoUsuario
+            contacto.eliminado = DateTime.Now;
+
+            _dbContext.Contactos.Update(contacto);
+            await _dbContext.SaveChangesAsync();
 
             return NoContent();
         }
+
 
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -101,8 +138,8 @@ namespace Satizen_Api.Controllers
             {
                 return BadRequest();
             }
-            var contacto = ContactoStore.contactoList.FirstOrDefault(v => v.idContacto == id);
-            contacto.idPaciente = contactoDto.idPaciente;
+            var contacto = _dbContext.Contactos.FirstOrDefault(v => v.idContacto == id);
+         
             contacto.celularPaciente = contactoDto.celularPaciente;
             contacto.celularAcompananteP = contactoDto.celularAcompananteP;
             contacto.estadoContacto = contactoDto.estadoContacto;
@@ -110,25 +147,25 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult UpdatePartialContacto(int id, JsonPatchDocument<ContactoDto> patchDto)
-        {
-            if (patchDto == null || id == 0)
-            {
-                return BadRequest();
-            }
-            var contacto = ContactoStore.contactoList.FirstOrDefault(v => v.idContacto == id);
+        //[HttpPatch("{id:int}")]
+        //[ProducesResponseType(StatusCodes.Status204NoContent)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //public IActionResult UpdatePartialContacto(int id, JsonPatchDocument<ContactoDto> patchDto)
+        //{
+        //    if (patchDto == null || id == 0)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    var contacto = _dbContext.Contactos.FirstOrDefault(v => v.idContacto == id);
 
-            patchDto.ApplyTo(contacto, ModelState);
+        //    patchDto.ApplyTo(contacto, ModelState);
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
     }
 }
