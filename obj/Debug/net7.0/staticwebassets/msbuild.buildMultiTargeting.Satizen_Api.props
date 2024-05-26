@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Satizen_Api.props" />
+</Project>
