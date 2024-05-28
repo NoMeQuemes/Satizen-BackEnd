@@ -25,55 +25,7 @@ namespace Satizen_Api.Data
 
         //Acá se agregan datos a la base de datos
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Permiso>().HasData(
-                new Permiso()
-                {
-                    idPermiso = 1,
-                    tipo = "Crear"
-                },
-                new Permiso()
-                {
-                    idPermiso = 2,
-                    tipo = "Leer"
-                },
-                new Permiso()
-                {
-                    idPermiso = 3,
-                    tipo = "Eliminar"
-                },
-                new Permiso()
-                {
-                    idPermiso = 4,
-                    tipo = "Actualizar"
-                }
-                );
-
-            modelBuilder.Entity<Roles>().HasData(
-                new Roles()
-                {
-                    idRol = 1,
-                    nombre = "Administrador",
-                    descripcion = "Soy administrador",
-                    idPermiso = 1
-                },
-                new Roles()
-                {
-                    idRol = 2,
-                    nombre = "Medico",
-                    descripcion = "Soy médico",
-                    idPermiso = 2
-                },
-                new Roles()
-                {
-                    idRol = 3,
-                    nombre = "Enfermero",
-                    descripcion = "Soy enfermero",
-                    idPermiso = 2
-                }
-                );
-        }
+       
 
     }
 }
