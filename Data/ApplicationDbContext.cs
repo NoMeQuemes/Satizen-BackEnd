@@ -20,6 +20,7 @@ namespace Satizen_Api.Data
         public DbSet<Permiso> Permisos { get; set; }
         public DbSet<Institucion> Instituciones { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<Contacto> Contactos { get; set; }
 
         //Acá se agregan datos a la base de datos
 
