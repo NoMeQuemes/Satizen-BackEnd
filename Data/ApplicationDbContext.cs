@@ -1,27 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Satizen_Api.Models;
-using System.Threading;
 
 namespace Satizen_Api.Data
 {
-    public class ApplicationDbContext :DbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
         }
 
-        /* Con esta función usamos los datos que estan en el modelo para que 
-         * cuando ejecutemos la migración
-         * se agreguen o actualicen en la base de datos
-         */
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Permiso> Permisos { get; set; }
         public DbSet<Institucion> Instituciones { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
-
-        //Acá se agregan datos a la base de datos
+        public DbSet<Asignacion> Asignaciones { get; set; }
+        public DbSet<Personal> Personal { get; set; }
+        public DbSet<Sector> Sector { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,7 +41,7 @@ namespace Satizen_Api.Data
                     idPermiso = 4,
                     tipo = "Actualizar"
                 }
-                );
+            );
 
             modelBuilder.Entity<Roles>().HasData(
                 new Roles()
@@ -70,8 +65,18 @@ namespace Satizen_Api.Data
                     descripcion = "Soy enfermero",
                     idPermiso = 2
                 }
-                );
-        }
+            );
 
+            ////// Configuraciones adicionales para relaciones y restricciones
+            ////modelBuilder.Entity<Asignacion>()
+            ////    .HasOne(a => a.personal)
+            ////    .WithMany()
+            ////    .HasForeignKey(a => a.idPersonal);
+
+            ////modelBuilder.Entity<Asignacion>()
+            ////    .HasOne(a => a.sector)
+            ////    .WithMany()
+            ////    .HasForeignKey(a => a.idSector);
+        }
     }
 }
