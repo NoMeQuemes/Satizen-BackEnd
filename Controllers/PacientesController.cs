@@ -16,126 +16,190 @@ namespace Satizen_Api.Controllers
     [ApiController]
     public class PacientesController : ControllerBase
     {
-        private readonly ApplicationDbContext _applicationDbContext;
-        protected ApiResponse _response;
+        private readonly PacientesContext _dbContext;
+        private readonly ILogger<PacienteController> _logger;
+        private readonly ApiResponse _response;
 
-
-        public PacientesController(ApplicationDbContext applicationDbContext)
+        public PacientesController(PacientesContext dbContext, ILogger<PacientesController> logger)
         {
-            _applicationDbContext = applicationDbContext;
-            _response = new();
+            _dbContext = dbContext;
+            _logger = logger;
+            _response = new ApiResponse();
         }
 
         [Authorize(Policy = "Admin")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Paciente>>> GetPacientes()
-        {
-            return await _applicationDbContext.Pacientes.ToListAsync();
-        }
-
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Paciente>> GetPaciente(int id)
-        {
-            var paciente = await _applicationDbContext.Pacientes.FindAsync(id);
-
-            if (paciente == null)
-            {
-                return NotFound();
-            }
-
-            return paciente;
-        }
-
-        //End point para crear nuevos pacientes
-        [HttpPost]
-        [Route("CrearPaciente")]
-        public async Task<ActionResult<ApiResponse>> PostPaciente(AgregarPacienteDto Paciente)
+        [Route("ListarPacientes")]
+        public async Task<ActionResult<ApiResponse>> GetPaciente()
         {
             try
             {
-                if (Paciente == null)
-                {
-                    return BadRequest(Paciente);
-                }
-               
+                _logger.LogInformation("Obtener los Pacientes");
 
-                Paciente modelo = new()
-                {
-                    idUsuario = Paciente.idUsuario,
-                    //idInstitucion = Paciente.idInstitucion,
-                    nombrePaciente = Paciente.nombrePaciente,
-                    numeroHabitacionPaciente = Paciente.numeroHabitacionPaciente,
-                    fechaIngreso = Paciente.fechaIngreso,
-                    observacionPaciente = Paciente.observacionPaciente
-
-                };
-
-                await _applicationDbContext.Pacientes.AddAsync(modelo);
-                await _applicationDbContext.SaveChangesAsync();
-                _response.Resultado = modelo;
-                _response.statusCode = HttpStatusCode.Created;
-
-                return _response;
+                _response.Resultado = await _dbContext.Pacientes
+                                              .Where(u => u.estadoPaciente == null)
+                                              .ToListAsync();
+                _response.statusCode = HttpStatusCode.OK;
+                return Ok(_response);
             }
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
                 _response.ErrorMessages = new List<string>() { ex.ToString() };
-
             }
             return _response;
         }
 
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPaciente(int id, Paciente paciente)
+        [HttpGet("{id:int}", Name = "GetPaciente")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<PacientesDto>> GetPaciente(int id)
         {
-            if (id != paciente.idPaciente)
+            if (id <= 0)
             {
+                _logger.LogError("Error al traer paciente con Id " + id);
                 return BadRequest();
             }
 
-            _applicationDbContext.Entry(paciente).State = EntityState.Modified;
+            var paciente = await _dbContext.Pacientes.FindAsync(id);
 
-            try
-            {
-                await _applicationDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PacienteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePaciente(int id)
-        {
-            var paciente = await _applicationDbContext.Pacientes.FindAsync(id);
             if (paciente == null)
             {
                 return NotFound();
             }
 
-            _applicationDbContext.Pacientes.Remove(paciente);
-            await _applicationDbContext.SaveChangesAsync();
+            return Ok(paciente);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<PacientesDto>> CrearPaciente([FromBody] PacientesDto pacientesDto)
+        {
+            if (pacientesDto == null)
+            {
+                return BadRequest();
+            }
+
+            var paciente = new PacientesDto
+            {
+                idPaciente = pacientesDto.idPaciente,
+                idUsuario = pacientesDto.idUsuario,
+                idInstitucion = pacientesDto.idInstitucion,
+                nombrePaciente = pacientesDto.nombrePaciente,
+                numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
+                fechaIngreso = pacientesDto.fechaIngreso,
+                observacionPaciente = pacientesDto.observacionPaciente
+            };
+
+            await _dbContext.Pacientes.AddAsync(paciente);
+            await _dbContext.SaveChangesAsync();
+
+            return CreatedAtRoute("GetPaciente", new { id = paciente.idPaciente }, paciente);
+        }
+
+        [HttpPatch]
+        [Route("DesactivarPaciente/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> DesactivarPaciente(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var paciente = await _dbContext.Pacientes.FirstOrDefaultAsync(p => p.idPaciente == id);
+
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            // Desactivar el paciente estableciendo la fecha actual en estadoPaciente
+            paciente.estadoPaciente = DateTime.Now;
+
+            _dbContext.Pacientes.Update(paciente);
+            await _dbContext.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PacienteExists(int id)
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdatePaciente(int id, [FromBody] PacientesDto pacientesDto)
         {
-            return _applicationDbContext.Pacientes.Any(e => e.idPaciente == id);
+            if (pacientesDto == null || id != pacientesDto.idPaciente)
+            {
+                return BadRequest();
+            }
+
+            var paciente = await _dbContext.Pacientes.FindAsync(id);
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            paciente.idUsuario = pacientesDto.idUsuario;
+            paciente.idInstitucion = pacientesDto.idInstitucion;
+            paciente.nombrePaciente = pacientesDto.nombrePaciente;
+            paciente.numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente;
+            paciente.fechaIngreso = pacientesDto.fechaIngreso;
+            paciente.observacionPaciente = pacientesDto.observacionPaciente;
+
+            _dbContext.Pacientes.Update(paciente);
+            await _dbContext.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdatePartialPaciente(int id, [FromBody] JsonPatchDocument<PacientesDto> patchDto)
+        {
+            if (patchDto == null || id <= 0)
+            {
+                return BadRequest();
+            }
+
+            var paciente = await _dbContext.Pacientes.FindAsync(id);
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            var pacienteDto = new PacientesDto
+            {
+                idPaciente = paciente.idPaciente,
+                idUsuario = paciente.idUsuario,
+                idInstitucion = paciente.idInstitucion,
+                nombrePaciente = paciente.nombrePaciente,
+                numeroHabitacionPaciente = paciente.numeroHabitacionPaciente,
+                fechaIngreso = paciente.fechaIngreso,
+                observacionPaciente = paciente.observacionPaciente
+            };
+
+            patchDto.ApplyTo(pacienteDto, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            paciente.idUsuario = pacienteDto.idUsuario;
+            paciente.idInstitucion = pacienteDto.idInstitucion;
+            paciente.nombrePaciente = pacienteDto.nombrePaciente;
+            paciente.numeroHabitacionPaciente = pacienteDto.numeroHabitacionPaciente;
+            paciente.fechaIngreso = pacienteDto.fechaIngreso;
+            paciente.observacionPaciente = pacienteDto.observacionPaciente;
+
+            _dbContext.Pacientes.Update(paciente);
+            await _dbContext.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
