@@ -76,7 +76,7 @@ namespace Satizen_Api.Controllers
                 Contacto modelo = new()
                 {
                     idContacto = contactoDto.idContacto,
-                    
+                    idPaciente= contactoDto.idPaciente,
                     celularPaciente= contactoDto.celularPaciente,
                     celularAcompananteP = contactoDto.celularAcompananteP,
                     FechaInicioValidez = contactoDto.FechaInicioValidez,
@@ -139,7 +139,8 @@ namespace Satizen_Api.Controllers
                 return BadRequest();
             }
             var contacto = _dbContext.Contactos.FirstOrDefault(v => v.idContacto == id);
-         
+
+            contacto.idPaciente = contactoDto.idPaciente;
             contacto.celularPaciente = contactoDto.celularPaciente;
             contacto.celularAcompananteP = contactoDto.celularAcompananteP;
             contacto.estadoContacto = contactoDto.estadoContacto;

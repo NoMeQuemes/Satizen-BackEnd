@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Satizen_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class agus : Migration
+    public partial class ContactoPaciente : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,6 +17,7 @@ namespace Satizen_Api.Migrations
                 {
                     idContacto = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    idPaciente = table.Column<int>(type: "int", nullable: false),
                     celularPaciente = table.Column<int>(type: "int", nullable: false),
                     celularAcompananteP = table.Column<int>(type: "int", nullable: false),
                     FechaInicioValidez = table.Column<DateTime>(type: "datetime2", nullable: false),

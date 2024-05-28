@@ -12,8 +12,8 @@ using Satizen_Api.Datos;
 namespace Satizen_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240523163503_agus")]
-    partial class agus
+    [Migration("20240528121549_ContactoPaciente")]
+    partial class ContactoPaciente
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,9 @@ namespace Satizen_Api.Migrations
                     b.Property<string>("estadoContacto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("idPaciente")
+                        .HasColumnType("int");
 
                     b.HasKey("idContacto");
 

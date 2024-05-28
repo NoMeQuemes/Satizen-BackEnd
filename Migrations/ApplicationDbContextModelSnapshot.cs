@@ -46,6 +46,9 @@ namespace Satizen_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("idPaciente")
+                        .HasColumnType("int");
+
                     b.HasKey("idContacto");
 
                     b.ToTable("Contactos");
