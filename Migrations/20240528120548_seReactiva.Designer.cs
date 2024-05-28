@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Satizen_Api.Data;
 
@@ -11,9 +12,11 @@ using Satizen_Api.Data;
 namespace Satizen_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240528120548_seReactiva")]
+    partial class seReactiva
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,28 +88,6 @@ namespace Satizen_Api.Migrations
                     b.HasKey("idPermiso");
 
                     b.ToTable("Permisos");
-
-                    b.HasData(
-                        new
-                        {
-                            idPermiso = 1,
-                            tipo = "Crear"
-                        },
-                        new
-                        {
-                            idPermiso = 2,
-                            tipo = "Leer"
-                        },
-                        new
-                        {
-                            idPermiso = 3,
-                            tipo = "Eliminar"
-                        },
-                        new
-                        {
-                            idPermiso = 4,
-                            tipo = "Actualizar"
-                        });
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Roles", b =>
@@ -133,29 +114,6 @@ namespace Satizen_Api.Migrations
                     b.HasIndex("idPermiso");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            idRol = 1,
-                            descripcion = "Soy administrador",
-                            idPermiso = 1,
-                            nombre = "Administrador"
-                        },
-                        new
-                        {
-                            idRol = 2,
-                            descripcion = "Soy médico",
-                            idPermiso = 2,
-                            nombre = "Medico"
-                        },
-                        new
-                        {
-                            idRol = 3,
-                            descripcion = "Soy enfermero",
-                            idPermiso = 2,
-                            nombre = "Enfermero"
-                        });
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Sectores", b =>
