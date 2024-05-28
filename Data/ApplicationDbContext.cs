@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Satizen_Api.models.Dto;
 using Satizen_Api.Models;
 using System.Threading;
 

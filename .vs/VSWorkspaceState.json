@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Controllers",
-    "\\Migrations",
-    "\\Models"
+    "\\Migrations"
   ],
+  "SelectedNode": "\\Controllers\\ContactoPacienteController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,8 +1,9 @@
-﻿using Satizen_Api.Datos;
+﻿using Satizen_Api.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
 using Satizen_Api.models.Dto;
+using Satizen_Api.Models;
 namespace Satizen_Api.Controllers
 {
     [ApiController]
