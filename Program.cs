@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using System.Text;
-using Satizen_Api.Custom;
 using Satizen_Api.Models;
 using Satizen_Api.Data;
 
@@ -12,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddSingleton<Utilidades>(); // Acá se agregan las utilidades
 
 // ------------- Seguridad JWT para los usuarios -------------------
 
