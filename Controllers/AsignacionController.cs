@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;      // Para trabajar con solicitudes y respuestas HTTP
-using Microsoft.AspNetCore.Mvc;       // Base para controladores MVC
-using Microsoft.EntityFrameworkCore;  // Interacciones con la base de datos (Entity Framework)
-using Microsoft.AspNetCore.JsonPatch; // Para actualizaciones parciales (no se usa en este controlador, pero lo mantenemos para consistencia)
-using Microsoft.Extensions.Logging;   // Para registrar eventos en la aplicación (logs)
-using System.Net;                     // Para códigos de estado HTTP (OK, NotFound, etc.)
-using System.Threading.Tasks;        // Para operaciones asíncronas
-using System.Collections.Generic;    // Para colecciones (listas, etc.)
+using Microsoft.AspNetCore.Http;      
+using Microsoft.AspNetCore.Mvc;       
+using Microsoft.EntityFrameworkCore;  
+using Microsoft.AspNetCore.JsonPatch; 
+using Microsoft.Extensions.Logging;   
+using System.Net;                     
+using System.Threading.Tasks;        
+using System.Collections.Generic;    
 
-using Satizen_Api.Data;            // Tu contexto de base de datos (ApplicationDbContext)
-using Satizen_Api.Models;           // Tus modelos de datos (Asignacion, etc.)
-using Satizen_Api.Models.Dto;       // Tus Data Transfer Objects (DTOs) (AsignacionDto)
+using Satizen_Api.Data;            
+using Satizen_Api.Models;           
+using Satizen_Api.Models.Dto;      
 
 namespace Satizen_Api.Controllers
 {
