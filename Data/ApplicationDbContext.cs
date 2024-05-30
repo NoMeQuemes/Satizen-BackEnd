@@ -15,8 +15,7 @@ namespace Satizen_Api.Data
         public DbSet<Institucion> Instituciones { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Asignacion> Asignaciones { get; set; }
-        public DbSet<Personal> Personal { get; set; }
-        public DbSet<Sector> Sector { get; set; }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

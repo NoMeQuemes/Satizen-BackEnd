@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Controllers",
+    "\\Custom",
+    "\\obj"
   ],
   "PreviewInSolutionExplorer": false
 }
