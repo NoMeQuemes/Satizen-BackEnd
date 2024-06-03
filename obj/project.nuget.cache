@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "VOj189xwVZ5OVmfwzQ7C0L0r0Zrm45UwkKduzlFg7FrqJiIJAL2SHku1MWQTQAso2VzJ+/hfhQ7F0ymYNFST9A==",
+  "dgSpecHash": "idn+/bEf5WW75Nfsd4CFEnB0+VTnF2gnt7KwaJAW0hQSx/+yuLm2fEpwNsQNL0utBVHiJFvISD7kC2/4xFKKuA==",
   "success": true,
   "projectFilePath": "C:\\Users\\musimundo\\source\\repos\\Proyec Satizen\\Proyec Satizen_Api\\Proyec Satizen_Api.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\musimundo\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\musimundo\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\musimundo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\musimundo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\musimundo\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\musimundo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

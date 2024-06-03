@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Proyec_Satizen_Api;
 using Proyec_Satizen_Api.Datos;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddAutoMapper(typeof(MappingConfig)); 
 
 
 var app = builder.Build();

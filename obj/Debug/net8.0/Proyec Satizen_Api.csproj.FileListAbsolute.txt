@@ -138,3 +138,4 @@ C:\Users\musimundo\source\repos\Proyec Satizen\Proyec Satizen_Api\bin\Debug\net8
 C:\Users\musimundo\source\repos\Proyec Satizen\Proyec Satizen_Api\obj\Debug\net8.0\Proyec Satizen_Api.RazorAssemblyInfo.cache
 C:\Users\musimundo\source\repos\Proyec Satizen\Proyec Satizen_Api\obj\Debug\net8.0\Proyec Satizen_Api.RazorAssemblyInfo.cs
 C:\Users\musimundo\source\repos\Proyec Satizen\Proyec Satizen_Api\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\musimundo\source\repos\Proyec Satizen\Proyec Satizen_Api\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
