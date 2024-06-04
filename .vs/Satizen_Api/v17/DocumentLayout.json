@@ -1,37 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\",
+  "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Migrations\\20240604141158_ContactoPaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240604141158_ContactoPaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\20240528154603_Contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240528154603_Contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git\\controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git-20240604t123318z-001\\satizen-backend.git\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\20240528152250_ContactoPaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240528152250_ContactoPaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git-20240604t123318z-001\\satizen-backend.git\\controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git\\models\\dto\\contactopaciente\\contactodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git-20240604t123318z-001\\satizen-backend.git\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git-20240604t123318z-001\\satizen-backend.git\\migrations\\20240528154603_contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:migrations\\20240528154603_contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git-20240604t123318z-001\\satizen-backend.git\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git-20240604t123318z-001\\satizen-backend.git\\models\\dto\\contactopaciente\\contactodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\contactopaciente\\contactodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -47,36 +43,23 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Models\\ApiResponse.cs",
-              "RelativeDocumentMoniker": "Models\\ApiResponse.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Models\\ApiResponse.cs",
-              "RelativeToolTip": "Models\\ApiResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA3AAAA",
+              "Title": "20240604141158_ContactoPaciente.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Migrations\\20240604141158_ContactoPaciente.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240604141158_ContactoPaciente.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Migrations\\20240604141158_ContactoPaciente.cs",
+              "RelativeToolTip": "Migrations\\20240604141158_ContactoPaciente.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T16:22:30.889Z",
+              "WhenOpened": "2024-06-04T14:11:58.948Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "20240528154603_Contacto.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\20240528154603_Contacto.cs",
-              "RelativeDocumentMoniker": "Migrations\\20240528154603_Contacto.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\20240528154603_Contacto.cs",
-              "RelativeToolTip": "Migrations\\20240528154603_Contacto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T15:46:03.232Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\appsettings.json",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -85,37 +68,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "20240528152250_ContactoPaciente.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\20240528152250_ContactoPaciente.cs",
-              "RelativeDocumentMoniker": "Migrations\\20240528152250_ContactoPaciente.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\20240528152250_ContactoPaciente.cs",
-              "RelativeToolTip": "Migrations\\20240528152250_ContactoPaciente.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T15:22:51.21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApplicationDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeToolTip": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAgwAYAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T15:06:47.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAkwBsAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -124,29 +81,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ContactoDto.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
-              "RelativeDocumentMoniker": "Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
-              "RelativeToolTip": "Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "ContactoPacienteController.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Controllers\\ContactoPacienteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ContactoPacienteController.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Controllers\\ContactoPacienteController.cs",
+              "RelativeToolTip": "Controllers\\ContactoPacienteController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T15:03:32.817Z",
+              "WhenOpened": "2024-05-28T15:02:33.021Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ContactoPacienteController.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Controllers\\ContactoPacienteController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ContactoPacienteController.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git\\Controllers\\ContactoPacienteController.cs",
-              "RelativeToolTip": "Controllers\\ContactoPacienteController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAWAAAA",
+              "DocumentIndex": 4,
+              "Title": "20240528154603_Contacto.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Migrations\\20240528154603_Contacto.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240528154603_Contacto.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Migrations\\20240528154603_Contacto.cs",
+              "RelativeToolTip": "Migrations\\20240528154603_Contacto.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T15:02:33.021Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T15:46:03.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Models\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "Models\\ApiResponse.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Models\\ApiResponse.cs",
+              "RelativeToolTip": "Models\\ApiResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T16:22:30.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ContactoDto.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
+              "RelativeToolTip": "Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T15:03:32.817Z"
             }
           ]
         }
