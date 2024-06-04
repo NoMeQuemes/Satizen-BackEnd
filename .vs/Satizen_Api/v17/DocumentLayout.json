@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\wuino\\Documents\\satizen\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|c:\\users\\wuino\\documents\\satizen\\models\\dto\\asignaciones\\asignaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|solutionrelative:models\\dto\\asignaciones\\asignaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|c:\\users\\wuino\\documents\\satizen\\models\\asignacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|solutionrelative:models\\asignacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|c:\\users\\wuino\\documents\\satizen\\models\\permiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|solutionrelative:models\\permiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|c:\\users\\wuino\\documents\\satizen\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|c:\\users\\wuino\\documents\\satizen\\controllers\\asignacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|solutionrelative:controllers\\asignacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|c:\\users\\wuino\\documents\\satizen\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|solutionrelative:controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|c:\\users\\wuino\\documents\\satizen\\models\\permiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9FE053-4232-4BA2-B5F6-C798CF84CF52}|Satizen_Api.csproj|solutionrelative:models\\permiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,115 +34,32 @@
               "RelativeToolTip": "Models\\Permiso.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T13:37:08.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T13:37:08.72Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AsignacionDto.cs",
-              "DocumentMoniker": "C:\\Users\\wuino\\Documents\\satizen\\Models\\Dto\\Asignaciones\\AsignacionDto.cs",
-              "RelativeDocumentMoniker": "Models\\Dto\\Asignaciones\\AsignacionDto.cs",
-              "ToolTip": "C:\\Users\\wuino\\Documents\\satizen\\Models\\Dto\\Asignaciones\\AsignacionDto.cs",
-              "RelativeToolTip": "Models\\Dto\\Asignaciones\\AsignacionDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T12:40:02.35Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Asignacion.cs",
               "DocumentMoniker": "C:\\Users\\wuino\\Documents\\satizen\\Models\\Asignacion.cs",
               "RelativeDocumentMoniker": "Models\\Asignacion.cs",
               "ToolTip": "C:\\Users\\wuino\\Documents\\satizen\\Models\\Asignacion.cs",
               "RelativeToolTip": "Models\\Asignacion.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T13:22:00.951Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\wuino\\Documents\\satizen\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\wuino\\Documents\\satizen\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAADwvykAAAARAAAA",
+              "ViewState": "AQIAADsAAAAAAAAAAADwv00AAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T13:13:35.661Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "1e5113e2-c98e-4603-bfe4-4bb764428a0e",
-        "Display": 1,
-        "X": 319,
-        "Y": 93,
-        "Width": 1606,
-        "Height": 992,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AsignacionController.cs",
-              "DocumentMoniker": "C:\\Users\\wuino\\Documents\\satizen\\Controllers\\AsignacionController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AsignacionController.cs",
-              "ToolTip": "C:\\Users\\wuino\\Documents\\satizen\\Controllers\\AsignacionController.cs",
-              "RelativeToolTip": "Controllers\\AsignacionController.cs",
-              "ViewState": "AQIAAFMAAAAAAAAAAAAgwCUAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T13:08:04.621Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "1190d71a-cca8-4324-8ba3-2f7530afed39",
-        "Display": 1,
-        "X": 1281,
-        "Y": 125,
-        "Width": 644,
-        "Height": 960,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\wuino\\Documents\\satizen\\Controllers\\UsuariosController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Users\\wuino\\Documents\\satizen\\Controllers\\UsuariosController.cs",
-              "RelativeToolTip": "Controllers\\UsuariosController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T12:54:06.825Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T13:13:35.661Z"
             }
           ]
         }
