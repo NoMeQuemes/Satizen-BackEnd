@@ -1,26 +1,45 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Satizen_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class seCreanLasTablasDeUsuario : Migration
+    public partial class Satizen : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Estados",
+                name: "Instituciones",
                 columns: table => new
                 {
-                    idEstado = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    tipo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    idInstitucion = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Estados", x => x.idEstado);
+                    table.PrimaryKey("PK_Instituciones", x => x.idInstitucion);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pacientes",
+                columns: table => new
+                {
+                    idPaciente = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    idUsuario = table.Column<int>(type: "int", nullable: false),
+                    idInstitucion = table.Column<int>(type: "int", nullable: false),
+                    nombrePaciente = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    numeroHabitacionPaciente = table.Column<int>(type: "int", nullable: false),
+                    fechaIngreso = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    estadoPaciente = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    observacionPaciente = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pacientes", x => x.idPaciente);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,7 +63,7 @@ namespace Satizen_Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    idPermiso = table.Column<int>(type: "int", nullable: false)
+                    idPermiso = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,8 +72,7 @@ namespace Satizen_Api.Migrations
                         name: "FK_Roles_Permisos_idPermiso",
                         column: x => x.idPermiso,
                         principalTable: "Permisos",
-                        principalColumn: "idPermiso",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "idPermiso");
                 });
 
             migrationBuilder.CreateTable(
@@ -65,35 +83,23 @@ namespace Satizen_Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    idRoles = table.Column<int>(type: "int", nullable: false),
-                    idEstado = table.Column<int>(type: "int", nullable: false)
+                    idRoles = table.Column<int>(type: "int", nullable: true),
+                    estadoUsuario = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.idUsuario);
                     table.ForeignKey(
-                        name: "FK_Usuarios_Estados_idEstado",
-                        column: x => x.idEstado,
-                        principalTable: "Estados",
-                        principalColumn: "idEstado",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Usuarios_Roles_idRoles",
                         column: x => x.idRoles,
                         principalTable: "Roles",
-                        principalColumn: "idRol",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "idRol");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_idPermiso",
                 table: "Roles",
                 column: "idPermiso");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_idEstado",
-                table: "Usuarios",
-                column: "idEstado");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Usuarios_idRoles",
@@ -105,10 +111,13 @@ namespace Satizen_Api.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Instituciones");
 
             migrationBuilder.DropTable(
-                name: "Estados");
+                name: "Pacientes");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Roles");

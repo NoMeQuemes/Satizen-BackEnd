@@ -12,8 +12,8 @@ using Satizen_Api.Data;
 namespace Satizen_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240524021717_SeagregaDatos")]
-    partial class SeagregaDatos
+    [Migration("20240528161414_Satizen")]
+    partial class Satizen
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,41 +38,6 @@ namespace Satizen_Api.Migrations
                     b.ToTable("Instituciones");
                 });
 
-            modelBuilder.Entity("Satizen_Api.Models.Paciente", b =>
-                {
-                    b.Property<int>("idPaciente")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idPaciente"));
-
-                    b.Property<DateTime>("fechaIngreso")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("idInstitucion")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("idUsuario")
-                        .HasColumnType("int");
-
-                    b.Property<string>("nombrePaciente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("numeroHabitacionPaciente")
-                        .HasColumnType("int");
-
-                    b.Property<string>("observacionPaciente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("idPaciente");
-
-                    b.HasIndex("idInstitucion");
-
-                    b.HasIndex("idUsuario");
-
-                    b.ToTable("Pacientes");
-                });
-
             modelBuilder.Entity("Satizen_Api.Models.Permiso", b =>
                 {
                     b.Property<int>("idPermiso")
@@ -88,28 +53,6 @@ namespace Satizen_Api.Migrations
                     b.HasKey("idPermiso");
 
                     b.ToTable("Permisos");
-
-                    b.HasData(
-                        new
-                        {
-                            idPermiso = 1,
-                            tipo = "Crear"
-                        },
-                        new
-                        {
-                            idPermiso = 2,
-                            tipo = "Leer"
-                        },
-                        new
-                        {
-                            idPermiso = 3,
-                            tipo = "Eliminar"
-                        },
-                        new
-                        {
-                            idPermiso = 4,
-                            tipo = "Actualizar"
-                        });
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Roles", b =>
@@ -136,29 +79,6 @@ namespace Satizen_Api.Migrations
                     b.HasIndex("idPermiso");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            idRol = 1,
-                            descripcion = "Soy administrador",
-                            idPermiso = 1,
-                            nombre = "Administrador"
-                        },
-                        new
-                        {
-                            idRol = 2,
-                            descripcion = "Soy médico",
-                            idPermiso = 2,
-                            nombre = "Medico"
-                        },
-                        new
-                        {
-                            idRol = 3,
-                            descripcion = "Soy enfermero",
-                            idPermiso = 2,
-                            nombre = "Enfermero"
-                        });
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Usuario", b =>
@@ -190,19 +110,38 @@ namespace Satizen_Api.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("Satizen_Api.Models.Paciente", b =>
+            modelBuilder.Entity("Satizen_Api.models.Dto.PacientesDto", b =>
                 {
-                    b.HasOne("Satizen_Api.Models.Institucion", "institucion")
-                        .WithMany()
-                        .HasForeignKey("idInstitucion");
+                    b.Property<int>("idPaciente")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasOne("Satizen_Api.Models.Usuario", "usuario")
-                        .WithMany()
-                        .HasForeignKey("idUsuario");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idPaciente"));
 
-                    b.Navigation("institucion");
+                    b.Property<DateTime?>("estadoPaciente")
+                        .HasColumnType("datetime2");
 
-                    b.Navigation("usuario");
+                    b.Property<DateTime>("fechaIngreso")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idInstitucion")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("nombrePaciente")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("numeroHabitacionPaciente")
+                        .HasColumnType("int");
+
+                    b.Property<string>("observacionPaciente")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("idPaciente");
+
+                    b.ToTable("Pacientes");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Roles", b =>

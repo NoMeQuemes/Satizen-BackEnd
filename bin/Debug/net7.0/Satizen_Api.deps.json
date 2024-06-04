@@ -10,7 +10,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.12",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.12",
-          "Microsoft.AspNetCore.JsonPatch": "7.0.12",
+          "Microsoft.AspNetCore.JsonPatch": "7.0.19",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "7.0.12",
           "Microsoft.AspNetCore.OpenApi": "7.0.12",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.12",
@@ -106,21 +106,21 @@
           }
         }
       },
-      "Microsoft.AspNetCore.JsonPatch/7.0.12": {
+      "Microsoft.AspNetCore.JsonPatch/7.0.19": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "lib/net7.0/Microsoft.AspNetCore.JsonPatch.dll": {
-            "assemblyVersion": "7.0.12.0",
-            "fileVersion": "7.0.1223.47922"
+            "assemblyVersion": "7.0.19.0",
+            "fileVersion": "7.0.1924.22306"
           }
         }
       },
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.12": {
         "dependencies": {
-          "Microsoft.AspNetCore.JsonPatch": "7.0.12",
+          "Microsoft.AspNetCore.JsonPatch": "7.0.19",
           "Newtonsoft.Json": "13.0.1",
           "Newtonsoft.Json.Bson": "1.0.2"
         },
@@ -773,12 +773,12 @@
       "path": "microsoft.aspnetcore.identity.entityframeworkcore/7.0.12",
       "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.7.0.12.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.JsonPatch/7.0.12": {
+    "Microsoft.AspNetCore.JsonPatch/7.0.19": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7eBfKD1Hsl9fP0zO3OiuIeH+YbZBVGsvBnsqbRdoKGby9Z2IzmxTF3S/dhzT2yDF3oqAIsfv82dcn4lNJUUY9w==",
-      "path": "microsoft.aspnetcore.jsonpatch/7.0.12",
-      "hashPath": "microsoft.aspnetcore.jsonpatch.7.0.12.nupkg.sha512"
+      "sha512": "sha512-FWSFYV4nW4rIENbDlKPePwfuGjb2xz8GA8PbFtUvZmpi7Ij2ztYh/8CXt/ipBUjIAnvEcb1HRcYUebNDUITatA==",
+      "path": "microsoft.aspnetcore.jsonpatch/7.0.19",
+      "hashPath": "microsoft.aspnetcore.jsonpatch.7.0.19.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.12": {
       "type": "package",

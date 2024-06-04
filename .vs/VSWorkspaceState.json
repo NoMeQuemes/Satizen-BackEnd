@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "\\Controllers",
+    "\\Data",
+    "\\Models",
+    "\\Models\\Dto",
+    "\\Models\\Dto\\Pacientes"
   ],
-  "SelectedNode": "\\C:\\Users\\Amilcar\\Source\\Repos\\Satizen-BackEnd",
   "PreviewInSolutionExplorer": false
 }

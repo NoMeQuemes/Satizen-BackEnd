@@ -124,7 +124,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.JsonPatch/7.0.12": {
+      "Microsoft.AspNetCore.JsonPatch/7.0.19": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -1408,10 +1408,10 @@
         "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.JsonPatch/7.0.12": {
-      "sha512": "7eBfKD1Hsl9fP0zO3OiuIeH+YbZBVGsvBnsqbRdoKGby9Z2IzmxTF3S/dhzT2yDF3oqAIsfv82dcn4lNJUUY9w==",
+    "Microsoft.AspNetCore.JsonPatch/7.0.19": {
+      "sha512": "FWSFYV4nW4rIENbDlKPePwfuGjb2xz8GA8PbFtUvZmpi7Ij2ztYh/8CXt/ipBUjIAnvEcb1HRcYUebNDUITatA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.jsonpatch/7.0.12",
+      "path": "microsoft.aspnetcore.jsonpatch/7.0.19",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1423,7 +1423,7 @@
         "lib/net7.0/Microsoft.AspNetCore.JsonPatch.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
-        "microsoft.aspnetcore.jsonpatch.7.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.jsonpatch.7.0.19.nupkg.sha512",
         "microsoft.aspnetcore.jsonpatch.nuspec"
       ]
     },
@@ -3467,7 +3467,7 @@
     "net7.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.12",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.12",
-      "Microsoft.AspNetCore.JsonPatch >= 7.0.12",
+      "Microsoft.AspNetCore.JsonPatch >= 7.0.19",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 7.0.12",
       "Microsoft.AspNetCore.OpenApi >= 7.0.12",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.12",
@@ -3477,23 +3477,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\munoz\\.nuget\\packages\\": {},
+    "C:\\Users\\Amilcar\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\repos\\Satizen\\Satizen_Api\\Satizen_Api.csproj",
+      "projectUniqueName": "C:\\Users\\Amilcar\\source\\repos\\Satizen-BackEnd\\Satizen_Api.csproj",
       "projectName": "Satizen_Api",
-      "projectPath": "C:\\repos\\Satizen\\Satizen_Api\\Satizen_Api.csproj",
-      "packagesPath": "C:\\Users\\munoz\\.nuget\\packages\\",
-      "outputPath": "C:\\repos\\Satizen\\Satizen_Api\\obj\\",
+      "projectPath": "C:\\Users\\Amilcar\\source\\repos\\Satizen-BackEnd\\Satizen_Api.csproj",
+      "packagesPath": "C:\\Users\\Amilcar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Amilcar\\source\\repos\\Satizen-BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\munoz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Amilcar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3502,6 +3502,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3535,7 +3536,7 @@
           },
           "Microsoft.AspNetCore.JsonPatch": {
             "target": "Package",
-            "version": "[7.0.12, )"
+            "version": "[7.0.19, )"
           },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
@@ -3583,7 +3584,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }
