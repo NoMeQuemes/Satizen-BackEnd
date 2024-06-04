@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Satizen_Api.Data;
 
@@ -11,9 +12,11 @@ using Satizen_Api.Data;
 namespace Satizen_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240528140544_SeAgregEstadoPaciente")]
+    partial class SeAgregEstadoPaciente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,19 @@ namespace Satizen_Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Satizen_Api.Models.Institucion", b =>
+                {
+                    b.Property<int>("idInstitucion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idInstitucion"));
+
+                    b.HasKey("idInstitucion");
+
+                    b.ToTable("Instituciones");
+                });
 
             modelBuilder.Entity("Satizen_Api.Models.Paciente", b =>
                 {
@@ -36,6 +52,9 @@ namespace Satizen_Api.Migrations
                     b.Property<DateTime>("fechaIngreso")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("idInstitucion")
+                        .HasColumnType("int");
+
                     b.Property<int?>("idUsuario")
                         .HasColumnType("int");
 
@@ -49,6 +68,8 @@ namespace Satizen_Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("idPaciente");
+
+                    b.HasIndex("idInstitucion");
 
                     b.HasIndex("idUsuario");
 
@@ -70,43 +91,6 @@ namespace Satizen_Api.Migrations
                     b.HasKey("idPermiso");
 
                     b.ToTable("Permisos");
-                });
-
-            modelBuilder.Entity("Satizen_Api.Models.RefreshToken", b =>
-                {
-                    b.Property<int>("idRefreshToken")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idRefreshToken"));
-
-                    b.Property<bool>("esActivo")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bit")
-                        .HasComputedColumnSql("IIF(fechaExpiracion < GETDATE(), CONVERT(BIT, 0), CONVERT(BIT, 1))");
-
-                    b.Property<DateTime>("fechaCreacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("fechaExpiracion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("idUsuario")
-                        .HasColumnType("int");
-
-                    b.Property<string>("refreshToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("token")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("idRefreshToken");
-
-                    b.HasIndex("idUsuario");
-
-                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Roles", b =>
@@ -147,11 +131,16 @@ namespace Satizen_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("idInstitucion")
+                        .HasColumnType("int");
+
                     b.Property<string>("nombreSector")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("idSector");
+
+                    b.HasIndex("idInstitucion");
 
                     b.ToTable("Sectores");
                 });
@@ -187,22 +176,17 @@ namespace Satizen_Api.Migrations
 
             modelBuilder.Entity("Satizen_Api.Models.Paciente", b =>
                 {
+                    b.HasOne("Satizen_Api.Models.Institucion", "institucion")
+                        .WithMany()
+                        .HasForeignKey("idInstitucion");
+
                     b.HasOne("Satizen_Api.Models.Usuario", "usuario")
                         .WithMany()
                         .HasForeignKey("idUsuario");
 
+                    b.Navigation("institucion");
+
                     b.Navigation("usuario");
-                });
-
-            modelBuilder.Entity("Satizen_Api.Models.RefreshToken", b =>
-                {
-                    b.HasOne("Satizen_Api.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("idUsuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Roles", b =>
@@ -212,6 +196,17 @@ namespace Satizen_Api.Migrations
                         .HasForeignKey("idPermiso");
 
                     b.Navigation("Permiso");
+                });
+
+            modelBuilder.Entity("Satizen_Api.Models.Sectores", b =>
+                {
+                    b.HasOne("Satizen_Api.Models.Institucion", "Instituciones")
+                        .WithMany()
+                        .HasForeignKey("idInstitucion")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Instituciones");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Usuario", b =>

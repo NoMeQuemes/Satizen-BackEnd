@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Prueba_Tecnica_Api.Models;
 using Satizen_Api.Models;
 using System.Threading;
 
@@ -18,60 +19,19 @@ namespace Satizen_Api.Data
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Permiso> Permisos { get; set; }
-        public DbSet<Institucion> Instituciones { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Sectores> Sectores { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         //Acá se agregan datos a la base de datos
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Permiso>().HasData(
-                new Permiso()
-                {
-                    idPermiso = 1,
-                    tipo = "Crear"
-                },
-                new Permiso()
-                {
-                    idPermiso = 2,
-                    tipo = "Leer"
-                },
-                new Permiso()
-                {
-                    idPermiso = 3,
-                    tipo = "Eliminar"
-                },
-                new Permiso()
-                {
-                    idPermiso = 4,
-                    tipo = "Actualizar"
-                }
-                );
 
-            modelBuilder.Entity<Roles>().HasData(
-                new Roles()
-                {
-                    idRol = 1,
-                    nombre = "Administrador",
-                    descripcion = "Soy administrador",
-                    idPermiso = 1
-                },
-                new Roles()
-                {
-                    idRol = 2,
-                    nombre = "Medico",
-                    descripcion = "Soy médico",
-                    idPermiso = 2
-                },
-                new Roles()
-                {
-                    idRol = 3,
-                    nombre = "Enfermero",
-                    descripcion = "Soy enfermero",
-                    idPermiso = 2
-                }
-                );
+            //Estas lineas de código agregan el valor a la columna computada "esActivo"
+            modelBuilder.Entity<RefreshToken>()
+                .Property(o => o.esActivo)
+                .HasComputedColumnSql("IIF(fechaExpiracion < GETDATE(), CONVERT(BIT, 0), CONVERT(BIT, 1))");
         }
 
     }

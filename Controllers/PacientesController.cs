@@ -2,11 +2,16 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using Satizen_Api.Data;
+using Satizen_Api.Models.Dto;
 using Satizen_Api.Models;
-using Satizen_Api.Models.Dto.Pacientes;
+//using Satizen_Api.Models.Dto.Pacientes;
+
 using System.Net;
 using System.Threading;
+using Satizen_Api.models.Dto;
+using Microsoft.AspNetCore.JsonPatch;
 
 
 namespace Satizen_Api.Controllers
@@ -16,11 +21,11 @@ namespace Satizen_Api.Controllers
     [ApiController]
     public class PacientesController : ControllerBase
     {
-        private readonly PacientesContext _dbContext;
-        private readonly ILogger<PacienteController> _logger;
+        private readonly ApplicationDbContext _dbContext;
+        private readonly ILogger<PacientesController> _logger;
         private readonly ApiResponse _response;
 
-        public PacientesController(PacientesContext dbContext, ILogger<PacientesController> logger)
+        public PacientesController(ApplicationDbContext dbContext, ILogger<PacientesController> logger)
         {
             _dbContext = dbContext;
             _logger = logger;
@@ -73,30 +78,44 @@ namespace Satizen_Api.Controllers
         }
 
         [HttpPost]
+        [Route("CrearPaciente")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<PacientesDto>> CrearPaciente([FromBody] PacientesDto pacientesDto)
+        public async Task<ActionResult<ApiResponse>> CrearPaciente([FromBody] PacientesDto pacientesDto)
         {
-            if (pacientesDto == null)
+            try
             {
-                return BadRequest();
+                if (pacientesDto == null)
+                {
+                    return BadRequest();
+                }
+
+
+
+                Paciente modelo = new()
+                {
+                    idPaciente = pacientesDto.idPaciente,
+                    idUsuario = pacientesDto.idUsuario,
+                    nombrePaciente = pacientesDto.nombrePaciente,
+                    numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
+                    fechaIngreso = pacientesDto.fechaIngreso,
+                    estadoPaciente = pacientesDto.estadoPaciente,
+                    observacionPaciente = pacientesDto.observacionPaciente
+                };
+
+                await _dbContext.Pacientes.AddAsync(modelo);
+                await _dbContext.SaveChangesAsync();
+                _response.Resultado = modelo;
+                _response.statusCode = HttpStatusCode.Created;
+
+                return (_response);
             }
-
-            var paciente = new PacientesDto
+            catch (Exception ex)
             {
-                idPaciente = pacientesDto.idPaciente,
-                idUsuario = pacientesDto.idUsuario,
-                idInstitucion = pacientesDto.idInstitucion,
-                nombrePaciente = pacientesDto.nombrePaciente,
-                numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
-                fechaIngreso = pacientesDto.fechaIngreso,
-                observacionPaciente = pacientesDto.observacionPaciente
-            };
-
-            await _dbContext.Pacientes.AddAsync(paciente);
-            await _dbContext.SaveChangesAsync();
-
-            return CreatedAtRoute("GetPaciente", new { id = paciente.idPaciente }, paciente);
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string> { ex.ToString() };
+            }
+            return _response;
         }
 
         [HttpPatch]
@@ -143,7 +162,6 @@ namespace Satizen_Api.Controllers
             }
 
             paciente.idUsuario = pacientesDto.idUsuario;
-            paciente.idInstitucion = pacientesDto.idInstitucion;
             paciente.nombrePaciente = pacientesDto.nombrePaciente;
             paciente.numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente;
             paciente.fechaIngreso = pacientesDto.fechaIngreso;
@@ -175,7 +193,6 @@ namespace Satizen_Api.Controllers
             {
                 idPaciente = paciente.idPaciente,
                 idUsuario = paciente.idUsuario,
-                idInstitucion = paciente.idInstitucion,
                 nombrePaciente = paciente.nombrePaciente,
                 numeroHabitacionPaciente = paciente.numeroHabitacionPaciente,
                 fechaIngreso = paciente.fechaIngreso,
@@ -190,7 +207,6 @@ namespace Satizen_Api.Controllers
             }
 
             paciente.idUsuario = pacienteDto.idUsuario;
-            paciente.idInstitucion = pacienteDto.idInstitucion;
             paciente.nombrePaciente = pacienteDto.nombrePaciente;
             paciente.numeroHabitacionPaciente = pacienteDto.numeroHabitacionPaciente;
             paciente.fechaIngreso = pacienteDto.fechaIngreso;

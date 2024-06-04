@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
+
 using System.Text;
+
 using Satizen_Api.Custom;
 using Satizen_Api.Models;
 using Satizen_Api.Data;
@@ -12,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddSingleton<Utilidades>(); // Acá se agregan las utilidades
+builder.Services.AddScoped<Utilidades>(); // Acá se agregan las utilidades
 
 // ------------- Seguridad JWT para los usuarios -------------------
 
@@ -62,15 +64,10 @@ builder.Services.AddAuthorization(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
-app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
