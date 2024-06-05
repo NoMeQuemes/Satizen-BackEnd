@@ -1,12 +1,177 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\repos\\Satizen\\Satizen_Api\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|d:\\aprendiendo a programar\\proyectos visual studio\\empresa\\satizen-backend\\models\\dto\\personal\\addpersonaldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:models\\dto\\personal\\addpersonaldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|d:\\aprendiendo a programar\\proyectos visual studio\\empresa\\satizen-backend\\controllers\\personalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:controllers\\personalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|d:\\aprendiendo a programar\\proyectos visual studio\\empresa\\satizen-backend\\models\\personal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:models\\personal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|d:\\aprendiendo a programar\\proyectos visual studio\\empresa\\satizen-backend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|d:\\aprendiendo a programar\\proyectos visual studio\\empresa\\satizen-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|d:\\aprendiendo a programar\\proyectos visual studio\\empresa\\satizen-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PersonalController.cs",
+              "DocumentMoniker": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Controllers\\PersonalController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PersonalController.cs",
+              "ToolTip": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Controllers\\PersonalController.cs",
+              "RelativeToolTip": "Controllers\\PersonalController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAqwBYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T21:57:25.315Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Personal.cs",
+              "DocumentMoniker": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Models\\Personal.cs",
+              "RelativeDocumentMoniker": "Models\\Personal.cs",
+              "ToolTip": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Models\\Personal.cs",
+              "RelativeToolTip": "Models\\Personal.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAwwBMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T22:00:22.469Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddPersonalDto.cs",
+              "DocumentMoniker": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Models\\Dto\\Personal\\AddPersonalDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\Personal\\AddPersonalDto.cs",
+              "ToolTip": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Models\\Dto\\Personal\\AddPersonalDto.cs",
+              "RelativeToolTip": "Models\\Dto\\Personal\\AddPersonalDto.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T22:02:03.4Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAuwBYAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T23:38:06.757Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAwAAACbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-03T03:21:59.118Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\APRENDIENDO A PROGRAMAR\\proyectos visual studio\\empresa\\Satizen-BackEnd\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAcwDUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T04:16:14.642Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
