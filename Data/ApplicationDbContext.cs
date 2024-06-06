@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Satizen_Api.Data
 {
-    public class ApplicationDbContext :DbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -26,16 +26,29 @@ namespace Satizen_Api.Data
         public DbSet<Institucion> Instituciones { get; set; } // Karen
         public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
 
+
         //Acá se agregan datos a la base de datos
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Institucion>().HasData(
+                    new Institucion()
+                    {
+                        idInstitucion = 1,
+                        nombreInstitucion = "Santa",
+                        direccionInstitucion = "Caleee",
+                        telefonoInstitucion = "53625362",
+                        correoInstitucion = "santaqgmail.com",
+                        celularInstitucion = "6473467326"
+
+
+                    }
+                    );
 
             //Estas lineas de código agregan el valor a la columna computada "esActivo"
             modelBuilder.Entity<RefreshToken>()
                 .Property(o => o.esActivo)
                 .HasComputedColumnSql("IIF(fechaExpiracion < GETDATE(), CONVERT(BIT, 0), CONVERT(BIT, 1))");
         }
-
     }
 }

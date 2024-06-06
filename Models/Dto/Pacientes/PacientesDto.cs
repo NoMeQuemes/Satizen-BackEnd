@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Satizen_Api.models.Dto
+namespace Satizen_Api.Models.Dto.Pacientes
 {
     public class PacientesDto
     {

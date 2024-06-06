@@ -9,6 +9,7 @@ using System.Text;
 using Satizen_Api.Custom;
 using Satizen_Api.Models;
 using Satizen_Api.Data;
+using Proyec_Satizen_Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
 });
+
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+
+
+
+
+
 //--------------------------------------------------------------------------------------------
 
 //Configuración de roles
@@ -59,6 +68,7 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policy => policy.RequireClaim("Rol", "1"));
 });
+
 
 
 var app = builder.Build();
