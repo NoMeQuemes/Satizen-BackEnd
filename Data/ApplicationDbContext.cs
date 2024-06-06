@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Satizen_Api.Data
 {
-    public class ApplicationDbContext :DbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -19,6 +19,7 @@ namespace Satizen_Api.Data
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Permiso> Permisos { get; set; }
         public DbSet<Institucion> Instituciones { get; set; }
+
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Personal> Personals { get; set; }
 
@@ -73,7 +74,22 @@ namespace Satizen_Api.Data
                     idPermiso = 2
                 }
                 );
-        }
 
+            {
+                modelBuilder.Entity<Institucion>().HasData(
+                    new Institucion()
+                    {
+                        idInstitucion = 1,
+                        nombreInstitucion = "Santa",
+                        direccionInstitucion = "Caleee",
+                        telefonoInstitucion = "53625362",
+                        correoInstitucion = "santaqgmail.com",
+                        celularInstitucion = "6473467326"
+
+
+                    }
+                    );
+            }
+        }
     }
 }
