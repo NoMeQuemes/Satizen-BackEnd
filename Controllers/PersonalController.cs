@@ -22,15 +22,17 @@ namespace Satizen_Api.Controllers
             _response = new();
         }
 
-        [Authorize(Policy = "Admin")]
         [HttpGet]
+        [Route("ListarPersonal")]
+        [Authorize(Policy = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Personal>))]
         public async Task<ActionResult<IEnumerable<Personal>>> GetPersonals()
         {
             return await _applicationDbContext.Personals.ToListAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("ListarPorId/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Personal))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Personal>> GetPersonals(int id)
@@ -46,7 +48,7 @@ namespace Satizen_Api.Controllers
         }
 
         [HttpPost]
-        //[Route("Create")]
+        [Route("CrearPersonal")]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Personal))]
         public async Task<ActionResult<ApiResponse>> PostPersonals(AddPersonalDto Personal)
         {
@@ -86,7 +88,8 @@ namespace Satizen_Api.Controllers
             return _response;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("ActualizarPersonal/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Personal))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PutPersonals(int id, Personal personal)
@@ -122,7 +125,8 @@ namespace Satizen_Api.Controllers
             throw new NotImplementedException();
         }*/
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("EliminarPersonal/{id:int}")]
         public async Task<IActionResult> DeletePersonal(int id)
         {
             var personal = await _applicationDbContext.Personals.FindAsync(id);

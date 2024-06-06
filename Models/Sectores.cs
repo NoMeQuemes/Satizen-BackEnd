@@ -10,6 +10,10 @@ namespace Satizen_Api.Models
 
         public int idSector { get; set; }
 
+        public int idInstitucion { get; set; }
+        [ForeignKey("idInstitucion")]
+        public virtual Institucion Instituciones { get; set; }
+
         public string nombreSector { get; set; }
         public string descripcionSector { get; set; }
 

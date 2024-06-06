@@ -67,7 +67,7 @@ namespace Satizen_Api.Custom
             //Crear detalle del token 
             var jwtConfig = new JwtSecurityToken(
                 claims: userClaims,
-                expires: DateTime.UtcNow.AddMinutes(1), //Acá se define cuanto va a durar el token
+                expires: DateTime.UtcNow.AddMinutes(15), //Acá se define cuanto va a durar el token
                 signingCredentials: credentials
                 );
             return new JwtSecurityTokenHandler().WriteToken(jwtConfig);

@@ -8,9 +8,11 @@ namespace Satizen_Api.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idPersonal { get; set; }
+
         public int? idInstitucion { get; set; }
         [ForeignKey("idInstitucion")]
-        public virtual Institucion? institucion { get; set; }
+        public virtual Institucion? Instituciones { get; set; }
+
         [Required]
         public string? nombrePersonal { get; set; }
         [Required]
