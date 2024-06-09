@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Prueba_Tecnica_Api.Models;
 using Satizen_Api.Models;
+using System.Numerics;
 using System.Threading;
 
 namespace Satizen_Api.Data
@@ -31,24 +32,79 @@ namespace Satizen_Api.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Institucion>().HasData(
-                    new Institucion()
-                    {
-                        idInstitucion = 1,
-                        nombreInstitucion = "Santa",
-                        direccionInstitucion = "Caleee",
-                        telefonoInstitucion = "53625362",
-                        correoInstitucion = "santaqgmail.com",
-                        celularInstitucion = "6473467326"
+            modelBuilder.Entity<Permiso>().HasData(
+                new Permiso()
+                {
+                    idPermiso = 1,
+                    tipo = "Crear"
+                },
+                new Permiso()
+                {
+                    idPermiso = 2,
+                    tipo = "Leer"
+                },
+                new Permiso()
+                {
+                    idPermiso = 3,
+                    tipo = "Eliminar"
+                },
+                new Permiso()
+                {
+                    idPermiso = 4,
+                    tipo = "Actualizar"
+                }
+                );
 
-
-                    }
-                    );
+            modelBuilder.Entity<Roles>().HasData(
+                new Roles()
+                {
+                    idRol = 1,
+                    nombre = "Administrador",
+                    descripcion = "Soy administrador",
+                    idPermiso = 1
+                },
+                new Roles()
+                {
+                    idRol = 2,
+                    nombre = "Medico",
+                    descripcion = "Soy médico",
+                    idPermiso = 2
+                },
+                new Roles()
+                {
+                    idRol = 3,
+                    nombre = "Enfermero",
+                    descripcion = "Soy enfermero",
+                    idPermiso = 2
+                }
+                );
+            modelBuilder.Entity<Usuario>().HasData(
+                new Usuario()
+                {
+                    idUsuario = 1,
+                    nombreUsuario = "Fernando",
+                    password = "123",
+                    idRoles = 1,
+                    estadoUsuario = null
+                },
+                new Usuario()
+                {
+                    idUsuario = 2,
+                    nombreUsuario = "Hernan",
+                    password = "123",
+                    idRoles = 2,
+                    estadoUsuario = null
+                }
+                );
 
             //Estas lineas de código agregan el valor a la columna computada "esActivo"
+
             modelBuilder.Entity<RefreshToken>()
                 .Property(o => o.esActivo)
                 .HasComputedColumnSql("IIF(fechaExpiracion < GETDATE(), CONVERT(BIT, 0), CONVERT(BIT, 1))");
+
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

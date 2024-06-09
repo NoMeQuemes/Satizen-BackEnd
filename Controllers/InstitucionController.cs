@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Proyec_Satizen_Api.Models.Dto;
+
+using Satizen_Api.Models.Dto;
 using Satizen_Api.Data;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Pacientes;
+
 using System.Net;
 using System.Threading;
 
@@ -29,6 +31,7 @@ namespace Proyec_Satizen_Api.Controllers
 
 
         [HttpGet]
+        [Route("ListarInstituciones")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<InstitucionDto>>> GetInstitucion()
         {
@@ -38,7 +41,8 @@ namespace Proyec_Satizen_Api.Controllers
             return Ok(_mapper.Map<IEnumerable<InstitucionDto>>(institucionList));
         }
 
-        [HttpGet("id:int", Name = "GetInstitucion")]
+        [HttpGet]
+        [Route("ListarPorId/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -61,6 +65,7 @@ namespace Proyec_Satizen_Api.Controllers
         }
 
         [HttpPost]
+        [Route("CrearInstitucion")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -88,29 +93,8 @@ namespace Proyec_Satizen_Api.Controllers
 
         }
 
-        [HttpDelete("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-
-        public async Task<IActionResult> DeleteInstitucion(int id)
-        {
-            if (id == 0)
-            {
-                return BadRequest();
-            }
-            var institucion = await _db.Instituciones.FirstOrDefaultAsync(v => v.idInstitucion == id);
-            if (institucion == null)
-            {
-                return NotFound();
-            }
-            _db.Instituciones.Remove(institucion);
-            await _db.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        [HttpPut("{id:int}")]
+        [HttpPut]
+        [Route("ActualizarInstitucion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
@@ -136,7 +120,8 @@ namespace Proyec_Satizen_Api.Controllers
         }
 
 
-        [HttpPatch("{id:int}")]
+        [HttpPatch]
+        [Route("ELiminarInstitucion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
