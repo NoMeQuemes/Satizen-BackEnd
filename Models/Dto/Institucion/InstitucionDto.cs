@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Proyec_Satizen_Api.Models.Dto
+namespace Satizen_Api.Models.Dto.Institucion
 {
     public class InstitucionDto
     {

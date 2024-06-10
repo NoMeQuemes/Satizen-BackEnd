@@ -59,4 +59,8 @@ Windows10Upgrade/
 *.msp
 
 # Windows shortcuts
+<<<<<<< HEAD
 *.lnk
+=======
+*.lnk
+>>>>>>> origin/alexander

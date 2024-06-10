@@ -12,7 +12,7 @@ namespace Satizen_Api.Models
 
         public int idPersonal { get; set; }
         [ForeignKey("idPersonal")]
-        public virtual Personal Personales { get; set; }
+        public virtual Personal Personals { get; set; }
 
         public string numCelular { get; set; }
         public string observacionCelular { get; set; }

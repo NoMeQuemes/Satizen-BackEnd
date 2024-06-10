@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Prueba_Tecnica_Api.Models;
 using Satizen_Api.Models;
 using System.Numerics;
 using System.Threading;
@@ -10,9 +9,7 @@ namespace Satizen_Api.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
         }
-
         /* Con esta función usamos los datos que estan en el modelo para que 
          * cuando ejecutemos la migración
          * se agreguen o actualicen en la base de datos
@@ -22,10 +19,11 @@ namespace Satizen_Api.Data
         public DbSet<Permiso> Permisos { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Paciente> Pacientes { get; set; } //Amilcar
-        public DbSet<Sectores> Sectores { get; set; } //Albano
+        public DbSet<Sector> Sectores { get; set; } //Albano
         public DbSet<Personal> Personals { get; set; } //Franco
         public DbSet<Institucion> Instituciones { get; set; } // Karen
         public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
+        public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
 
 
         //Acá se agregan datos a la base de datos
@@ -53,7 +51,7 @@ namespace Satizen_Api.Data
                     idPermiso = 4,
                     tipo = "Actualizar"
                 }
-                );
+            );
 
             modelBuilder.Entity<Roles>().HasData(
                 new Roles()
@@ -105,6 +103,17 @@ namespace Satizen_Api.Data
 
 
             base.OnModelCreating(modelBuilder);
+
+            ////// Configuraciones adicionales para relaciones y restricciones
+            ////modelBuilder.Entity<Asignacion>()
+            ////    .HasOne(a => a.personal)
+            ////    .WithMany()
+            ////    .HasForeignKey(a => a.idPersonal);
+
+            ////modelBuilder.Entity<Asignacion>()
+            ////    .HasOne(a => a.sector)
+            ////    .WithMany()
+            ////    .HasForeignKey(a => a.idSector);
         }
     }
 }

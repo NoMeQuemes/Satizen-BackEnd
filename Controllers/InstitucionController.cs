@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-using Satizen_Api.Models.Dto;
 using Satizen_Api.Data;
 using Satizen_Api.Models;
-using Satizen_Api.Models.Dto.Pacientes;
+using Satizen_Api.Models.Dto.Institucion;
 
 using System.Net;
 using System.Threading;

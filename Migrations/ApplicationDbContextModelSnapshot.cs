@@ -22,6 +22,43 @@ namespace Satizen_Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
+                {
+                    b.Property<int>("idAsignacion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idAsignacion"));
+
+                    b.Property<DateTime>("diaSemana")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("horaFinalizacion")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("horaInicio")
+                        .HasColumnType("time");
+
+                    b.Property<int>("idPersonal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idSector")
+                        .HasColumnType("int");
+
+                    b.Property<string>("turno")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("idAsignacion");
+
+                    b.HasIndex("idPersonal");
+
+                    b.HasIndex("idSector");
+
+                    b.ToTable("Asignaciones");
+                });
+
             modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>
                 {
                     b.Property<int>("idCelular")
@@ -270,7 +307,7 @@ namespace Satizen_Api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Satizen_Api.Models.Sectores", b =>
+            modelBuilder.Entity("Satizen_Api.Models.Sector", b =>
                 {
                     b.Property<int>("idSector")
                         .ValueGeneratedOnAdd()
@@ -341,15 +378,34 @@ namespace Satizen_Api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>
+            modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
                 {
-                    b.HasOne("Satizen_Api.Models.Personal", "Personales")
+                    b.HasOne("Satizen_Api.Models.Personal", "Personals")
                         .WithMany()
                         .HasForeignKey("idPersonal")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Personales");
+                    b.HasOne("Satizen_Api.Models.Sector", "Sectores")
+                        .WithMany()
+                        .HasForeignKey("idSector")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Personals");
+
+                    b.Navigation("Sectores");
+                });
+
+            modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>
+                {
+                    b.HasOne("Satizen_Api.Models.Personal", "Personals")
+                        .WithMany()
+                        .HasForeignKey("idPersonal")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Personals");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Paciente", b =>
@@ -390,7 +446,7 @@ namespace Satizen_Api.Migrations
                     b.Navigation("Permiso");
                 });
 
-            modelBuilder.Entity("Satizen_Api.Models.Sectores", b =>
+            modelBuilder.Entity("Satizen_Api.Models.Sector", b =>
                 {
                     b.HasOne("Satizen_Api.Models.Institucion", "Instituciones")
                         .WithMany()

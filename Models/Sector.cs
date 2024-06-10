@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Satizen_Api.Models
 {
-    public class Sectores
+    public class Sector
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
