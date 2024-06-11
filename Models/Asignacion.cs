@@ -5,28 +5,14 @@ namespace Satizen_Api.Models
 {
     public class Asignacion
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key] 
         public int idAsignacion { get; set; }
-
-        [ForeignKey("Personal")]
         public int idPersonal { get; set; }
-  
-
-        [ForeignKey("Sector")]
         public int idSector { get; set; }
-
-        [Required]
-        public DiaSemana diaSemana { get; set; } // Enum DiaSemana
-
-        [Required]
-        [StringLength(50)]
-        public string turno { get; set; }
-
-        [Required]
+        public DiaSemana diaSemana { get; set; }
+        public int TurnoId { get; set; } // Clave foránea
+        public Turno Turno { get; set; } // Navegación
         public TimeSpan horaInicio { get; set; }
-
-        [Required]
         public TimeSpan horaFinalizacion { get; set; }
     }
 
