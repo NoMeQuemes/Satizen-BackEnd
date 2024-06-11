@@ -88,7 +88,8 @@ namespace Satizen_Api.Controllers
             var usuarioEncontrado = await _applicationDbContext.Usuarios
                                         .Where(u =>
                                         u.nombreUsuario == objeto.nombreUsuario &&
-                                        u.password == _utilidades.encriptarSHA256(objeto.password)
+                                        u.password == _utilidades.encriptarSHA256(objeto.password) &&
+                                        u.estadoUsuario == null
                                         ).FirstOrDefaultAsync();
 
             if (usuarioEncontrado == null)

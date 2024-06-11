@@ -16,6 +16,9 @@ namespace Satizen_Api.Models
 
         public string nombreSector { get; set; }
         public string descripcionSector { get; set; }
+        public DateTime fechaCreacion { get; set; }
+        public DateTime? fechaActualizacion { get; set; }
+        public DateTime? fechaEliminacion { get; set; }
 
     }
 }

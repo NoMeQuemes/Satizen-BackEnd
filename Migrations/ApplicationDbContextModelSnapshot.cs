@@ -319,6 +319,15 @@ namespace Satizen_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("fechaActualizacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("fechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("fechaEliminacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("idInstitucion")
                         .HasColumnType("int");
 
@@ -360,41 +369,25 @@ namespace Satizen_Api.Migrations
                     b.HasIndex("idRoles");
 
                     b.ToTable("Usuarios");
-
-                    b.HasData(
-                        new
-                        {
-                            idUsuario = 1,
-                            idRoles = 1,
-                            nombreUsuario = "Fernando",
-                            password = "123"
-                        },
-                        new
-                        {
-                            idUsuario = 2,
-                            idRoles = 2,
-                            nombreUsuario = "Hernan",
-                            password = "123"
-                        });
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
                 {
-                    b.HasOne("Satizen_Api.Models.Personal", "Personals")
+                    b.HasOne("Satizen_Api.Models.Personal", "Personal")
                         .WithMany()
                         .HasForeignKey("idPersonal")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Satizen_Api.Models.Sector", "Sectores")
+                    b.HasOne("Satizen_Api.Models.Sector", "Sector")
                         .WithMany()
                         .HasForeignKey("idSector")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Personals");
+                    b.Navigation("Personal");
 
-                    b.Navigation("Sectores");
+                    b.Navigation("Sector");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>

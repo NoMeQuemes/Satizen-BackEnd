@@ -33,11 +33,11 @@ out/
 # NuGet
 *.nupkg
 # The packages folder can be ignored because of Package Restore
-**/[Pp]ackages/*
+*/[Pp]ackages/
 # except build/, which is used as an MSBuild target.
-!**/[Pp]ackages/build/
+!/[Pp]ackages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
-#!**/[Pp]ackages/repositories.config
+#!/[Pp]ackages/repositories.config
 
 # Windows image file caches
 Thumbs.db
@@ -59,8 +59,4 @@ Windows10Upgrade/
 *.msp
 
 # Windows shortcuts
-<<<<<<< HEAD
 *.lnk
-=======
-*.lnk
->>>>>>> origin/alexander

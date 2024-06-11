@@ -91,7 +91,7 @@ namespace Satizen_Api.Controllers
 
         //--------------- EndPoint que crea una nueva asignacion ------------
         [HttpPost]
-        [Route("CrearAsignaciones")]
+        [Route("CrearAsignacion")]
         public async Task<ActionResult<ApiResponse>> PostAsignacion(AsignacionDto asignacionDto)
         {
             try

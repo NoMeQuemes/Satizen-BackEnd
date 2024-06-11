@@ -76,24 +76,6 @@ namespace Satizen_Api.Data
                     idPermiso = 2
                 }
                 );
-            modelBuilder.Entity<Usuario>().HasData(
-                new Usuario()
-                {
-                    idUsuario = 1,
-                    nombreUsuario = "Fernando",
-                    password = "123",
-                    idRoles = 1,
-                    estadoUsuario = null
-                },
-                new Usuario()
-                {
-                    idUsuario = 2,
-                    nombreUsuario = "Hernan",
-                    password = "123",
-                    idRoles = 2,
-                    estadoUsuario = null
-                }
-                );
 
             //Estas lineas de código agregan el valor a la columna computada "esActivo"
 
