@@ -1,9 +1,15 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     "",
     "\\Controllers",
     "\\Migrations"
   ],
   "SelectedNode": "\\Controllers\\ContactoPacienteController.cs",
+=======
+    ""
+  ],
+  "SelectedNode": "\\Satizen_Api.sln",
+>>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
   "PreviewInSolutionExplorer": false
 }

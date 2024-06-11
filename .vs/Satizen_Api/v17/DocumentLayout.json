@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\",
   "Documents": [
     {
@@ -29,6 +30,41 @@
     {
       "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend.git-20240604t123318z-001\\satizen-backend.git\\models\\dto\\contactopaciente\\contactodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\contactopaciente\\contactodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+  "WorkspaceRootPath": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Migrations\\20240606023044_SeAgregoInstitucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240606023044_SeAgregoInstitucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\migrations\\20240606021224_agregarbasedatoinstitucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:migrations\\20240606021224_agregarbasedatoinstitucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\controllers\\institucioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:controllers\\institucioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\models\\institucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:models\\institucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\satizen_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{273DBA30-B171-41B0-BFB7-BAB9B4C218CA}|Satizen_Api.csproj|solutionrelative:satizen_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+>>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
     }
   ],
   "DocumentGroupContainers": [
@@ -38,6 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 2,
           "Children": [
             {
@@ -75,11 +112,53 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T15:03:37.865Z",
+=======
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20240606023044_SeAgregoInstitucion.cs",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Migrations\\20240606023044_SeAgregoInstitucion.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240606023044_SeAgregoInstitucion.cs",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Migrations\\20240606023044_SeAgregoInstitucion.cs",
+              "RelativeToolTip": "Migrations\\20240606023044_SeAgregoInstitucion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T02:30:49.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20240606021224_AgregarBaseDatoInstitucion.cs",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Migrations\\20240606021224_AgregarBaseDatoInstitucion.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240606021224_AgregarBaseDatoInstitucion.cs",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Migrations\\20240606021224_AgregarBaseDatoInstitucion.cs",
+              "RelativeToolTip": "Migrations\\20240606021224_AgregarBaseDatoInstitucion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T02:12:30.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Satizen_Api",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Satizen_Api.csproj",
+              "RelativeDocumentMoniker": "Satizen_Api.csproj",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Satizen_Api.csproj",
+              "RelativeToolTip": "Satizen_Api.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-06T02:03:31.899Z",
+>>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+<<<<<<< HEAD
               "Title": "ContactoPacienteController.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Controllers\\ContactoPacienteController.cs",
               "RelativeDocumentMoniker": "Controllers\\ContactoPacienteController.cs",
@@ -100,10 +179,48 @@
               "ViewState": "AQIAABAAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T15:46:03.232Z"
+=======
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAAAFAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T01:56:34.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAAADUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T01:39:50.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-06T01:38:56.569Z",
+              "EditorCaption": ""
+>>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+<<<<<<< HEAD
               "Title": "ApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Models\\ApiResponse.cs",
               "RelativeDocumentMoniker": "Models\\ApiResponse.cs",
@@ -112,10 +229,22 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T16:22:30.889Z"
+=======
+              "Title": "InstitucionController.cs",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Controllers\\InstitucionController.cs",
+              "RelativeDocumentMoniker": "Controllers\\InstitucionController.cs",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Controllers\\InstitucionController.cs",
+              "RelativeToolTip": "Controllers\\InstitucionController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:01:16.166Z",
+              "EditorCaption": ""
+>>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+<<<<<<< HEAD
               "Title": "ContactoDto.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd.git-20240604T123318Z-001\\Satizen-BackEnd.git\\Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
               "RelativeDocumentMoniker": "Models\\Dto\\ContactoPaciente\\ContactoDto.cs",
@@ -124,6 +253,17 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T15:03:32.817Z"
+=======
+              "Title": "Institucion.cs",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Institucion.cs",
+              "RelativeDocumentMoniker": "Models\\Institucion.cs",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Institucion.cs",
+              "RelativeToolTip": "Models\\Institucion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:05:09.146Z",
+              "EditorCaption": ""
+>>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
             }
           ]
         }

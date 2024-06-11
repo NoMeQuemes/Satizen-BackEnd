@@ -1,19 +1,28 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
+
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+
 using Satizen_Api.Models;
 using Satizen_Api.Data;
+using Satizen_Api.Models.Dto.Usuarios;
 
 namespace Satizen_Api.Custom
 {
     public class Utilidades
     {
         private readonly IConfiguration _configuration;
-        public Utilidades(IConfiguration configuration)
+        private readonly ApplicationDbContext _applicationDbContext;
+
+
+        public Utilidades(ApplicationDbContext applicationDbContext, IConfiguration configuration)
         {
             _configuration = configuration;
+            _applicationDbContext = applicationDbContext;
+
         }
 
         // Clase que encripta la contraseña 
@@ -58,10 +67,49 @@ namespace Satizen_Api.Custom
             //Crear detalle del token 
             var jwtConfig = new JwtSecurityToken(
                 claims: userClaims,
-                expires: DateTime.UtcNow.AddMinutes(10), //Acá se define cuanto va a durar el token
+                expires: DateTime.UtcNow.AddMinutes(15), //Acá se define cuanto va a durar el token
                 signingCredentials: credentials
                 );
             return new JwtSecurityTokenHandler().WriteToken(jwtConfig);
+        }
+
+        //----------------------Clase que genera el refresh token
+        public string generarRefreshJWT()
+        {
+            var byteArray = new byte[64];
+            var refreshToken = "";
+
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(byteArray);
+                refreshToken = Convert.ToBase64String(byteArray);
+            }
+            return refreshToken;
+        }
+
+        public async Task<AutorizacionResponseDto> GuardarRefreshToken(int idUsuario, string token, string refreshToken)
+        {
+            var oldTokens = await _applicationDbContext.RefreshTokens.Where(rt => rt.idUsuario == idUsuario && rt.esActivo).ToListAsync();
+            foreach (var oldToken in oldTokens)
+            {
+                oldToken.esActivo = false;
+                _applicationDbContext.RefreshTokens.Update(oldToken);
+            }
+
+            var newRefreshToken = new RefreshToken
+            {
+                idUsuario = idUsuario,
+                token = token,
+                refreshToken = refreshToken,
+                fechaCreacion = DateTime.UtcNow,
+                fechaExpiracion = DateTime.UtcNow.AddDays(1), // Duración del refresh token
+                esActivo = true
+            };
+
+            await _applicationDbContext.RefreshTokens.AddAsync(newRefreshToken);
+            await _applicationDbContext.SaveChangesAsync();
+
+            return new AutorizacionResponseDto { Token = token, RefreshToken = refreshToken, Resultado = true, Msg = "ok" };
         }
 
     }
