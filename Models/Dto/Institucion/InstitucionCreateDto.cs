@@ -1,13 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Satizen_Api.Models
+namespace Satizen_Api.Models.Dto.Institucion
 {
-    public class Institucion
+    public class InstitucionCreateDto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idInstitucion { get; set; }
+
+        [Required]
+        [MaxLength(30)]
         public string? nombreInstitucion { get; set; }
         public string? direccionInstitucion { get; set; }
         public string? telefonoInstitucion { get; set; }
