@@ -3,6 +3,8 @@ using Satizen_Api.Models.Dto;
 using Satizen_Api.Models;
 using System.Numerics;
 using System.Threading;
+using SatizenLlamados.Modelos;
+using Satizen_Api.Modelos;
 
 namespace Satizen_Api.Data
 {
@@ -26,6 +28,7 @@ namespace Satizen_Api.Data
         public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
         public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
         public DbSet<Contacto> Contactos { get; set; } //Agustin
+        public DbSet<Llamado> Llamados { get; set; } //Luis
 
 
         //Acá se agregan datos a la base de datos
