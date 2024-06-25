@@ -59,28 +59,43 @@ namespace Satizen_Api.Migrations
                     b.ToTable("Asignaciones");
                 });
 
-            modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>
+            modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral.DispositivoLaboral", b =>
                 {
-                    b.Property<int>("idCelular")
+                    b.Property<int>("idTelefonoEmpresa")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idCelular"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idTelefonoEmpresa"));
 
-                    b.Property<int>("idPersonal")
+                    b.Property<int?>("Personal")
                         .HasColumnType("int");
 
-                    b.Property<string>("numCelular")
+                    b.Property<string>("almacenamiento")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("observacionCelular")
+                    b.Property<string>("color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("idCelular");
+                    b.Property<int?>("idPersonal")
+                        .HasColumnType("int");
 
-                    b.HasIndex("idPersonal");
+                    b.Property<string>("marca")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("modelo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("numeroEmpresa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("idTelefonoEmpresa");
+
+                    b.HasIndex("Personal");
 
                     b.ToTable("DispositivosLaborales");
                 });
@@ -380,30 +395,28 @@ namespace Satizen_Api.Migrations
 
             modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
                 {
-                    b.HasOne("Satizen_Api.Models.Personal", "Personals")
+                    b.HasOne("Satizen_Api.Models.Personal", "Personal")
                         .WithMany()
                         .HasForeignKey("idPersonal")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Satizen_Api.Models.Sector", "Sectores")
+                    b.HasOne("Satizen_Api.Models.Sector", "Sector")
                         .WithMany()
                         .HasForeignKey("idSector")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Personals");
+                    b.Navigation("Personal");
 
-                    b.Navigation("Sectores");
+                    b.Navigation("Sector");
                 });
 
-            modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>
+            modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral.DispositivoLaboral", b =>
                 {
                     b.HasOne("Satizen_Api.Models.Personal", "Personals")
                         .WithMany()
-                        .HasForeignKey("idPersonal")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Personal");
 
                     b.Navigation("Personals");
                 });

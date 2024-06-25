@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Satizen_Api.Models;
+using Satizen_Api.Models.DispositivoLaboral;
 using System.Numerics;
 using System.Threading;
 
@@ -22,7 +23,7 @@ namespace Satizen_Api.Data
         public DbSet<Sector> Sectores { get; set; } //Albano
         public DbSet<Personal> Personals { get; set; } //Franco
         public DbSet<Institucion> Instituciones { get; set; } // Karen
-        public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
+        public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Leandro
         public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
 
 

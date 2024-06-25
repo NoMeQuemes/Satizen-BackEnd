@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Data",
+    "\\Models",
+    "\\Models\\Dto",
+    "\\Models\\Dto\\Asignaciones",
+    "\\Models\\Dto\\Institucion",
+    "\\Models\\Dto\\Pacientes",
+    "\\Models\\Dto\\Personal",
+    "\\Models\\Dto\\Usuarios",
+    "\\Properties"
   ],
-  "SelectedNode": "\\Satizen_Api.sln",
+  "SelectedNode": "\\Controllers\\AsignacionController.cs",
   "PreviewInSolutionExplorer": false
 }
