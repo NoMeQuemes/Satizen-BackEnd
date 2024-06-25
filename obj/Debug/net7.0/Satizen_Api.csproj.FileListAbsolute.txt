@@ -355,3 +355,4 @@ C:\Users\usuario\Desktop\Leoo\2_Excelencia\obj\Debug\net7.0\refint\Satizen_Api.d
 C:\Users\usuario\Desktop\Leoo\2_Excelencia\obj\Debug\net7.0\Satizen_Api.pdb
 C:\Users\usuario\Desktop\Leoo\2_Excelencia\obj\Debug\net7.0\Satizen_Api.genruntimeconfig.cache
 C:\Users\usuario\Desktop\Leoo\2_Excelencia\obj\Debug\net7.0\ref\Satizen_Api.dll
+C:\Users\usuario\Desktop\Leoo\2_Excelencia\obj\Debug\net7.0\Satizen_Api.sourcelink.json
