@@ -1,25 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\",
+  "WorkspaceRootPath": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\munoz\\desktop\\asdas\\satizen-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9E86F58-8D3E-485C-97A1-53619219A115}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9E86F58-8D3E-485C-97A1-53619219A115}|Satizen_Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\munoz\\desktop\\asdas\\satizen-backend\\controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9E86F58-8D3E-485C-97A1-53619219A115}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend\\controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9E86F58-8D3E-485C-97A1-53619219A115}|Satizen_Api.csproj|solutionrelative:controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\munoz\\desktop\\asdas\\satizen-backend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9E86F58-8D3E-485C-97A1-53619219A115}|Satizen_Api.csproj|c:\\users\\usuario\\source\\repos\\satizen-backend\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9E86F58-8D3E-485C-97A1-53619219A115}|Satizen_Api.csproj|solutionrelative:migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\munoz\\desktop\\asdas\\satizen-backend\\controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\contactopacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\ApplicationDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\munoz\\desktop\\asdas\\satizen-backend\\models\\contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\munoz\\desktop\\asdas\\satizen-backend\\models\\dto\\contacto\\contactodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\contacto\\contactodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,64 +38,77 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAgwA0AAAAfAAAA",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T13:05:13.016Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Users\\Usuario\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AQIAAI0VAAAAAAAAAAAAAJsVAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-06-18T12:57:07.687Z",
+              "WhenOpened": "2024-06-25T11:56:31.824Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ContactoPacienteController.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Controllers\\ContactoPacienteController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ContactoPacienteController.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Controllers\\ContactoPacienteController.cs",
-              "RelativeToolTip": "Controllers\\ContactoPacienteController.cs",
-              "ViewState": "AQIAAIEAAAAAAAAAAAAmwJEAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T12:55:27.796Z"
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-25T12:20:51.709Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeToolTip": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AQIAAIIAAAAAAAAAAAAuwLcAAAATAAAA",
+              "DocumentIndex": 1,
+              "Title": "PacientesController.cs",
+              "DocumentMoniker": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Controllers\\PacientesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PacientesController.cs",
+              "ToolTip": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Controllers\\PacientesController.cs",
+              "RelativeToolTip": "Controllers\\PacientesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T12:54:48.497Z"
+              "WhenOpened": "2024-06-25T12:18:35.006Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAgwBMAAAAoAAAA",
+              "Title": "Contacto.cs",
+              "DocumentMoniker": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Models\\Contacto.cs",
+              "RelativeDocumentMoniker": "Models\\Contacto.cs",
+              "ToolTip": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Models\\Contacto.cs",
+              "RelativeToolTip": "Models\\Contacto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T12:54:21.85Z"
+              "WhenOpened": "2024-06-25T12:17:46.166Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ContactoDto.cs",
+              "DocumentMoniker": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Models\\Dto\\Contacto\\ContactoDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\Contacto\\ContactoDto.cs",
+              "ToolTip": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Models\\Dto\\Contacto\\ContactoDto.cs",
+              "RelativeToolTip": "Models\\Dto\\Contacto\\ContactoDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T12:16:16.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ContactoPacienteController.cs",
+              "DocumentMoniker": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Controllers\\ContactoPacienteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ContactoPacienteController.cs",
+              "ToolTip": "C:\\Users\\munoz\\Desktop\\asdas\\Satizen-BackEnd\\Controllers\\ContactoPacienteController.cs",
+              "RelativeToolTip": "Controllers\\ContactoPacienteController.cs",
+              "ViewState": "AQIAAKsAAAAAAAAAAAAmwK8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T12:10:23.046Z"
             }
           ]
         }

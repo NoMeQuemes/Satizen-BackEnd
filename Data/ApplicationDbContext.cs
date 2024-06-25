@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Satizen_Api.models.Dto;
+using Satizen_Api.Models.Dto;
 using Satizen_Api.Models;
 using System.Numerics;
 using System.Threading;
@@ -25,13 +25,10 @@ namespace Satizen_Api.Data
         public DbSet<Institucion> Instituciones { get; set; } // Karen
         public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
         public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
+        public DbSet<Contacto> Contactos { get; set; } //Agustin
 
 
         //Acá se agregan datos a la base de datos
-
-<<<<<<< HEAD
-       
-=======
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Permiso>().HasData(
@@ -80,7 +77,6 @@ namespace Satizen_Api.Data
                     idPermiso = 2
                 }
                 );
->>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
 
             //Estas lineas de código agregan el valor a la columna computada "esActivo"
 

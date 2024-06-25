@@ -1,9 +1,11 @@
-﻿using Satizen_Api.Data;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Satizen_Api.models.Dto;
+
+using Satizen_Api.Data;
+using Satizen_Api.Models.Dto.Contacto;
 using Satizen_Api.Models;
+
+using System.Net;
 namespace Satizen_Api.Controllers
 {
     [ApiController]
