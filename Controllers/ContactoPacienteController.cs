@@ -4,6 +4,7 @@ using System.Net;
 using Microsoft.EntityFrameworkCore;
 using Satizen_Api.models.Dto;
 using Satizen_Api.Models;
+using Satizen_Api.Models.Dto.ContactoPaciente;
 namespace Satizen_Api.Controllers
 {
     [ApiController]
@@ -30,7 +31,7 @@ namespace Satizen_Api.Controllers
             {
                 _logger.LogInformation("Obtener los Contactos");
 
-                _response.Resultado = await _dbContext.Contactos
+                _response.Resultado = await _dbContext.Contacto
                                               .Where(u => u.eliminado == null)
                                               .ToListAsync();
                 _response.statusCode = HttpStatusCode.OK;
@@ -50,7 +51,7 @@ namespace Satizen_Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<ContactoDto> GetContacto(int id)
         {
-            var contacto = _dbContext.Contactos.FirstOrDefault(c => c.idContacto == id);
+            var contacto = _dbContext.Contacto.FirstOrDefault(c => c.idContacto == id);
             if (contacto == null)
             {
                 return NotFound();
@@ -85,7 +86,7 @@ namespace Satizen_Api.Controllers
                    
                 };
 
-                await _dbContext.Contactos.AddAsync(modelo);
+                await _dbContext.Contacto.AddAsync(modelo);
                 await _dbContext.SaveChangesAsync();
                 _response.Resultado = modelo;
                 _response.statusCode = HttpStatusCode.Created;
@@ -113,7 +114,7 @@ namespace Satizen_Api.Controllers
                 return BadRequest();
             }
 
-            var contacto = await _dbContext.Contactos.FirstOrDefaultAsync(v => v.idContacto == id);
+            var contacto = await _dbContext.Contacto.FirstOrDefaultAsync(v => v.idContacto == id);
 
             if (contacto == null)
             {
@@ -123,7 +124,7 @@ namespace Satizen_Api.Controllers
             // Desactivar el usuario estableciendo la fecha actual en estadoUsuario
             contacto.eliminado = DateTime.Now;
 
-            _dbContext.Contactos.Update(contacto);
+            _dbContext.Contacto.Update(contacto);
             await _dbContext.SaveChangesAsync();
 
             return NoContent();
@@ -139,7 +140,7 @@ namespace Satizen_Api.Controllers
             {
                 return BadRequest();
             }
-            var contacto = _dbContext.Contactos.FirstOrDefault(v => v.idContacto == id);
+            var contacto = _dbContext.Contacto.FirstOrDefault(v => v.idContacto == id);
 
             contacto.idPaciente = contactoDto.idPaciente;
             contacto.celularPaciente = contactoDto.celularPaciente;

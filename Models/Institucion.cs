@@ -14,4 +14,6 @@ namespace Satizen_Api.Models
         public string? correoInstitucion { get; set; }
         public string? celularInstitucion { get; set; }
     }
+   
 }
+

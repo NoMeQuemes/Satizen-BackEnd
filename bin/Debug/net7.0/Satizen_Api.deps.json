@@ -15,11 +15,7 @@
           "Microsoft.AspNetCore.JsonPatch": "7.0.12",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "7.0.12",
           "Microsoft.AspNetCore.OpenApi": "7.0.12",
-<<<<<<< HEAD
           "Microsoft.EntityFrameworkCore": "7.0.19",
-=======
-          "Microsoft.EntityFrameworkCore": "7.0.12",
->>>>>>> 29432b7d8f7fa3b8d621a78c9709f10ecc269591
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.12",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.19",
           "Swashbuckle.AspNetCore": "6.5.0",

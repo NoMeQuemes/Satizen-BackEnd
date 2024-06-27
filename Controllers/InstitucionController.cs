@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -85,12 +86,14 @@ namespace Proyec_Satizen_Api.Controllers
             }
             Institucion models = _mapper.Map<Institucion>(createDto);
 
+
+
             await _db.Instituciones.AddAsync(models);
             await _db.SaveChangesAsync();
 
-            return CreatedAtRoute("GetInstitucion", new { idInstucion = models.idInstitucion }, models);
+            return base.CreatedAtRoute("GetInstitucion", new { idInstitucion = models.idInstitucion }, models);
+        } 
 
-        }
 
         [HttpPut]
         [Route("ActualizarInstitucion/{id:int}")]
@@ -120,37 +123,23 @@ namespace Proyec_Satizen_Api.Controllers
 
 
         [HttpPatch]
-        [Route("ELiminarInstitucion/{id:int}")]
+        [Route("EliminarInstitucion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-
-        public async Task<IActionResult> UpdatePartialInstitucion(int id, JsonPatchDocument<InstitucionUpdateDto> patchDto)
+        public async Task<IActionResult> EliminarInstitucion(int id)
         {
-            if (patchDto == null || id != 0)
-            {
-                return BadRequest();
-            }
-            var institucion = await _db.Instituciones.AsNoTracking().FirstOrDefaultAsync(v => v.idInstitucion == id);
-
-            InstitucionUpdateDto institucionDto = _mapper.Map<InstitucionUpdateDto>(institucion);
+            var institucion = await _db.Instituciones.FirstOrDefaultAsync(v => v.idInstitucion == id);
 
             if (institucion == null)
-                return BadRequest();
-
-            patchDto.ApplyTo(institucionDto, ModelState);
-
-            if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
 
-            Institucion models = _mapper.Map<Institucion>(institucionDto);
-
-            _db.Instituciones.Update(models);
+            _db.Instituciones.Remove(institucion);
             await _db.SaveChangesAsync();
+
             return NoContent();
         }
-
 
     }
 }
