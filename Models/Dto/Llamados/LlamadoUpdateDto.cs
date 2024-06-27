@@ -20,8 +20,6 @@ namespace SatizenLlamados.Modelos.Dto
         public string observacionLlamado { get; set; }
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
+
+

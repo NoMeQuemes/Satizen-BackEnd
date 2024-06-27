@@ -52,7 +52,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
 });
-builder.Services.AddAutoMapper(typeof(MappingConfig));
+
 //--------------------------------------------------------------------------------------------
 
 //Configuración de roles

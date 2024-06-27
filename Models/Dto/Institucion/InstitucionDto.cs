@@ -13,5 +13,6 @@ namespace Satizen_Api.Models.Dto.Institucion
         public string? telefonoInstitucion { get; set; }
         public string? correoInstitucion { get; set; }
         public string? celularInstitucion { get; set; }
+      
     }
 }

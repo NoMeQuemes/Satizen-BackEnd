@@ -22,7 +22,6 @@ namespace Satizen_Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-<<<<<<< HEAD
             modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
                 {
                     b.Property<int>("idAsignacion")
@@ -371,7 +370,7 @@ namespace Satizen_Api.Migrations
 
                     b.ToTable("Usuarios");
                 });
-=======
+
             modelBuilder.Entity("Satizen_Api.Models.Institucion", b =>
             {
                 b.Property<int>("idInstitucion")
@@ -554,7 +553,6 @@ namespace Satizen_Api.Migrations
 
                 b.ToTable("Usuarios");
             });
->>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
 
             modelBuilder.Entity("Satizen_Api.models.Dto.Contacto", b =>
                 {
@@ -735,124 +733,11 @@ namespace Satizen_Api.Migrations
                 b.Property<int>("idInstitucion")
                     .HasColumnType("int");
 
-<<<<<<< HEAD
-                    b.Navigation("Roles");
-                });
-=======
-                b.Property<string>("nombreSector")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("observacionSector")
-                    .HasColumnType("nvarchar(max)");
-
-                b.HasKey("idSector");
-
-                b.HasIndex("idInstitucion");
-
-                b.ToTable("Sectores");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.Paciente", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Institucion", "Institucion")
-                    .WithMany()
-                    .HasForeignKey("idInstitucion");
-
-                b.HasOne("Satizen_Api.Models.Usuario", "Usuario")
-                    .WithMany()
-                    .HasForeignKey("idUsuario");
-
-                b.Navigation("Institucion");
-
-                b.Navigation("Usuario");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.Roles", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Permiso", "Permiso")
-                    .WithMany()
-                    .HasForeignKey("idPermiso");
-
-                b.Navigation("Permiso");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.Usuario", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Roles", "Roles")
-                    .WithMany()
-                    .HasForeignKey("idRoles");
-
                 b.Navigation("Roles");
             });
-
-            modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Personal", "Personal")
-                    .WithMany()
-                    .HasForeignKey("idPersonal")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
-
-                b.HasOne("Satizen_Api.Models.Sector", "Sector")
-                    .WithMany()
-                    .HasForeignKey("idSector")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
-
-                b.Navigation("Personal");
-
-                b.Navigation("Sector");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Personal", "Personal")
-                    .WithMany()
-                    .HasForeignKey("idPersonal")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
-
-                b.Navigation("Personal");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.Personal", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Institucion", "Institucion")
-                    .WithMany()
-                    .HasForeignKey("idInstitucion");
-
-                b.Navigation("Institucion");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.RefreshToken", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Usuario", "Usuario")
-                    .WithMany("RefreshTokens")
-                    .HasForeignKey("idUsuario")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
-
-                b.Navigation("Usuario");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.Sector", b =>
-            {
-                b.HasOne("Satizen_Api.Models.Institucion", "Institucion")
-                    .WithMany()
-                    .HasForeignKey("idInstitucion")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired();
-
-                b.Navigation("Institucion");
-            });
-
-            modelBuilder.Entity("Satizen_Api.Models.Usuario", b =>
-            {
-                b.Navigation("RefreshTokens");
-            });
->>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
-#pragma warning restore 612, 618
         }
     }
 }
+
+
+            

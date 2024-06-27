@@ -4,12 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Satizen_Api.Data;
 using Satizen_Api.Models.Dto.Contacto;
 using Satizen_Api.Models;
-<<<<<<< HEAD
+
 using Satizen_Api.Models.Dto.ContactoPaciente;
-=======
+
 
 using System.Net;
->>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
 namespace Satizen_Api.Controllers
 {
     [ApiController]
@@ -54,7 +53,7 @@ namespace Satizen_Api.Controllers
         [HttpGet("{id}", Name = "GetContacto")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<ContactoDto> GetContacto(int id)
+        public ActionResult<Models.Dto.Contacto.ContactoDto> GetContacto(int id)
         {
             var contacto = _dbContext.Contacto.FirstOrDefault(c => c.idContacto == id);
             if (contacto == null)
@@ -67,7 +66,7 @@ namespace Satizen_Api.Controllers
         [HttpPost]
         [Route("CrearContacto")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> CrearContacto([FromBody] ContactoDto contactoDto)
+        public async Task<ActionResult<ApiResponse>> CrearContacto([FromBody] Models.Dto.Contacto.ContactoDto contactoDto)
         {
             try
             {
@@ -139,7 +138,7 @@ namespace Satizen_Api.Controllers
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult UpdateContacto(int id, [FromBody] ContactoDto contactoDto)
+        public IActionResult UpdateContacto(int id, [FromBody] Models.Dto.Contacto.ContactoDto contactoDto)
         {
             if (contactoDto == null || id != contactoDto.idContacto)
             {

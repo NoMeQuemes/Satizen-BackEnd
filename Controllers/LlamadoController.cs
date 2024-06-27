@@ -230,8 +230,8 @@ namespace Satizen_Api.Controllers
             return Ok(_response);
         }
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
+
+
+

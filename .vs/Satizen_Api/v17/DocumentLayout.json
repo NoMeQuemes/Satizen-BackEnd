@@ -3,36 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\controllers\\institucioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\institucioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\models\\dto\\llamados\\llamadoupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\llamados\\llamadoupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\models\\dto\\llamados\\llamadocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\llamados\\llamadocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\models\\dto\\llamados\\llamadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\llamados\\llamadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\models\\llamado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\llamado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\models\\institucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\institucion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\musimundo\\source\\repos\\satizen-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "InstitucionController.cs",
               "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Controllers\\InstitucionController.cs",
               "RelativeDocumentMoniker": "Controllers\\InstitucionController.cs",
               "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Controllers\\InstitucionController.cs",
               "RelativeToolTip": "Controllers\\InstitucionController.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAAABYAAAApAAAA",
+              "ViewState": "AQIAAHoAAAAAAAAAAAAAAI0AAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T12:47:38.991Z",
               "IsPinned": true,
@@ -60,87 +40,28 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-06-27T14:07:20.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAAACcAAAA7AAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T02:52:00.09Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LlamadoUpdateDto.cs",
-              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
-              "RelativeDocumentMoniker": "Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
-              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
-              "RelativeToolTip": "Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T02:49:36.057Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LlamadoCreateDto.cs",
-              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
-              "RelativeDocumentMoniker": "Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
-              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
-              "RelativeToolTip": "Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T02:48:44.589Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LlamadoDto.cs",
-              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Dto\\Llamados\\LlamadoDto.cs",
-              "RelativeDocumentMoniker": "Models\\Dto\\Llamados\\LlamadoDto.cs",
-              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Dto\\Llamados\\LlamadoDto.cs",
-              "RelativeToolTip": "Models\\Dto\\Llamados\\LlamadoDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T02:47:45.536Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LlamadoController.cs",
-              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Controllers\\LlamadoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\LlamadoController.cs",
-              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Controllers\\LlamadoController.cs",
-              "RelativeToolTip": "Controllers\\LlamadoController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAuwB8AAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T02:43:25.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Llamado.cs",
-              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Llamado.cs",
-              "RelativeDocumentMoniker": "Models\\Llamado.cs",
-              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Llamado.cs",
-              "RelativeToolTip": "Models\\Llamado.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T02:46:14.84Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Institucion.cs",
-              "DocumentMoniker": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Institucion.cs",
-              "RelativeDocumentMoniker": "Models\\Institucion.cs",
-              "ToolTip": "C:\\Users\\musimundo\\source\\repos\\Satizen-BackEnd\\Models\\Institucion.cs",
-              "RelativeToolTip": "Models\\Institucion.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T14:39:18.383Z"
+              "WhenOpened": "2024-06-27T12:28:24.873Z"
             }
           ]
         }
