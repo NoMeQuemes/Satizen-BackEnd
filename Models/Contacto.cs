@@ -9,8 +9,11 @@ namespace Satizen_Api.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idContacto { get; set; }
-        [ForeignKey("idPaciente")]
+
         public int idPaciente {  get; set; }
+        [ForeignKey("idPaciente")]
+        public virtual Paciente Pacientes { get; set; }
+
         public int celularPaciente { get; set; }
         public int celularAcompananteP { get; set; }
         public DateTime FechaInicioValidez { get; set; }

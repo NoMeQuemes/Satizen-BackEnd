@@ -5,8 +5,7 @@ namespace Satizen_Api.Models.Dto.Personal
 {
     public class AddPersonalDto
     {
-        //public int idPersonal { get; set; }
-        //public int idInstitucion { get; set; }
+        public int idInstitucion { get; set; }
         [Required(ErrorMessage = "El nombre propio tiene que estar especificado")]
         public string? nombrePersonal { get; set; }
         [Required(ErrorMessage = "El rol propio tiene que estar especificado")]
@@ -15,7 +14,7 @@ namespace Satizen_Api.Models.Dto.Personal
         public int celularPersonal { get; set; }
         [Required(ErrorMessage = "El numero tiene que estar especificado")]
         public int telefonoPersonal { get; set; }
-        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "El email no es correcto")]
+        //[RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "El email no es correcto")]
         public string? correoPersonal { get; set; }
 
 

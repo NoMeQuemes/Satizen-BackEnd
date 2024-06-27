@@ -26,6 +26,8 @@ namespace Satizen_Api.Data
         public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
         public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
         public DbSet<Contacto> Contactos { get; set; } //Agustin
+        public DbSet<Llamado> Llamados { get; set; } //Luis
+        public DbSet<Mensaje> Mensajes { get; set; } //Nacho O.
 
 
         //Acá se agregan datos a la base de datos
@@ -83,6 +85,21 @@ namespace Satizen_Api.Data
             modelBuilder.Entity<RefreshToken>()
                 .Property(o => o.esActivo)
                 .HasComputedColumnSql("IIF(fechaExpiracion < GETDATE(), CONVERT(BIT, 0), CONVERT(BIT, 1))");
+
+
+            //Estas lineas de código establecen las relaciones de la tabla mensajes a la tabla usuarios sin que haya ambigüedades
+            modelBuilder.Entity<Mensaje>()
+                .HasOne(m => m.Autor)
+                .WithMany()
+                .HasForeignKey(m => m.idAutor)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Mensaje>()
+                .HasOne(m => m.Receptor)
+                .WithMany()
+                .HasForeignKey(m => m.idReceptor)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
 
             base.OnModelCreating(modelBuilder);

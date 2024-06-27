@@ -9,6 +9,10 @@ namespace Satizen_Api.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idPaciente { get; set; }
 
+        public int idInstitucion { get; set; }
+        [ForeignKey("idInstitucion")]
+        public virtual Institucion Instituciones { get; set; }
+
         public int? idUsuario { get; set; }
         [ForeignKey("idUsuario")]
         public virtual Usuario usuario { get; set; }
@@ -18,7 +22,7 @@ namespace Satizen_Api.Models
         public string? nombrePaciente { get; set; }
         public int numeroHabitacionPaciente { get; set; }
         public DateTime fechaIngreso { get; set; }
-        public DateTime? estadoPaciente { get; set; }
         public string? observacionPaciente { get; set; }
+        public DateTime? estadoPaciente { get; set; }
     }
 }

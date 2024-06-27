@@ -40,7 +40,7 @@ namespace Satizen_Api.Controllers
                 _logger.LogInformation("Obtener los usuarios"); // Esto solo muestra en consola que se ejecutó este endpoint
 
                 _response.Resultado = await _db.Usuarios
-                                              .Where(u => u.estadoUsuario == null)
+                                              .Where(u => u.fechaEliminacion == null)
                                               .ToListAsync();
                 _response.statusCode = HttpStatusCode.OK;
                 return Ok(_response);
@@ -61,7 +61,7 @@ namespace Satizen_Api.Controllers
         {
             try
             {
-                var usuario = await _db.Usuarios.FirstOrDefaultAsync(e => e.idUsuario == id && e.estadoUsuario == null );
+                var usuario = await _db.Usuarios.FirstOrDefaultAsync(e => e.idUsuario == id && e.fechaEliminacion == null );
 
                 if (id == 0)
                 {
@@ -87,6 +87,55 @@ namespace Satizen_Api.Controllers
             return BadRequest(_response);
         }
 
+        // -------------- EndPoint que actualiza un registro en la base de datos -----------
+        [HttpPut]
+        [Route("ActualizarUsuario/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+        public async Task<ActionResult<ApiResponse>> ActualizaUsuario(int id, [FromBody] UsuarioUpdateDto usuarioDto)
+        {
+            try
+            {
+                if (usuarioDto == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+
+                var usuarioExistente = await _db.Usuarios.FirstOrDefaultAsync(e => e.idUsuario == id);
+
+                if (usuarioExistente == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.NotFound;
+                    _response.ErrorMessages = new List<string> { "El usuario no existe" };
+                    return _response;
+                }
+
+                usuarioExistente.nombreUsuario = usuarioDto.nombreUsuario;
+                usuarioExistente.password = usuarioDto.password;
+                usuarioExistente.idRoles = usuarioDto.idRoles;
+                usuarioExistente.fechaActualizacion = DateTime.Now;
+
+                _db.Usuarios.Update(usuarioExistente);
+                await _db.SaveChangesAsync();
+
+                _response.statusCode = HttpStatusCode.NoContent;
+                return _response;
+            }
+            catch (Exception ex)
+            {
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
+
+        }
+
+
+
         //--------------- EndPoint que desactiva un registro en la base de datos ------------
         [HttpPatch]
         [Route("EliminarUsuario/{id:int}")]
@@ -107,7 +156,7 @@ namespace Satizen_Api.Controllers
             }
 
             // Desactivar el usuario estableciendo la fecha actual en estadoUsuario
-            usuario.estadoUsuario = DateTime.Now;
+            usuario.fechaEliminacion = DateTime.Now;
 
             _db.Usuarios.Update(usuario);
             await _db.SaveChangesAsync();

@@ -62,8 +62,7 @@ namespace Satizen_Api.Controllers
 
                 Personal modelo = new()
                 {
-                    //idPersonal = Personal.idPersonal,
-                    //idInstitucion = Personal.idInstitucion,
+                    idInstitucion = Personal.idInstitucion,
                     nombrePersonal = Personal.nombrePersonal,
                     rolPersonal = Personal.rolPersonal,
                     celularPersonal = Personal.celularPersonal,

@@ -78,44 +78,28 @@ namespace Satizen_Api.Controllers
         }
 
         [HttpPost]
-        [Route("CrearPaciente")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> CrearPaciente([FromBody] PacientesDto pacientesDto)
+        public async Task<ActionResult<CreatePacientesDto>> CrearPaciente([FromBody] CreatePacientesDto pacientesDto)
         {
-            try
+            if (pacientesDto == null)
             {
-                if (pacientesDto == null)
-                {
-                    return BadRequest();
-                }
-
-
-
-                Paciente modelo = new()
-                {
-                    idPaciente = pacientesDto.idPaciente,
-                    idUsuario = pacientesDto.idUsuario,
-                    nombrePaciente = pacientesDto.nombrePaciente,
-                    numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
-                    fechaIngreso = pacientesDto.fechaIngreso,
-                    estadoPaciente = pacientesDto.estadoPaciente,
-                    observacionPaciente = pacientesDto.observacionPaciente
-                };
-
-                await _dbContext.Pacientes.AddAsync(modelo);
-                await _dbContext.SaveChangesAsync();
-                _response.Resultado = modelo;
-                _response.statusCode = HttpStatusCode.Created;
-
-                return (_response);
+                return BadRequest();
             }
-            catch (Exception ex)
+
+            Paciente modelo = new()
             {
-                _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string> { ex.ToString() };
-            }
-            return _response;
+                idInstitucion = pacientesDto.idInstitucion,
+                idUsuario = pacientesDto.idUsuario,
+                nombrePaciente = pacientesDto.nombrePaciente,
+                numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
+                observacionPaciente = pacientesDto.observacionPaciente
+            };
+
+            await _dbContext.Pacientes.AddAsync(modelo);
+            await _dbContext.SaveChangesAsync();
+
+            return CreatedAtRoute("GetPaciente", new { id = modelo.idPaciente }, modelo);
         }
 
         [HttpPatch]
