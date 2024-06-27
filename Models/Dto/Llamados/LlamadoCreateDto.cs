@@ -11,4 +11,7 @@ namespace SatizenLlamados.Modelos.Dto
         public required string prioridadLlamado { get; set; }
         public required string observacionLlamado { get; set; }
     }
+
 }
+
+

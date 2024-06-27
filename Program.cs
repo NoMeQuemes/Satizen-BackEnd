@@ -10,6 +10,7 @@ using Satizen_Api.Custom;
 using Satizen_Api.Models;
 using Satizen_Api.Data;
 using Proyec_Satizen_Api;
+using Satizen_Api;
 
 var builder = WebApplication.CreateBuilder(args);
 

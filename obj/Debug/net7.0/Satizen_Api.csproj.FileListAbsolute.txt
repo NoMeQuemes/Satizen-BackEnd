@@ -196,8 +196,6 @@ C:\repos\Satizen\bin\Debug\net7.0\Satizen_Api.deps.json
 C:\repos\Satizen\bin\Debug\net7.0\Satizen_Api.runtimeconfig.json
 C:\repos\Satizen\bin\Debug\net7.0\Satizen_Api.dll
 C:\repos\Satizen\bin\Debug\net7.0\Satizen_Api.pdb
-C:\repos\Satizen\bin\Debug\net7.0\AutoMapper.dll
-C:\repos\Satizen\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\repos\Satizen\bin\Debug\net7.0\Azure.Core.dll
 C:\repos\Satizen\bin\Debug\net7.0\Azure.Identity.dll
 C:\repos\Satizen\bin\Debug\net7.0\Humanizer.dll

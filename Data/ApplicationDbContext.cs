@@ -22,7 +22,7 @@ namespace Satizen_Api.Data
         public DbSet<Paciente> Pacientes { get; set; } //Amilcar
         public DbSet<Sector> Sectores { get; set; } //Albano
         public DbSet<Personal> Personals { get; set; } //Franco
-        public DbSet<Institucion> Instituciones { get; set; } // Karen
+        public DbSet<Institucion> Instituciones { get; set; }  //Karen
         public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
         public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
         public DbSet<Contacto> Contactos { get; set; } //Agustin
@@ -31,6 +31,10 @@ namespace Satizen_Api.Data
 
 
         //Acá se agregan datos a la base de datos
+
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Permiso>().HasData(

@@ -136,6 +136,9 @@ namespace Satizen_Api.Migrations
                     b.Property<string>("direccionInstitucion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("eliminado")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("nombreInstitucion")
                         .HasColumnType("nvarchar(max)");
 
