@@ -1,10 +1,15 @@
-﻿using Satizen_Api.Data;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Satizen_Api.models.Dto;
+
+using Satizen_Api.Data;
+using Satizen_Api.Models.Dto.Contacto;
 using Satizen_Api.Models;
+<<<<<<< HEAD
 using Satizen_Api.Models.Dto.ContactoPaciente;
+=======
+
+using System.Net;
+>>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
 namespace Satizen_Api.Controllers
 {
     [ApiController]

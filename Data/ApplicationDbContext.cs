@@ -1,9 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+<<<<<<< HEAD
 using Satizen_Api.Modelos;
 using Satizen_Api.models.Dto;
+=======
+using Satizen_Api.Models.Dto;
+>>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
 using Satizen_Api.Models;
 using System.Numerics;
 using System.Threading;
+using SatizenLlamados.Modelos;
+using Satizen_Api.Modelos;
 
 namespace Satizen_Api.Data
 {
@@ -27,12 +33,19 @@ namespace Satizen_Api.Data
         public DbSet<Institucion> Instituciones { get; set; }  //Karen
         public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
         public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
+<<<<<<< HEAD
+=======
+        public DbSet<Contacto> Contactos { get; set; } //Agustin
+>>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
         public DbSet<Llamado> Llamados { get; set; } //Luis
 
 
         //Acá se agregan datos a la base de datos
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b6f0028134b2241f764abb666decbb0d86f4db5e
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Permiso>().HasData(

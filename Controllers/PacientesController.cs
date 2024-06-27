@@ -10,7 +10,7 @@ using Satizen_Api.Models.Dto.Pacientes;
 
 using System.Net;
 using System.Threading;
-using Satizen_Api.models.Dto;
+using Satizen_Api.Models.Dto;
 using Microsoft.AspNetCore.JsonPatch;
 
 
