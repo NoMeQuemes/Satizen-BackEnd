@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Satizen_Api.Models.Dto;
 using Satizen_Api.Models;
-using System.Numerics;
-using System.Threading;
 
 namespace Satizen_Api.Data
 {
@@ -11,87 +8,41 @@ namespace Satizen_Api.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        /* Con esta función usamos los datos que estan en el modelo para que 
-         * cuando ejecutemos la migración
-         * se agreguen o actualicen en la base de datos
-         */
-        public DbSet<Usuario> Usuarios { get; set; } //Nando
+
+        public DbSet<Usuario> Usuarios { get; set; } 
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Permiso> Permisos { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-        public DbSet<Paciente> Pacientes { get; set; } //Amilcar
-        public DbSet<Sector> Sectores { get; set; } //Albano
-        public DbSet<Personal> Personals { get; set; } //Franco
-        public DbSet<Institucion> Instituciones { get; set; }  //Karen
-        public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } // Baraco
-        public DbSet<Asignacion> Asignaciones { get; set; } // Alexander
-        public DbSet<Contacto> Contactos { get; set; } //Agustin
-        public DbSet<Llamado> Llamados { get; set; } //Luis
-        public DbSet<Mensaje> Mensajes { get; set; } //Nacho O.
-
-
-        //Acá se agregan datos a la base de datos
-
-
-
+        public DbSet<Paciente> Pacientes { get; set; } 
+        public DbSet<Sector> Sectores { get; set; } 
+        public DbSet<Personal> Personals { get; set; } 
+        public DbSet<Institucion> Instituciones { get; set; } 
+        public DbSet<DispositivoLaboral> DispositivosLaborales { get; set; } 
+        public DbSet<Asignacion> Asignaciones { get; set; } 
+        public DbSet<Contacto> Contactos { get; set; } 
+        public DbSet<Llamado> Llamados { get; set; } 
+        public DbSet<Mensaje> Mensajes { get; set; } 
+        public DbSet<Turno> Turnos { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Permiso>().HasData(
-                new Permiso()
-                {
-                    idPermiso = 1,
-                    tipo = "Crear"
-                },
-                new Permiso()
-                {
-                    idPermiso = 2,
-                    tipo = "Leer"
-                },
-                new Permiso()
-                {
-                    idPermiso = 3,
-                    tipo = "Eliminar"
-                },
-                new Permiso()
-                {
-                    idPermiso = 4,
-                    tipo = "Actualizar"
-                }
+                new Permiso() { idPermiso = 1, tipo = "Crear" },
+                new Permiso() { idPermiso = 2, tipo = "Leer" },
+                new Permiso() { idPermiso = 3, tipo = "Eliminar" },
+                new Permiso() { idPermiso = 4, tipo = "Actualizar" }
             );
 
             modelBuilder.Entity<Roles>().HasData(
-                new Roles()
-                {
-                    idRol = 1,
-                    nombre = "Administrador",
-                    descripcion = "Soy administrador",
-                    idPermiso = 1
-                },
-                new Roles()
-                {
-                    idRol = 2,
-                    nombre = "Medico",
-                    descripcion = "Soy médico",
-                    idPermiso = 2
-                },
-                new Roles()
-                {
-                    idRol = 3,
-                    nombre = "Enfermero",
-                    descripcion = "Soy enfermero",
-                    idPermiso = 2
-                }
-                );
-
-            //Estas lineas de código agregan el valor a la columna computada "esActivo"
+                new Roles() { idRol = 1, nombre = "Administrador", descripcion = "Soy administrador", idPermiso = 1 },
+                new Roles() { idRol = 2, nombre = "Medico", descripcion = "Soy médico", idPermiso = 2 },
+                new Roles() { idRol = 3, nombre = "Enfermero", descripcion = "Soy enfermero", idPermiso = 2 }
+            );
 
             modelBuilder.Entity<RefreshToken>()
                 .Property(o => o.esActivo)
                 .HasComputedColumnSql("IIF(fechaExpiracion < GETDATE(), CONVERT(BIT, 0), CONVERT(BIT, 1))");
 
-
-            //Estas lineas de código establecen las relaciones de la tabla mensajes a la tabla usuarios sin que haya ambigüedades
             modelBuilder.Entity<Mensaje>()
                 .HasOne(m => m.Autor)
                 .WithMany()
@@ -104,20 +55,17 @@ namespace Satizen_Api.Data
                 .HasForeignKey(m => m.idReceptor)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Asignacion>()
+                .HasOne(a => a.Personal)
+                .WithMany()
+                .HasForeignKey(a => a.idPersonal);
 
+            modelBuilder.Entity<Asignacion>()
+                .HasOne(a => a.Sector)
+                .WithMany()
+                .HasForeignKey(a => a.idSector);
 
             base.OnModelCreating(modelBuilder);
-
-            ////// Configuraciones adicionales para relaciones y restricciones
-            ////modelBuilder.Entity<Asignacion>()
-            ////    .HasOne(a => a.personal)
-            ////    .WithMany()
-            ////    .HasForeignKey(a => a.idPersonal);
-
-            ////modelBuilder.Entity<Asignacion>()
-            ////    .HasOne(a => a.sector)
-            ////    .WithMany()
-            ////    .HasForeignKey(a => a.idSector);
         }
     }
 }
