@@ -21,7 +21,7 @@ namespace Satizen_Api.Models
         [ForeignKey("TurnoId")]
         public Turno Turno { get; set; } // Navegación
 
-        public TimeSpan horaInicio { get; set; }
+        public DateTime horaInicio { get; set; }
         public TimeSpan horaFinalizacion { get; set; }
     }
 

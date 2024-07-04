@@ -1,16 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
 using Satizen_Api.Data;
 using Satizen_Api.Models;
-using Satizen_Api.Models.Dto;
+
 
 namespace Satizen_Api.Controllers
 {
@@ -25,7 +21,7 @@ namespace Satizen_Api.Controllers
         public AsignacionesController(ApplicationDbContext applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;
-            _response = new();
+            _response = new ApiResponse();
         }
 
         //--------------- EndPoint que trae la lista completa de asignaciones -------------------
@@ -45,7 +41,7 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }
@@ -79,7 +75,7 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }
@@ -95,7 +91,7 @@ namespace Satizen_Api.Controllers
                     idPersonal = crearAsignacionDto.idPersonal,
                     idSector = crearAsignacionDto.idSector,
                     diaSemana = crearAsignacionDto.diaSemana,
-                    TurnoId = crearAsignacionDto.TurnoId,  // Usando TurnoId
+                    TurnoId = crearAsignacionDto.TurnoId,
                     horaInicio = crearAsignacionDto.horaInicio,
                     horaFinalizacion = crearAsignacionDto.horaFinalizacion
                 };
@@ -110,7 +106,7 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }
@@ -131,7 +127,7 @@ namespace Satizen_Api.Controllers
                 asignacion.idPersonal = actualizarAsignacionDto.idPersonal;
                 asignacion.idSector = actualizarAsignacionDto.idSector;
                 asignacion.diaSemana = actualizarAsignacionDto.diaSemana;
-                asignacion.TurnoId = actualizarAsignacionDto.TurnoId;  // Usando TurnoId
+                asignacion.TurnoId = actualizarAsignacionDto.TurnoId;
                 asignacion.horaInicio = actualizarAsignacionDto.horaInicio;
                 asignacion.horaFinalizacion = actualizarAsignacionDto.horaFinalizacion;
 
@@ -156,7 +152,7 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }

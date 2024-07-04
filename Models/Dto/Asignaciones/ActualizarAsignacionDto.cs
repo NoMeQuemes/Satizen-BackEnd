@@ -6,6 +6,6 @@ public class ActualizarAsignacionDto
     public int idSector { get; set; }
     public DiaSemana diaSemana { get; set; }
     public int TurnoId { get; set; }
-    public TimeSpan horaInicio { get; set; }
+    public DateTime horaInicio { get; set; }
     public TimeSpan horaFinalizacion { get; set; }
 }
