@@ -30,14 +30,17 @@ namespace Satizen_Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idAsignacion"));
 
-                    b.Property<DateTime>("diaSemana")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("TurnoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("diaSemana")
+                        .HasColumnType("int");
 
                     b.Property<TimeSpan>("horaFinalizacion")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan>("horaInicio")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("horaInicio")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("idPersonal")
                         .HasColumnType("int");
@@ -45,12 +48,9 @@ namespace Satizen_Api.Migrations
                     b.Property<int>("idSector")
                         .HasColumnType("int");
 
-                    b.Property<string>("turno")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.HasKey("idAsignacion");
+
+                    b.HasIndex("TurnoId");
 
                     b.HasIndex("idPersonal");
 
@@ -485,8 +485,31 @@ namespace Satizen_Api.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("Turno", b =>
+                {
+                    b.Property<int>("TurnoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TurnoId"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TurnoId");
+
+                    b.ToTable("Turnos");
+                });
+
             modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
                 {
+                    b.HasOne("Turno", "Turno")
+                        .WithMany()
+                        .HasForeignKey("TurnoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Satizen_Api.Models.Personal", "Personal")
                         .WithMany()
                         .HasForeignKey("idPersonal")
@@ -502,6 +525,8 @@ namespace Satizen_Api.Migrations
                     b.Navigation("Personal");
 
                     b.Navigation("Sector");
+
+                    b.Navigation("Turno");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Contacto", b =>

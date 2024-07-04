@@ -1,22 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;      
-using Microsoft.AspNetCore.Mvc;       
-using Microsoft.EntityFrameworkCore;  
-using Microsoft.AspNetCore.JsonPatch; 
-using Microsoft.Extensions.Logging;   
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Satizen_Api.Data;
+using Satizen_Api.Models;
 
-using System.Net;                     
-using System.Threading.Tasks;        
-using System.Collections.Generic;    
-
-using Satizen_Api.Data;            
-using Satizen_Api.Models;           
-using Satizen_Api.Models.Dto.Asignaciones;      
 
 namespace Satizen_Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize] // Esta sentencia determina que a esta API solo pueden entrar usuarios autorizados
     [ApiController]
     public class AsignacionesController : ControllerBase
     {
@@ -26,19 +20,17 @@ namespace Satizen_Api.Controllers
         public AsignacionesController(ApplicationDbContext applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;
-            _response = new();
+            _response = new ApiResponse();
         }
 
         //--------------- EndPoint que trae la lista completa de asignaciones -------------------
         [HttpGet]
-        [Route("ListarAsignaciones")]
         public async Task<ActionResult<ApiResponse>> GetAsignaciones()
         {
             try
             {
                 var asignaciones = await _applicationDbContext.Asignaciones
-                                          //.Include(a => a.personal)  
-                                          //.Include(a => a.sector)
+                                          .Include(a => a.Turno)  // Incluyendo el turno
                                           .ToListAsync();
 
                 _response.Resultado = asignaciones;
@@ -48,14 +40,13 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }
 
         //------------- EndPoint que trae una asignacion a través de la id --------------
-        [HttpGet]
-        [Route("ListarPorId/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse>> GetAsignacion(int id)
         {
             try
@@ -67,8 +58,7 @@ namespace Satizen_Api.Controllers
                 }
 
                 var asignacion = await _applicationDbContext.Asignaciones
-                                            //.Include(a => a.personal)
-                                            //.Include(a => a.sector)
+                                            .Include(a => a.Turno)  // Incluyendo el turno
                                             .FirstOrDefaultAsync(a => a.idAsignacion == id);
 
                 if (asignacion == null)
@@ -84,26 +74,25 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }
 
         //--------------- EndPoint que crea una nueva asignacion ------------
         [HttpPost]
-        [Route("CrearAsignacion")]
-        public async Task<ActionResult<ApiResponse>> PostAsignacion(AsignacionDto asignacionDto)
+        public async Task<ActionResult<ApiResponse>> PostAsignacion([FromBody] CrearAsigcionDto crearAsignacionDto)
         {
             try
             {
                 var asignacion = new Asignacion
                 {
-                    idPersonal = asignacionDto.idPersonal,
-                    idSector = asignacionDto.idSector,
-                    diaSemana = asignacionDto.diaSemana,
-                    turno = asignacionDto.turno,
-                    horaInicio = asignacionDto.horaInicio,
-                    horaFinalizacion = asignacionDto.horaFinalizacion
+                    idPersonal = crearAsignacionDto.idPersonal,
+                    idSector = crearAsignacionDto.idSector,
+                    diaSemana = crearAsignacionDto.diaSemana,
+                    TurnoId = crearAsignacionDto.TurnoId,
+                    horaInicio = crearAsignacionDto.horaInicio,
+                    horaFinalizacion = crearAsignacionDto.horaFinalizacion
                 };
 
                 _applicationDbContext.Asignaciones.Add(asignacion);
@@ -116,24 +105,17 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }
 
         //--------------- EndPoint que actualiza una asignacion existente ------------
-        [HttpPut]
-        [Route("ActualizarAsignacion/{id}")]
-        public async Task<ActionResult<ApiResponse>> PutAsignacion(int id, AsignacionDto asignacionDto)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ApiResponse>> PutAsignacion(int id, [FromBody] ActualizarAsignacionDto actualizarAsignacionDto)
         {
             try
             {
-                if (id != asignacionDto.idAsignacion)
-                {
-                    _response.statusCode = HttpStatusCode.BadRequest;
-                    return BadRequest(_response);
-                }
-
                 var asignacion = await _applicationDbContext.Asignaciones.FindAsync(id);
                 if (asignacion == null)
                 {
@@ -141,12 +123,12 @@ namespace Satizen_Api.Controllers
                     return NotFound(_response);
                 }
 
-                asignacion.idPersonal = asignacionDto.idPersonal;
-                asignacion.idSector = asignacionDto.idSector;
-                asignacion.diaSemana = asignacionDto.diaSemana;
-                asignacion.turno = asignacionDto.turno;
-                asignacion.horaInicio = asignacionDto.horaInicio;
-                asignacion.horaFinalizacion = asignacionDto.horaFinalizacion;
+                asignacion.idPersonal = actualizarAsignacionDto.idPersonal;
+                asignacion.idSector = actualizarAsignacionDto.idSector;
+                asignacion.diaSemana = actualizarAsignacionDto.diaSemana;
+                asignacion.TurnoId = actualizarAsignacionDto.TurnoId;
+                asignacion.horaInicio = actualizarAsignacionDto.horaInicio;
+                asignacion.horaFinalizacion = actualizarAsignacionDto.horaFinalizacion;
 
                 _applicationDbContext.Entry(asignacion).State = EntityState.Modified;
                 await _applicationDbContext.SaveChangesAsync();
@@ -169,35 +151,7 @@ namespace Satizen_Api.Controllers
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
-                return BadRequest(_response);
-            }
-        }
-
-        //--------------- EndPoint que elimina una asignacion ------------
-        [HttpDelete]
-        [Route("EliminarAsignacion/{id}")]
-        public async Task<ActionResult<ApiResponse>> DeleteAsignacion(int id)
-        {
-            try
-            {
-                var asignacion = await _applicationDbContext.Asignaciones.FindAsync(id);
-                if (asignacion == null)
-                {
-                    _response.statusCode = HttpStatusCode.NotFound;
-                    return NotFound(_response);
-                }
-
-                _applicationDbContext.Asignaciones.Remove(asignacion);
-                await _applicationDbContext.SaveChangesAsync();
-
-                _response.statusCode = HttpStatusCode.NoContent;
-                return Ok(_response);
-            }
-            catch (Exception ex)
-            {
-                _response.IsExitoso = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
         }

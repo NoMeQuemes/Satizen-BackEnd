@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using Satizen_Api.Data;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Personal;
+
 using System.Net;
 
 namespace Satizen_Api.Controllers
