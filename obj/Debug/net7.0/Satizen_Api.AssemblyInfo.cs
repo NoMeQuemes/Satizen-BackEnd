@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Satizen_Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dc153ec0e3b8493e9c829a132b81afdde58864a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a31f3f079f3031f4f5baf3436681d4bee4583d94")]
 [assembly: System.Reflection.AssemblyProductAttribute("Satizen_Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Satizen_Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

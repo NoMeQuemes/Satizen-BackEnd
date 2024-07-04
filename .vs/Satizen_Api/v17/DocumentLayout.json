@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\repos\\Satizen\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\asignacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\repos\\Satizen\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -43,18 +43,14 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\repos\\Satizen\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\repos\\Satizen\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAA4wBIAAAA+AAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAowBIAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-04T15:09:07.733Z",
               "EditorCaption": ""

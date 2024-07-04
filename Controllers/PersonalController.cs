@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Satizen_Api.Data;
 using Satizen_Api.Models;
+using Satizen_Api.Models.Dto.Institucion;
 using Satizen_Api.Models.Dto.Personal;
 
 using System.Net;
@@ -30,23 +31,24 @@ namespace Satizen_Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Personal>))]
         public async Task<ActionResult<IEnumerable<Personal>>> GetPersonals()
         {
-            return await _applicationDbContext.Personals.ToListAsync();
+            return await _applicationDbContext.Personals.Where(u => u.fechaEliminacion == null)
+                                                        .ToListAsync();
         }
 
         [HttpGet]
-        [Route("ListarPorId/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Personal))]
+        [Route("ListarPorId/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Personal>> GetPersonals(int id)
+        public async Task<ActionResult<PersonalDto>> GetPersonal(int id)
         {
-            var personal = await _applicationDbContext.Personals.FindAsync(id);
+            var institucion = _applicationDbContext.Personals.FirstOrDefault(c => c.idPersonal == id);
 
-            if (personal == null)
+            if (institucion == null)
             {
                 return NotFound();
             }
-
-            return personal;
+            return Ok(institucion);
         }
 
         [HttpPost]
@@ -127,17 +129,27 @@ namespace Satizen_Api.Controllers
             throw new NotImplementedException();
         }*/
 
-        [HttpDelete]
+        [HttpPatch]
         [Route("EliminarPersonal/{id:int}")]
-        public async Task<IActionResult> DeletePersonal(int id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> EliminarInstitucion(int id)
         {
-            var personal = await _applicationDbContext.Personals.FindAsync(id);
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var personal = await _applicationDbContext.Personals.FirstOrDefaultAsync(v => v.idPersonal == id);
+
             if (personal == null)
             {
                 return NotFound();
             }
 
-            _applicationDbContext.Personals.Remove(personal);
+            personal.fechaEliminacion = DateTime.Now;
+
+            _applicationDbContext.Personals.Update(personal);
             await _applicationDbContext.SaveChangesAsync();
 
             return NoContent();

@@ -27,5 +27,7 @@ namespace Satizen_Api.Models
         public int telefonoPersonal { get; set; }
         [Required]
         public string? correoPersonal { get; set; }
+
+        public DateTime? fechaEliminacion { get; set; }
     }
 }
