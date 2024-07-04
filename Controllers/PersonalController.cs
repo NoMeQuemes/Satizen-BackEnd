@@ -9,7 +9,7 @@ using System.Net;
 namespace Satizen_Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class PersonalController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace Satizen_Api.Controllers
 
         [HttpGet]
         [Route("ListarPersonal")]
-        [Authorize(Policy = "Admin")]
+        //[Authorize(Policy = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Personal>))]
         public async Task<ActionResult<IEnumerable<Personal>>> GetPersonals()
         {
@@ -63,6 +63,7 @@ namespace Satizen_Api.Controllers
                 Personal modelo = new()
                 {
                     idInstitucion = Personal.idInstitucion,
+                    idUsuario = Personal.idUsuario,
                     nombrePersonal = Personal.nombrePersonal,
                     rolPersonal = Personal.rolPersonal,
                     celularPersonal = Personal.celularPersonal,

@@ -4,7 +4,6 @@ namespace Satizen_Api.Models.Dto.Institucion
 {
     public class InstitucionCreateDto
     {
-        public int idInstitucion { get; set; }
 
         [Required]
         [MaxLength(30)]

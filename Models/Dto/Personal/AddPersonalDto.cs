@@ -7,6 +7,7 @@ namespace Satizen_Api.Models.Dto.Personal
     {
         public int idInstitucion { get; set; }
         [Required(ErrorMessage = "El nombre propio tiene que estar especificado")]
+        public int idUsuario { get; set; }
         public string? nombrePersonal { get; set; }
         [Required(ErrorMessage = "El rol propio tiene que estar especificado")]
         public string? rolPersonal { get; set; }

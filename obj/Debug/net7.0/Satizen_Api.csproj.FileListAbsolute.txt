@@ -186,9 +186,6 @@ C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.csproj.CoreCompileInputs.cache
 C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.MvcApplicationPartsAssemblyInfo.cs
 C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.MvcApplicationPartsAssemblyInfo.cache
 C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.sourcelink.json
-C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.dll
-C:\repos\Satizen\obj\Debug\net7.0\refint\Satizen_Api.dll
-C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.pdb
 C:\repos\Satizen\bin\Debug\net7.0\appsettings.Development.json
 C:\repos\Satizen\bin\Debug\net7.0\appsettings.json
 C:\repos\Satizen\bin\Debug\net7.0\Satizen_Api.exe
@@ -264,5 +261,8 @@ C:\repos\Satizen\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.Satize
 C:\repos\Satizen\obj\Debug\net7.0\staticwebassets.pack.json
 C:\repos\Satizen\obj\Debug\net7.0\scopedcss\bundle\Satizen_Api.styles.css
 C:\repos\Satizen\obj\Debug\net7.0\Satizen_.44A27948.Up2Date
+C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.dll
+C:\repos\Satizen\obj\Debug\net7.0\refint\Satizen_Api.dll
+C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.pdb
 C:\repos\Satizen\obj\Debug\net7.0\Satizen_Api.genruntimeconfig.cache
 C:\repos\Satizen\obj\Debug\net7.0\ref\Satizen_Api.dll

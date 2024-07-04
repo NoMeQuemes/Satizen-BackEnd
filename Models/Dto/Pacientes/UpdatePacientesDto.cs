@@ -1,8 +1,9 @@
 ﻿namespace Satizen_Api.Models.Dto.Pacientes
 {
-    public class CreatePacientesDto
+    public class UpdatePacientesDto
     {
-        public int idUsuario {  get; set; }
+        public int idPaciente {  get; set; }
+        public int idUsuario { get; set; }
         public int idInstitucion { get; set; }
         public string? nombrePaciente { get; set; }
         public int numeroHabitacionPaciente { get; set; }

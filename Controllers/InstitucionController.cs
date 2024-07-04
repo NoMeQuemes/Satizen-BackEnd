@@ -73,27 +73,22 @@ namespace Proyec_Satizen_Api.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> CrearInstitucion([FromBody] InstitucionDto institucionDto)
+        public async Task<ActionResult<ApiResponse>> CrearInstitucion([FromBody] InstitucionCreateDto institucioncreateDto)
         {
             try
             {
-                if (institucionDto == null)
+                if (institucioncreateDto == null)
                 {
-                    return BadRequest(institucionDto);
-                }
-                else if (institucionDto.idInstitucion > 0)
-                {
-                    return StatusCode(StatusCodes.Status500InternalServerError);
+                    return BadRequest(institucioncreateDto);
                 }
 
                 Institucion modelo = new()
                 {
-                    idInstitucion = institucionDto.idInstitucion,
-                    nombreInstitucion = institucionDto.nombreInstitucion,
-                    direccionInstitucion = institucionDto.direccionInstitucion,
-                    telefonoInstitucion = institucionDto.telefonoInstitucion,
-                    correoInstitucion = institucionDto.correoInstitucion,
-                    celularInstitucion = institucionDto.celularInstitucion,
+                    nombreInstitucion = institucioncreateDto.nombreInstitucion,
+                    direccionInstitucion = institucioncreateDto.direccionInstitucion,
+                    telefonoInstitucion = institucioncreateDto.telefonoInstitucion,
+                    correoInstitucion = institucioncreateDto.correoInstitucion,
+                    celularInstitucion = institucioncreateDto.celularInstitucion,
 
                 };
 
@@ -117,9 +112,9 @@ namespace Proyec_Satizen_Api.Controllers
         [Route("ActualizarInstitucion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult UpdateInstitucion(int id, [FromBody] InstitucionDto institucionDto)
+        public IActionResult UpdateInstitucion(int id, [FromBody] InstitucionUpdateDto institucionupdateDto)
         {
-            if (institucionDto == null || id != institucionDto.idInstitucion)
+            if (institucionupdateDto == null || id != institucionupdateDto.idInstitucion)
             {
                 return BadRequest();
             }
@@ -131,11 +126,11 @@ namespace Proyec_Satizen_Api.Controllers
                 return NotFound(); // Agregar manejo para cuando no se encuentra la institución
             }
 
-            institucion.nombreInstitucion = institucionDto.nombreInstitucion;
-            institucion.direccionInstitucion = institucionDto.direccionInstitucion;
-            institucion.telefonoInstitucion = institucionDto.telefonoInstitucion;
-            institucion.correoInstitucion = institucionDto.correoInstitucion;
-            institucion.celularInstitucion = institucionDto.celularInstitucion;
+            institucion.nombreInstitucion = institucionupdateDto.nombreInstitucion;
+            institucion.direccionInstitucion = institucionupdateDto.direccionInstitucion;
+            institucion.telefonoInstitucion = institucionupdateDto.telefonoInstitucion;
+            institucion.correoInstitucion = institucionupdateDto.correoInstitucion;
+            institucion.celularInstitucion = institucionupdateDto.celularInstitucion;
 
             _db.SaveChanges(); // Guardar los cambios en la base de datos
 
