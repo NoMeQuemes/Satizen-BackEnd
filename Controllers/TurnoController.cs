@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Satizen_Api.Data;
 using Satizen_Api.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Satizen_Api.Controllers
@@ -13,6 +15,7 @@ namespace Satizen_Api.Controllers
     public class TurnoController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ApiResponse _response;
 
         public TurnoController(ApplicationDbContext context)
         {
@@ -21,9 +24,23 @@ namespace Satizen_Api.Controllers
 
         // GET: api/Turno
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Turno>>> GetTurnos()
+        public async Task<ActionResult<ApiResponse>> GetTurnos()
         {
-            return await _context.Turnos.ToListAsync();
+            try
+            {
+
+                _response.Resultado = await _context.Turnos
+                                              .Where(u => u.estadoTurno == null)
+                                              .ToListAsync();
+                _response.statusCode = HttpStatusCode.OK;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
         }
 
         // GET: api/Turno/5
@@ -70,6 +87,11 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
+        private bool TurnoExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         // POST: api/Turno
         [HttpPost]
         public async Task<ActionResult<Turno>> PostTurno(Turno turno)
@@ -81,24 +103,29 @@ namespace Satizen_Api.Controllers
         }
 
         // DELETE: api/Turno/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTurno(int id)
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> DesactivarPaciente(int id)
         {
-            var turno = await _context.Turnos.FindAsync(id);
-            if (turno == null)
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var Turno = await _context.Turnos.FirstOrDefaultAsync(p => p.TurnoId == id);
+
+            if (Turno == null)
             {
                 return NotFound();
             }
 
-            _context.Turnos.Remove(turno);
+            // Desactivar el turno estableciendo la fecha actual en estadoTurno
+            Turno.estadoTurno = DateTime.Now;
+
+            _context.Turnos.Update(Turno);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool TurnoExists(int id)
-        {
-            return _context.Turnos.Any(e => e.TurnoId == id);
-        }
     }
 }
