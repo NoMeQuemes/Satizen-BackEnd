@@ -8,9 +8,9 @@ namespace Satizen_Api.Models.Dto.ContactoPaciente
     public class CreateContactoPacienteDto
     {
         public int idPaciente { get; set; }
-        public int celularPaciente { get; set; }
-        public int celularAcompananteP { get; set; }
-
+        public long celularPaciente { get; set; }
+        public long celularAcompananteP { get; set; }
+        public DateTime FechaInicioValidez { get; set; }
         public string estadoContacto { get; set; }
     }
 }

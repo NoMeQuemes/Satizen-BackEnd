@@ -1,22 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Satizen_Api.Models
+namespace Satizen_Api.Models.Dto.Personal
 {
-    public class Personal
+    public class UpdatePersonalDto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idPersonal { get; set; }
 
         public int idInstitucion { get; set; }
-        [ForeignKey("idInstitucion")]
-        public virtual Institucion? Instituciones { get; set; }
-
         public int idUsuario { get; set; }
-        [ForeignKey("idUsuario")]
-        public virtual Usuario Usuarios { get; set; }
-
 
         [Required]
         public string? nombrePersonal { get; set; }
@@ -28,7 +19,5 @@ namespace Satizen_Api.Models
         public int telefonoPersonal { get; set; }
         [Required]
         public string? correoPersonal { get; set; }
-
-        public DateTime? fechaEliminacion { get; set; }
     }
 }

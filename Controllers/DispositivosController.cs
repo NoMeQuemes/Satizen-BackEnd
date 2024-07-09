@@ -1,25 +1,24 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-
-using System.Net;
-using System.Numerics;
 
 using Satizen_Api.Data;
+using Satizen_Api.Models.Dto.Dispositivos;
 using Satizen_Api.Models;
-using Satizen_Api.Models.Dto.Sectores;
+
+using System.Net;
 
 namespace Satizen_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SectoresController : ControllerBase
+    public class DispositivosController : ControllerBase
     {
+
         private readonly ApplicationDbContext _db;
         protected ApiResponse _response;
 
-        public SectoresController(ApplicationDbContext db)
+        public DispositivosController(ApplicationDbContext db)
         {
             _db = db;
             _response = new();
@@ -28,26 +27,14 @@ namespace Satizen_Api.Controllers
         //--------------- EndPoint que trae la lista completa de sectores -------------------
         //[Authorize(Policy = "Admin")]
         [HttpGet]
-        [Route("ListarSectores")]
-        public async Task<ActionResult<ApiResponse>> GetSectores()
+        [Route("ListarDispositivos")]
+        public async Task<ActionResult<ApiResponse>> GetDispositivos()
         {
             try
             {
-
-                _response.Resultado = await _db.Sectores
+                _response.Resultado = await _db.DispositivosLaborales
                                                 .Where(d => d.fechaEliminacion == null)
-                                                .Select(d => new
-                                                {
-                                                    d.idSector,
-                                                    d.idInstitucion,
-                                                    d.nombreSector,
-                                                    d.descripcionSector,
-                                                    d.fechaCreacion,
-                                                    d.fechaActualizacion,
-                                                    d.fechaEliminacion
-                                                })
                                                 .ToListAsync();
-
 
                 _response.statusCode = HttpStatusCode.OK;
                 return Ok(_response);
@@ -69,7 +56,7 @@ namespace Satizen_Api.Controllers
         {
             try
             {
-                var sector = await _db.Sectores.FirstOrDefaultAsync(e => e.idSector == id && e.fechaEliminacion == null);
+                var dispositivo = await _db.DispositivosLaborales.FirstOrDefaultAsync(e => e.idDispositivo == id && e.fechaEliminacion == null);
 
                 if (id == 0)
                 {
@@ -77,13 +64,13 @@ namespace Satizen_Api.Controllers
                     return BadRequest(_response);
                 }
 
-                if (sector == null)
+                if (dispositivo == null)
                 {
                     _response.statusCode = HttpStatusCode.NotFound;
                     return NotFound(_response);
                 }
 
-                _response.Resultado = sector;
+                _response.Resultado = dispositivo;
                 _response.statusCode = HttpStatusCode.OK;
                 return Ok(_response);
             }
@@ -97,26 +84,27 @@ namespace Satizen_Api.Controllers
 
         //------------------------ EndPoint que crea nuevos doctores -------------------------
         [HttpPost]
-        [Route("CrearSector")]
+        [Route("CrearDispositivo")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> CrearSector([FromBody] SectoresCreateDto sectorDto)
+        public async Task<ActionResult<ApiResponse>> CrearSector([FromBody] DispositivoCreateDto dispositivoDto)
         {
             try
             {
-                if (sectorDto == null)
+                if (dispositivoDto == null)
                 {
-                    return BadRequest(sectorDto);
+                    return BadRequest(dispositivoDto);
                 }
 
-                Sector modelo = new()
+                DispositivoLaboral modelo = new()
                 {
-                    idInstitucion = sectorDto.idInstitucion,
-                    nombreSector = sectorDto.nombreSector,
-                    descripcionSector = sectorDto.descripcionSector,
+                    idPersonal = dispositivoDto.idPersonal,
+                    numDispositivo = dispositivoDto.numDispositivo,
+                    observacionDispositivo = dispositivoDto.observacionDispositivo,
+                    estadoDispositivo = dispositivoDto.estadoDispositivo,
                     fechaCreacion = DateTime.Now
                 };
 
-                await _db.Sectores.AddAsync(modelo);
+                await _db.DispositivosLaborales.AddAsync(modelo);
                 await _db.SaveChangesAsync();
                 _response.Resultado = modelo;
                 _response.statusCode = HttpStatusCode.Created;
@@ -135,37 +123,38 @@ namespace Satizen_Api.Controllers
 
         //--------------- EndPoint que actualiza un registro en la base de datos ------------
         [HttpPut]
-        [Route("ActualizarSector/{id:int}")]
+        [Route("ActualizarDispositivo/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<ActionResult<ApiResponse>> ActualizaSector(int id, [FromBody] SectoresUpdateDto sectorDto)
+        public async Task<ActionResult<ApiResponse>> ActualizarDispositivo(int id, [FromBody] DispositivoUpdateDto dispositivoDto)
         {
             try
             {
-                if (sectorDto == null)
+                if (dispositivoDto == null)
                 {
                     _response.IsExitoso = false;
                     _response.statusCode = HttpStatusCode.BadRequest;
                     return BadRequest(_response);
                 }
 
-                var sectorExistente = await _db.Sectores.FirstOrDefaultAsync(e => e.idSector == id);
+                var dispositivoExistente = await _db.DispositivosLaborales.FirstOrDefaultAsync(e => e.idDispositivo == id);
 
-                if (sectorExistente == null)
+                if (dispositivoExistente == null)
                 {
                     _response.IsExitoso = false;
                     _response.statusCode = HttpStatusCode.NotFound;
-                    _response.ErrorMessages = new List<string> { "El sector no existe" };
+                    _response.ErrorMessages = new List<string> { "El dispositivo no existe" };
                     return _response;
                 }
 
-                sectorExistente.idInstitucion = sectorDto.idInstitucion;
-                sectorExistente.nombreSector = sectorDto.nombreSector;
-                sectorExistente.descripcionSector = sectorDto.descripcionSector;
-                sectorExistente.fechaActualizacion = DateTime.Now;
+                dispositivoExistente.idPersonal = dispositivoDto.idPersonal;
+                dispositivoExistente.numDispositivo = dispositivoDto.numDispositivo;
+                dispositivoExistente.observacionDispositivo = dispositivoDto.observacionDispositivo;
+                dispositivoExistente.estadoDispositivo = dispositivoDto.estadoDispositivo;
+                dispositivoExistente.fechaActualizacion = DateTime.Now;
 
-                _db.Sectores.Update(sectorExistente);
+                _db.DispositivosLaborales.Update(dispositivoExistente);
                 await _db.SaveChangesAsync();
 
                 _response.statusCode = HttpStatusCode.NoContent;
@@ -181,12 +170,12 @@ namespace Satizen_Api.Controllers
         }
 
 
-        //--------------- EndPoint que elimina (desactiva) un sector en la base de datos ------------
+        //--------------- EndPoint que elimina (desactiva) un dispositivo en la base de datos ------------
         [HttpPatch]
-        [Route("EliminarSector/{id:int}")]
+        [Route("EliminarDispositivo/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> DesactivarSector(int id)
+        public async Task<ActionResult<ApiResponse>> DesactivarDispositivo(int id)
         {
             try
             {
@@ -195,17 +184,17 @@ namespace Satizen_Api.Controllers
                     return BadRequest();
                 }
 
-                var sector = await _db.Sectores.FirstOrDefaultAsync(v => v.idSector == id);
+                var dispositivo = await _db.DispositivosLaborales.FirstOrDefaultAsync(v => v.idDispositivo == id);
 
-                if (sector == null)
+                if (dispositivo == null)
                 {
                     return NotFound();
                 }
 
                 // Desactivar el usuario estableciendo la fecha actual en fechaEliminacion
-                sector.fechaEliminacion = DateTime.Now;
+                dispositivo.fechaEliminacion = DateTime.Now;
 
-                _db.Sectores.Update(sector);
+                _db.DispositivosLaborales.Update(dispositivo);
                 await _db.SaveChangesAsync();
 
                 _response.statusCode = HttpStatusCode.NoContent;
@@ -220,14 +209,5 @@ namespace Satizen_Api.Controllers
             }
             return _response;
         }
-
-
-
-
-
-
-
-
-
     }
 }

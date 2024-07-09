@@ -7,14 +7,18 @@ namespace Satizen_Api.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
-        public int idCelular {  get; set; }
+        public int idDispositivo {  get; set; }
 
         public int idPersonal { get; set; }
         [ForeignKey("idPersonal")]
         public virtual Personal Personals { get; set; }
 
-        public string numCelular { get; set; }
-        public string observacionCelular { get; set; }
+        public string numDispositivo { get; set; }
+        public string? observacionDispositivo { get; set; }
+        public string estadoDispositivo { get; set; }
+        public DateTime fechaCreacion { get; set; }
+        public DateTime? fechaActualizacion { get; set; }
+
+        public DateTime? fechaEliminacion { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace Satizen_Api.Models
 
         public string prioridadLlamado { get; set; }
         public string observacionLlamado { get; set; }
+        public DateTime? fechaEliminacion { get; set; }
 
     }
 

@@ -21,8 +21,8 @@ namespace Satizen_Api.Data
         public DbSet<Asignacion> Asignaciones { get; set; } 
         public DbSet<Contacto> Contactos { get; set; } 
         public DbSet<Llamado> Llamados { get; set; } 
-        public DbSet<Mensaje> Mensajes { get; set; } 
-        public DbSet<Turno> Turnos { get; set; } 
+        public DbSet<Mensaje> Mensajes { get; set; }
+        public DbSet<Turno> Turnos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,12 @@ namespace Satizen_Api.Data
                 new Roles() { idRol = 1, nombre = "Administrador", descripcion = "Soy administrador", idPermiso = 1 },
                 new Roles() { idRol = 2, nombre = "Medico", descripcion = "Soy médico", idPermiso = 2 },
                 new Roles() { idRol = 3, nombre = "Enfermero", descripcion = "Soy enfermero", idPermiso = 2 }
+            );
+
+            modelBuilder.Entity<Turno>().HasData(
+                new Turno() { idTurno = 1, Nombre = "Mañana"},
+                new Turno() { idTurno = 2, Nombre = "Tarde"},
+                new Turno() { idTurno = 3, Nombre = "Noche"}
             );
 
             modelBuilder.Entity<RefreshToken>()

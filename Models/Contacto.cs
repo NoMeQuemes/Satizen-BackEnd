@@ -14,8 +14,8 @@ namespace Satizen_Api.Models
         [ForeignKey("idPaciente")]
         public virtual Paciente Pacientes { get; set; }
 
-        public int celularPaciente { get; set; }
-        public int celularAcompananteP { get; set; }
+        public long celularPaciente { get; set; }
+        public long celularAcompananteP { get; set; }
         public DateTime FechaInicioValidez { get; set; }
         public string estadoContacto { get; set; }
         public DateTime? eliminado { get; set; }

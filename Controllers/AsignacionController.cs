@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using System.Net;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+
 using Satizen_Api.Data;
 using Satizen_Api.Models;
+using Satizen_Api.Models.Dto.Asignaciones;
 
 
 namespace Satizen_Api.Controllers
@@ -30,6 +33,7 @@ namespace Satizen_Api.Controllers
             try
             {
                 var asignaciones = await _applicationDbContext.Asignaciones
+                                          .Where(a => a.fechaEliminacion == null)
                                           .Include(a => a.Turno)  // Incluyendo el turno
                                           .ToListAsync();
 
@@ -51,15 +55,14 @@ namespace Satizen_Api.Controllers
         {
             try
             {
+                var asignacion = await _applicationDbContext.Asignaciones.FirstOrDefaultAsync(a => a.idAsignacion == id);
+               
+                
                 if (id == 0)
                 {
                     _response.statusCode = HttpStatusCode.BadRequest;
                     return BadRequest(_response);
                 }
-
-                var asignacion = await _applicationDbContext.Asignaciones
-                                            .Include(a => a.Turno)  // Incluyendo el turno
-                                            .FirstOrDefaultAsync(a => a.idAsignacion == id);
 
                 if (asignacion == null)
                 {
@@ -90,7 +93,7 @@ namespace Satizen_Api.Controllers
                     idPersonal = crearAsignacionDto.idPersonal,
                     idSector = crearAsignacionDto.idSector,
                     diaSemana = crearAsignacionDto.diaSemana,
-                    TurnoId = crearAsignacionDto.TurnoId,
+                    idTurno = crearAsignacionDto.idTurno,
                     horaInicio = crearAsignacionDto.horaInicio,
                     horaFinalizacion = crearAsignacionDto.horaFinalizacion
                 };
@@ -126,7 +129,7 @@ namespace Satizen_Api.Controllers
                 asignacion.idPersonal = actualizarAsignacionDto.idPersonal;
                 asignacion.idSector = actualizarAsignacionDto.idSector;
                 asignacion.diaSemana = actualizarAsignacionDto.diaSemana;
-                asignacion.TurnoId = actualizarAsignacionDto.TurnoId;
+                asignacion.idTurno = actualizarAsignacionDto.idTurno;
                 asignacion.horaInicio = actualizarAsignacionDto.horaInicio;
                 asignacion.horaFinalizacion = actualizarAsignacionDto.horaFinalizacion;
 
@@ -154,6 +157,32 @@ namespace Satizen_Api.Controllers
                 _response.ErrorMessages = new List<string> { ex.ToString() };
                 return BadRequest(_response);
             }
+        }
+
+        [HttpPatch]
+        [Route("EliminarAsignacion/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> EliminarAsignacion(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var asignacion = await _applicationDbContext.Asignaciones.FirstOrDefaultAsync(v => v.idAsignacion == id);
+
+            if (asignacion == null)
+            {
+                return NotFound();
+            }
+
+            asignacion.fechaEliminacion = DateTime.Now;
+
+            _applicationDbContext.Asignaciones.Update(asignacion);
+            await _applicationDbContext.SaveChangesAsync();
+
+            return NoContent();
         }
 
         private bool AsignacionExists(int id)

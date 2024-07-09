@@ -61,6 +61,7 @@ namespace Proyec_Satizen_Api.Controllers
         public async Task<ActionResult<InstitucionDto>> GetInstitucion(int id)
         {
             var institucion = _db.Instituciones.FirstOrDefault(c => c.idInstitucion == id);
+
             if (institucion == null)
             {
                 return NotFound();

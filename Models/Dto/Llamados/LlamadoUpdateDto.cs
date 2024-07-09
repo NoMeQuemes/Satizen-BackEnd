@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SatizenLlamados.Modelos.Dto
+namespace Satizen_Api.Models.Dto.Llamados
 {
     public class LlamadoUpdateDto
     {

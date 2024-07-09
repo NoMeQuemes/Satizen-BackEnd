@@ -71,7 +71,8 @@ namespace Satizen_Api.Controllers
                     idPaciente = contactoDto.idPaciente,
                     celularPaciente = contactoDto.celularPaciente,
                     celularAcompananteP = contactoDto.celularAcompananteP,
-                    estadoContacto = contactoDto.estadoContacto,
+                    FechaInicioValidez = contactoDto.FechaInicioValidez,
+                    estadoContacto = contactoDto.estadoContacto
                 };
 
                 await _dbContext.Contactos.AddAsync(contacto);
@@ -119,29 +120,42 @@ namespace Satizen_Api.Controllers
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdateContacto(int id, [FromBody] ContactoDto contactoDto)
+        public async Task<ActionResult<ApiResponse>> UpdateContacto(int id, [FromBody] UpdateContactoPacienteDto contactoDto)
         {
-            if (contactoDto == null || id != contactoDto.idContacto)
+            try
             {
-                return BadRequest();
+                if (contactoDto == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+
+                var contacto = await _dbContext.Contactos.FirstOrDefaultAsync(v => v.idContacto == id);
+
+                if (contacto == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.NotFound;
+                    _response.ErrorMessages = new List<string> { "El contacto no existe" };
+                }
+
+                contacto.idPaciente = contactoDto.idPaciente;
+                contacto.celularPaciente = contactoDto.celularPaciente;
+                contacto.celularAcompananteP = contactoDto.celularAcompananteP;
+                contacto.estadoContacto = contactoDto.estadoContacto;
+
+                _dbContext.Contactos.Update(contacto);
+                await _dbContext.SaveChangesAsync();
+
+                return NoContent();
             }
-
-            var contacto = await _dbContext.Contactos.FirstOrDefaultAsync(v => v.idContacto == id);
-
-            if (contacto == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
             }
-
-            contacto.idPaciente = contactoDto.idPaciente;
-            contacto.celularPaciente = contactoDto.celularPaciente;
-            contacto.celularAcompananteP = contactoDto.celularAcompananteP;
-            contacto.estadoContacto = contactoDto.estadoContacto;
-
-            _dbContext.Contactos.Update(contacto);
-            await _dbContext.SaveChangesAsync();
-
-            return NoContent();
+            return _response;
         }
     }
 }

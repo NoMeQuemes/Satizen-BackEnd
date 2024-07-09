@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 using Satizen_Api.Data;
 using Satizen_Api.Models;
-using Satizen_Api.Models.Dto.Institucion;
 using Satizen_Api.Models.Dto.Personal;
 
 using System.Net;
@@ -94,40 +93,35 @@ namespace Satizen_Api.Controllers
 
         [HttpPut]
         [Route("ActualizarPersonal/{id:int}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Personal))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutPersonals(int id, Personal personal)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdatePersonal(int id, [FromBody] UpdatePersonalDto personalupdatedto)
         {
-            if (id != personal.idPersonal)
+            if (personalupdatedto == null || id != personalupdatedto.idPersonal)
             {
                 return BadRequest();
             }
 
-            _applicationDbContext.Entry(personal).State = EntityState.Modified;
+            var personal = await _applicationDbContext.Personals.FirstOrDefaultAsync(v => v.idPersonal == id);
 
-            try
+            if (personal == null)
             {
-                await _applicationDbContext.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonalExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+            personal.idInstitucion = personalupdatedto.idInstitucion;
+            personal.idUsuario = personalupdatedto.idUsuario;
+            personal.nombrePersonal = personalupdatedto.nombrePersonal;
+            personal.rolPersonal = personalupdatedto.rolPersonal;
+            personal.celularPersonal = personalupdatedto.celularPersonal;
+            personal.telefonoPersonal = personalupdatedto.telefonoPersonal;
+            personal.correoPersonal = personalupdatedto.correoPersonal;
+
+            
+            _applicationDbContext.SaveChanges();
 
             return NoContent();
         }
-
-        /*private bool PersonalExists(int id)
-        {
-            throw new NotImplementedException();
-        }*/
 
         [HttpPatch]
         [Route("EliminarPersonal/{id:int}")]
@@ -155,9 +149,5 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
-        private bool PersonalExists(int id)
-        {
-            return _applicationDbContext.Personals.Any(e => e.idPersonal == id);
-        }
     }
 }

@@ -15,24 +15,15 @@ namespace Satizen_Api.Models
         [ForeignKey("idSector")]
         public Sector Sector { get; set; }
 
-        public DiaSemana diaSemana { get; set; }
+        public string diaSemana { get; set; }
 
-        public int TurnoId { get; set; } // Clave foránea
-        [ForeignKey("TurnoId")]
-        public Turno Turno { get; set; } // Navegación
+        public int idTurno { get; set; } // Clave foránea
+        [ForeignKey("idTurno")]
+        public virtual Turno Turno { get; set; } // Navegación
 
         public DateTime horaInicio { get; set; }
         public TimeSpan horaFinalizacion { get; set; }
-    }
 
-    public enum DiaSemana
-    {
-        Domingo,
-        Lunes,
-        Martes,
-        Miercoles,
-        Jueves,
-        Viernes,
-        Sabado
+        public DateTime? fechaEliminacion { get; set; }
     }
 }

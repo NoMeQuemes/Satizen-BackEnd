@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using Satizen_Api.Data;
 using Satizen_Api.Models;
+using Satizen_Api.Models.Dto.Llamados;
+
 using System.Net;
 
 namespace Satizen_Api.Controllers
@@ -19,7 +22,7 @@ namespace Satizen_Api.Controllers
         {
             _logger = logger;
             _llamadoContext = llamadoContext;
-            _response = new ApiResponse();
+            _response = new();
         }
 
 
@@ -32,7 +35,7 @@ namespace Satizen_Api.Controllers
                 _logger.LogInformation("Obtener los usuarios"); // Esto solo muestra en consola que se ejecutó este endpoint
 
                 _response.Resultado = await _llamadoContext.Llamados
-                                              .Where(u => u.estadoLlamado == null)
+                                              .Where(u => u.fechaEliminacion == null)
                                               .ToListAsync();
                 _response.statusCode = HttpStatusCode.OK;
                 return Ok(_response);
@@ -80,7 +83,7 @@ namespace Satizen_Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> CrearLlamado([FromBody] SatizenLlamados.Modelos.Dto.LlamadoCreateDto createDto)
+        public async Task<ActionResult<ApiResponse>> CrearLlamado([FromBody] LlamadoCreateDto createDto)
         {
             try
             {
@@ -138,8 +141,7 @@ namespace Satizen_Api.Controllers
                 return NotFound();
             }
 
-            // Desactivar el usuario estableciendo la fecha actual en estadoUsuario
-            llamado.fechaHoraLlamado = DateTime.Now;
+            llamado.fechaEliminacion = DateTime.Now;
 
             _llamadoContext.Llamados.Update(llamado);
             await _llamadoContext.SaveChangesAsync();
@@ -150,39 +152,56 @@ namespace Satizen_Api.Controllers
 
 
 
-        [HttpPut("{id:int}")]
+        [HttpPut]
+        [Route("ActualizarLlamado/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdateLlamado(int id, [FromBody] SatizenLlamados.Modelos.Dto.LlamadoUpdateDto updateDto)
+        public async Task<ActionResult<ApiResponse>> UpdateLlamado(int id, [FromBody] LlamadoUpdateDto updateDto)
         {
-            if (updateDto == null || id != updateDto.idLlamado)
+            try
+            {
+                if (updateDto == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+
+                var llamadoExistente = await _llamadoContext.Llamados.FirstOrDefaultAsync(e => e.idLlamado == id);
+
+                if (llamadoExistente == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.NotFound;
+                    _response.ErrorMessages = new List<string> { "El llamado no existe" };
+                }
+
+                llamadoExistente.idPaciente = updateDto.idPaciente;
+                llamadoExistente.idPersonal = updateDto.idPersonal;
+                llamadoExistente.fechaHoraLlamado = updateDto.fechaHoraLlamado;
+                llamadoExistente.estadoLlamado = updateDto.estadoLlamado;
+                llamadoExistente.prioridadLlamado = updateDto.prioridadLlamado;
+                llamadoExistente.observacionLlamado = updateDto.observacionLlamado;
+
+                _llamadoContext.Llamados.Update(llamadoExistente);
+                await _llamadoContext.SaveChangesAsync();
+
+                _response.statusCode = HttpStatusCode.NoContent;
+                return _response;
+            }
+            catch (Exception ex)
             {
                 _response.IsExitoso = false;
-                _response.statusCode = HttpStatusCode.BadRequest;
-                return BadRequest(_response);
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
             }
+            return _response;
 
-
-            Llamado modelo = new()
-            {
-                idLlamado = updateDto.idLlamado,
-                idPaciente = updateDto.idPaciente,
-                idPersonal = updateDto.idPersonal,
-                fechaHoraLlamado = updateDto.fechaHoraLlamado,
-                estadoLlamado = updateDto.estadoLlamado,
-                prioridadLlamado = updateDto.prioridadLlamado,
-                observacionLlamado = updateDto.observacionLlamado
-            };
-
-            _llamadoContext.Llamados.Update(modelo);
-            _response.statusCode = HttpStatusCode.NoContent;
-            return Ok(_response);
         }
 
         [HttpPatch("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdatePartialLlamado(int id, JsonPatchDocument<SatizenLlamados.Modelos.Dto.LlamadoUpdateDto> patchDto)
+        public async Task<IActionResult> UpdatePartialLlamado(int id, JsonPatchDocument<LlamadoUpdateDto> patchDto)
         {
             if (patchDto == null || id == 0)
             {
@@ -191,7 +210,7 @@ namespace Satizen_Api.Controllers
             var llamado = await _llamadoContext.Llamados.FindAsync(id);
 
 
-            SatizenLlamados.Modelos.Dto.LlamadoUpdateDto llamadoDto = new()
+            LlamadoUpdateDto llamadoDto = new()
             {
                 idLlamado = llamado.idLlamado,
                 idPaciente = llamado.idPaciente,
