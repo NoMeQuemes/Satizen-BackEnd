@@ -3,22 +3,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Satizen_Api.Models
 {
-    public class Usuario
+    public class DispositivoLaboral
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int idUsuario {  get; set; }
-        public string nombreUsuario { get; set; }
-        public string password {  get; set; }
+        public int idDispositivo {  get; set; }
 
-        public int? idRoles { get; set; }
-        [ForeignKey("idRoles")]
-        public virtual Roles Roles { get; set; }
+        public int idPersonal { get; set; }
+        [ForeignKey("idPersonal")]
+        public virtual Personal Personals { get; set; }
 
+        public string numDispositivo { get; set; }
+        public string? observacionDispositivo { get; set; }
+        public string estadoDispositivo { get; set; }
         public DateTime fechaCreacion { get; set; }
         public DateTime? fechaActualizacion { get; set; }
 
         public DateTime? fechaEliminacion { get; set; }
-
     }
 }

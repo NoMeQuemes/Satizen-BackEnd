@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using Satizen_Api.Data;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Personal;
+
 using System.Net;
 
 namespace Satizen_Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class PersonalController : ControllerBase
     {
@@ -22,31 +24,34 @@ namespace Satizen_Api.Controllers
             _response = new();
         }
 
-        [Authorize(Policy = "Admin")]
         [HttpGet]
+        [Route("ListarPersonal")]
+        //[Authorize(Policy = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Personal>))]
         public async Task<ActionResult<IEnumerable<Personal>>> GetPersonals()
         {
-            return await _applicationDbContext.Personals.ToListAsync();
+            return await _applicationDbContext.Personals.Where(u => u.fechaEliminacion == null)
+                                                        .ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Personal))]
+        [HttpGet]
+        [Route("ListarPorId/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Personal>> GetPersonals(int id)
+        public async Task<ActionResult<PersonalDto>> GetPersonal(int id)
         {
-            var personal = await _applicationDbContext.Personals.FindAsync(id);
+            var institucion = _applicationDbContext.Personals.FirstOrDefault(c => c.idPersonal == id);
 
-            if (personal == null)
+            if (institucion == null)
             {
                 return NotFound();
             }
-
-            return personal;
+            return Ok(institucion);
         }
 
         [HttpPost]
-        //[Route("Create")]
+        [Route("CrearPersonal")]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Personal))]
         public async Task<ActionResult<ApiResponse>> PostPersonals(AddPersonalDto Personal)
         {
@@ -60,8 +65,8 @@ namespace Satizen_Api.Controllers
 
                 Personal modelo = new()
                 {
-                    //idPersonal = Personal.idPersonal,
-                    //idInstitucion = Personal.idInstitucion,
+                    idInstitucion = Personal.idInstitucion,
+                    idUsuario = Personal.idUsuario,
                     nombrePersonal = Personal.nombrePersonal,
                     rolPersonal = Personal.rolPersonal,
                     celularPersonal = Personal.celularPersonal,
@@ -86,60 +91,63 @@ namespace Satizen_Api.Controllers
             return _response;
         }
 
-        [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Personal))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutPersonals(int id, Personal personal)
+        [HttpPut]
+        [Route("ActualizarPersonal/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdatePersonal(int id, [FromBody] UpdatePersonalDto personalupdatedto)
         {
-            if (id != personal.idPersonal)
+            if (personalupdatedto == null || id != personalupdatedto.idPersonal)
             {
                 return BadRequest();
             }
 
-            _applicationDbContext.Entry(personal).State = EntityState.Modified;
+            var personal = await _applicationDbContext.Personals.FirstOrDefaultAsync(v => v.idPersonal == id);
 
-            try
-            {
-                await _applicationDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonalExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        /*private bool PersonalExists(int id)
-        {
-            throw new NotImplementedException();
-        }*/
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePersonal(int id)
-        {
-            var personal = await _applicationDbContext.Personals.FindAsync(id);
             if (personal == null)
             {
                 return NotFound();
             }
 
-            _applicationDbContext.Personals.Remove(personal);
+            personal.idInstitucion = personalupdatedto.idInstitucion;
+            personal.idUsuario = personalupdatedto.idUsuario;
+            personal.nombrePersonal = personalupdatedto.nombrePersonal;
+            personal.rolPersonal = personalupdatedto.rolPersonal;
+            personal.celularPersonal = personalupdatedto.celularPersonal;
+            personal.telefonoPersonal = personalupdatedto.telefonoPersonal;
+            personal.correoPersonal = personalupdatedto.correoPersonal;
+
+            
+            _applicationDbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("EliminarPersonal/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> EliminarInstitucion(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var personal = await _applicationDbContext.Personals.FirstOrDefaultAsync(v => v.idPersonal == id);
+
+            if (personal == null)
+            {
+                return NotFound();
+            }
+
+            personal.fechaEliminacion = DateTime.Now;
+
+            _applicationDbContext.Personals.Update(personal);
             await _applicationDbContext.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PersonalExists(int id)
-        {
-            return _applicationDbContext.Personals.Any(e => e.idPersonal == id);
-        }
     }
 }

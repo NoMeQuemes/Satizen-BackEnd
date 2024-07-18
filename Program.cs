@@ -3,16 +3,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
+
 using System.Text;
+
 using Satizen_Api.Custom;
 using Satizen_Api.Models;
 using Satizen_Api.Data;
+using Proyec_Satizen_Api;
+using Satizen_Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddSingleton<Utilidades>(); // Acá se agregan las utilidades
+builder.Services.AddScoped<Utilidades>(); // Acá se agregan las utilidades
 
 // ------------- Seguridad JWT para los usuarios -------------------
 
@@ -38,8 +42,6 @@ builder.Services.AddAuthentication(config =>
 });
 // ------------------------------------------------------------------
 
-
-
 builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -50,6 +52,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
 });
+
 //--------------------------------------------------------------------------------------------
 
 //Configuración de roles
@@ -59,18 +62,14 @@ builder.Services.AddAuthorization(options =>
 });
 
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
-app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
