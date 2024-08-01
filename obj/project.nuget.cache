@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pEpKMmN/twIoQYuRPwUfQyeAIvAmAqlPqBlXSoOmmAqEuM8KueDYk9CH6/kRfevrvpmfWby9EVHFwUWsVaP5XQ==",
+  "dgSpecHash": "oFoU1ZqYMv63nD+ppfwAIsV6lTGR/4+P7Kj0zlh+5jE4rBAKKvtO0rvF0kiutImlHHkBUUTIhgJTVQbbYH7Jdw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Satizen_Api.csproj",
+  "projectFilePath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Satizen_Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\orosc\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\orosc\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

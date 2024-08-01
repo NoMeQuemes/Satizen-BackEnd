@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\",
+  "WorkspaceRootPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\orosc\\desktop\\nueva carpeta (4)\\satizen-backend-nacho\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\orosc\\desktop\\nueva carpeta (2)\\satizen-backend\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\orosc\\desktop\\nueva carpeta (4)\\satizen-backend-nacho\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\orosc\\desktop\\nueva carpeta (2)\\satizen-backend\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\orosc\\desktop\\nueva carpeta (4)\\satizen-backend-nacho\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\users\\orosc\\desktop\\nueva carpeta (2)\\satizen-backend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -44,9 +44,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Hubs\\ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Hubs\\ChatHub.cs",
               "RelativeDocumentMoniker": "Hubs\\ChatHub.cs",
-              "ToolTip": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Hubs\\ChatHub.cs",
               "RelativeToolTip": "Hubs\\ChatHub.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -56,9 +56,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ChatController.cs",
-              "DocumentMoniker": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Controllers\\ChatController.cs",
+              "DocumentMoniker": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Controllers\\ChatController.cs",
               "RelativeDocumentMoniker": "Controllers\\ChatController.cs",
-              "ToolTip": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Controllers\\ChatController.cs",
+              "ToolTip": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Controllers\\ChatController.cs",
               "RelativeToolTip": "Controllers\\ChatController.cs",
               "ViewState": "AQIAAEcAAAAAAAAAAAAowFUAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -69,9 +69,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

@@ -3483,11 +3483,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Satizen_Api.csproj",
+      "projectUniqueName": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Satizen_Api.csproj",
       "projectName": "Satizen_Api",
-      "projectPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Satizen_Api.csproj",
+      "projectPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\Satizen_Api.csproj",
       "packagesPath": "C:\\Users\\orosc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\obj\\",
+      "outputPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (2)\\Satizen-BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\orosc\\AppData\\Roaming\\NuGet\\NuGet.Config",
