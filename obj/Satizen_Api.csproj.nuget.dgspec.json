@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\repos\\Satizen\\Satizen_Api\\Satizen_Api.csproj": {}
+    "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Satizen_Api.csproj": {}
   },
   "projects": {
-    "C:\\repos\\Satizen\\Satizen_Api\\Satizen_Api.csproj": {
+    "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Satizen_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\repos\\Satizen\\Satizen_Api\\Satizen_Api.csproj",
+        "projectUniqueName": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Satizen_Api.csproj",
         "projectName": "Satizen_Api",
-        "projectPath": "C:\\repos\\Satizen\\Satizen_Api\\Satizen_Api.csproj",
-        "packagesPath": "C:\\Users\\munoz\\.nuget\\packages\\",
-        "outputPath": "C:\\repos\\Satizen\\Satizen_Api\\obj\\",
+        "projectPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\Satizen_Api.csproj",
+        "packagesPath": "C:\\Users\\orosc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\orosc\\Desktop\\Nueva carpeta (4)\\Satizen-BackEnd-Nacho\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\munoz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\orosc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,14 +45,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            },
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[7.0.12, )"
@@ -79,7 +67,7 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.12, )"
+              "version": "[7.0.19, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -89,7 +77,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.12, )"
+              "version": "[7.0.19, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -119,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

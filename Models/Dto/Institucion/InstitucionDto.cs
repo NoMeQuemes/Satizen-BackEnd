@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Proyec_Satizen_Api.Models.Dto
+namespace Satizen_Api.Models.Dto.Institucion
 {
     public class InstitucionDto
     {
@@ -13,5 +13,6 @@ namespace Proyec_Satizen_Api.Models.Dto
         public string? telefonoInstitucion { get; set; }
         public string? correoInstitucion { get; set; }
         public string? celularInstitucion { get; set; }
+      
     }
 }

@@ -6,7 +6,9 @@
         public string nombreUsuario { get; set; }
         public string password { get; set; }
         public int idRoles { get; set; }
-        public int estadoUsuario { get; set; }
+        public DateTime fechaCreacion { get; set; }
+        public DateTime fechaActualizacion { get; set; }
+        public DateTime fechaEliminacion { get; set; }
 
     }
 }

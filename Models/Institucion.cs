@@ -13,5 +13,8 @@ namespace Satizen_Api.Models
         public string? telefonoInstitucion { get; set; }
         public string? correoInstitucion { get; set; }
         public string? celularInstitucion { get; set; }
+        public DateTime? eliminado { get; set; }
     }
+   
 }
+

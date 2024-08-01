@@ -15,7 +15,10 @@ namespace Satizen_Api.Models
         [ForeignKey("idRoles")]
         public virtual Roles Roles { get; set; }
 
-        public DateTime? estadoUsuario { get; set; }
+        public DateTime fechaCreacion { get; set; }
+        public DateTime? fechaActualizacion { get; set; }
+
+        public DateTime? fechaEliminacion { get; set; }
 
     }
 }

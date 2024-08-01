@@ -51,6 +51,7 @@ namespace Satizen_Api.Controllers
                     nombreUsuario = objeto.nombreUsuario,
                     password = _utilidades.encriptarSHA256(objeto.password),
                     idRoles = objeto.idRoles,
+                    fechaCreacion = DateTime.Now,
                 };
 
                 await _applicationDbContext.Usuarios.AddAsync(modeloUsuario);
@@ -88,7 +89,8 @@ namespace Satizen_Api.Controllers
             var usuarioEncontrado = await _applicationDbContext.Usuarios
                                         .Where(u =>
                                         u.nombreUsuario == objeto.nombreUsuario &&
-                                        u.password == _utilidades.encriptarSHA256(objeto.password)
+                                        u.password == _utilidades.encriptarSHA256(objeto.password) &&
+                                        u.fechaEliminacion == null
                                         ).FirstOrDefaultAsync();
 
             if (usuarioEncontrado == null)

@@ -10,13 +10,16 @@ using Satizen_Api.Custom;
 using Satizen_Api.Models;
 using Satizen_Api.Data;
 using Proyec_Satizen_Api;
+using Satizen_Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddScoped<Utilidades>(); // Acá se agregan las utilidades
-
+builder.Services.AddSignalR(); // Acá se agregan las utilidades
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 // ------------- Seguridad JWT para los usuarios -------------------
 
 builder.Services.AddAuthentication(config =>
@@ -41,8 +44,6 @@ builder.Services.AddAuthentication(config =>
 });
 // ------------------------------------------------------------------
 
-
-
 builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -54,12 +55,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
 });
 
-builder.Services.AddAutoMapper(typeof(MappingConfig));
-
-
-
-
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyMethod()
+               .AllowAnyHeader()
+               .WithOrigins("http://localhost:8080")
+               .AllowCredentials();
+    });
+});
 
 //--------------------------------------------------------------------------------------------
 
@@ -78,6 +83,8 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
+app.MapHub<ChatHub>("/chatHub");
 app.MapControllers();
 app.Run();

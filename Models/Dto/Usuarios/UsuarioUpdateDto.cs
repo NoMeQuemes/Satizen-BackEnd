@@ -12,8 +12,6 @@ namespace Satizen_Api.Models.Dto.Usuarios
         public string password { get; set; }
         [Required]
         public int? idRoles { get; set; }
-        [Required]
-        public DateTime? estadoUsuario { get; set; }
 
     }
 }
