@@ -9,6 +9,7 @@ namespace Satizen_Api.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idUsuario {  get; set; }
         public string nombreUsuario { get; set; }
+        public string correo { get; set; }
         public string password {  get; set; }
 
         public int? idRoles { get; set; }

@@ -51,8 +51,11 @@ namespace Satizen_Api.Custom
             var userClaims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, modelo.idUsuario.ToString()),
+                //new Claim("idUsuario", modelo.idUsuario.ToString()),
                 new Claim(ClaimTypes.Name, modelo.nombreUsuario!),
-                new Claim("Rol", modelo.idRoles.ToString())
+                //new Claim("nombreUsuario", modelo.nombreUsuario),
+                new Claim(ClaimTypes.Role, modelo.idRoles.ToString())
+                //new Claim("Rol", modelo.idRoles.ToString())
 
 
                 //Acá se puede agregar más información relevante del usuario y
@@ -67,7 +70,7 @@ namespace Satizen_Api.Custom
             //Crear detalle del token 
             var jwtConfig = new JwtSecurityToken(
                 claims: userClaims,
-                expires: DateTime.UtcNow.AddMinutes(15), //Acá se define cuanto va a durar el token
+                expires: DateTime.UtcNow.AddMinutes(5), //Acá se define cuanto va a durar el token
                 signingCredentials: credentials
                 );
             return new JwtSecurityTokenHandler().WriteToken(jwtConfig);
@@ -102,7 +105,7 @@ namespace Satizen_Api.Custom
                 token = token,
                 refreshToken = refreshToken,
                 fechaCreacion = DateTime.UtcNow,
-                fechaExpiracion = DateTime.UtcNow.AddDays(1), // Duración del refresh token
+                fechaExpiracion = DateTime.UtcNow.AddMinutes(60), // Duración del refresh token
                 esActivo = true
             };
 

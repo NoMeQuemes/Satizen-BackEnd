@@ -61,6 +61,16 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Admin", policy => policy.RequireClaim("Rol", "1"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "NuevaPolitica", policy =>
+    {
+        policy.SetIsOriginAllowed(_ => true)
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 
 
 var app = builder.Build();
@@ -69,7 +79,8 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+app.UseCors("NuevaPolitica");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

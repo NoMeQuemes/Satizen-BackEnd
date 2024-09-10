@@ -115,6 +115,7 @@ namespace Satizen_Api.Controllers
                 }
 
                 usuarioExistente.nombreUsuario = usuarioDto.nombreUsuario;
+                usuarioExistente.correo = usuarioDto.correo;
                 usuarioExistente.password = usuarioDto.password;
                 usuarioExistente.idRoles = usuarioDto.idRoles;
                 usuarioExistente.fechaActualizacion = DateTime.Now;

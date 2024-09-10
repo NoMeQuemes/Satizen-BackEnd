@@ -499,6 +499,9 @@ namespace Satizen_Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idUsuario"));
 
+                    b.Property<string>("correo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("fechaActualizacion")
                         .HasColumnType("datetime2");
 

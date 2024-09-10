@@ -13,6 +13,7 @@ using Satizen_Api.Models.Dto.Asignaciones;
 
 namespace Satizen_Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AsignacionesController : ControllerBase
@@ -28,6 +29,7 @@ namespace Satizen_Api.Controllers
 
         //--------------- EndPoint que trae la lista completa de asignaciones -------------------
         [HttpGet]
+        [Route("listarAsignaciones")]
         public async Task<ActionResult<ApiResponse>> GetAsignaciones()
         {
             try
@@ -83,7 +85,9 @@ namespace Satizen_Api.Controllers
         }
 
         //--------------- EndPoint que crea una nueva asignacion ------------
+        [Authorize(Policy = "Admin")]
         [HttpPost]
+        [Route("AgregarAsignacion")]
         public async Task<ActionResult<ApiResponse>> PostAsignacion([FromBody] CrearAsigcionDto crearAsignacionDto)
         {
             try

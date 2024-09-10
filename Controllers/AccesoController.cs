@@ -49,6 +49,7 @@ namespace Satizen_Api.Controllers
                 var modeloUsuario = new Usuario
                 {
                     nombreUsuario = objeto.nombreUsuario,
+                    correo = objeto.correo,
                     password = _utilidades.encriptarSHA256(objeto.password),
                     idRoles = objeto.idRoles,
                     fechaCreacion = DateTime.Now,
@@ -95,7 +96,7 @@ namespace Satizen_Api.Controllers
 
             if (usuarioEncontrado == null)
             {
-                return StatusCode(StatusCodes.Status200OK, new { isSuccess = false, token = "", refreshToken = "" });
+                return StatusCode(StatusCodes.Status400BadRequest, new { isSuccess = false, token = "", refreshToken = "" });
             }
             else
             {
