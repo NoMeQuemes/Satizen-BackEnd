@@ -28,6 +28,7 @@ namespace Satizen_Api.Controllers
         }
 
         //--------------- EndPoint que trae la lista completa de asignaciones -------------------
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("listarAsignaciones")]
         public async Task<ActionResult<ApiResponse>> GetAsignaciones()
@@ -52,6 +53,7 @@ namespace Satizen_Api.Controllers
         }
 
         //------------- EndPoint que trae una asignacion a través de la id --------------
+        [Authorize(Policy = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse>> GetAsignacion(int id)
         {
@@ -118,6 +120,7 @@ namespace Satizen_Api.Controllers
         }
 
         //--------------- EndPoint que actualiza una asignacion existente ------------
+        [Authorize(Policy = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult<ApiResponse>> PutAsignacion(int id, [FromBody] ActualizarAsignacionDto actualizarAsignacionDto)
         {
@@ -163,6 +166,7 @@ namespace Satizen_Api.Controllers
             }
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPatch]
         [Route("EliminarAsignacion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

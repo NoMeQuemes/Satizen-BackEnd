@@ -58,7 +58,22 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 //Configuración de roles
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("Admin", policy => policy.RequireClaim("Rol", "1"));
+    options.AddPolicy("Admin", policy => policy.RequireClaim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", "1"));
+    options.AddPolicy("Doctor", policy => policy.RequireClaim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", "2"));
+    options.AddPolicy("Enfermero", policy => policy.RequireClaim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", "3"));
+
+    options.AddPolicy("AdminDoctorEnfermero", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => (c.Type == "Rol" && (c.Value == "1" || c.Value == "2" || c.Value == "3")))));
+
+    options.AddPolicy("AdminDoctor", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => (c.Type == "Rol" && (c.Value == "1" || c.Value == "2")))));
+
+    options.AddPolicy("DoctorOrEnfermero", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => (c.Type == "Rol" && (c.Value == "2" || c.Value == "3")))));
+
 });
 
 builder.Services.AddCors(options =>

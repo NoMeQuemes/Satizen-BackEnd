@@ -12,6 +12,7 @@ using Satizen_Api.Models.Dto.Sectores;
 
 namespace Satizen_Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SectoresController : ControllerBase
@@ -26,7 +27,7 @@ namespace Satizen_Api.Controllers
         }
 
         //--------------- EndPoint que trae la lista completa de sectores -------------------
-        //[Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarSectores")]
         public async Task<ActionResult<ApiResponse>> GetSectores()
@@ -62,6 +63,7 @@ namespace Satizen_Api.Controllers
 
 
         //------------- EndPoint que trae un sector a través de la id --------------
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarPorId/{id}")]
 
@@ -96,6 +98,7 @@ namespace Satizen_Api.Controllers
         }
 
         //------------------------ EndPoint que crea nuevos doctores -------------------------
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         [Route("CrearSector")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -134,6 +137,7 @@ namespace Satizen_Api.Controllers
 
 
         //--------------- EndPoint que actualiza un registro en la base de datos ------------
+        [Authorize(Policy = "Admin")]
         [HttpPut]
         [Route("ActualizarSector/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -182,6 +186,7 @@ namespace Satizen_Api.Controllers
 
 
         //--------------- EndPoint que elimina (desactiva) un sector en la base de datos ------------
+        [Authorize(Policy = "Admin")]
         [HttpPatch]
         [Route("EliminarSector/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

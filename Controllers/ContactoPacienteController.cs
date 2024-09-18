@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Satizen_Api.Data;
@@ -9,6 +10,7 @@ using System.Net;
 
 namespace Satizen_Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ContactoPacienteController : ControllerBase
@@ -24,6 +26,7 @@ namespace Satizen_Api.Controllers
             _response = new ApiResponse();
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpGet]
         [Route("ListarContactos")]
         public async Task<ActionResult<ApiResponse>> GetContactos()
@@ -46,6 +49,7 @@ namespace Satizen_Api.Controllers
             return _response;
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpGet("{id}", Name = "GetContacto")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -59,6 +63,7 @@ namespace Satizen_Api.Controllers
             return Ok(contacto);
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPost]
         [Route("CrearContacto")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -90,6 +95,7 @@ namespace Satizen_Api.Controllers
             }
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPatch]
         [Route("EliminarUsuario/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -117,6 +123,7 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -11,10 +11,12 @@ using System.Collections.Generic;
 using Satizen_Api.Data;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Usuarios;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Satizen_Api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class UsuariosController : ControllerBase
     {
@@ -31,6 +33,7 @@ namespace Satizen_Api.Controllers
         }
 
         //--------------- EndPoint que trae la lista completa de usuarios -------------------
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarUsuarios")]
         public async Task<ActionResult<ApiResponse>> GetUsuarios()
@@ -54,6 +57,7 @@ namespace Satizen_Api.Controllers
         }
 
         //------------- EndPoint que trae un usuario a través de la id --------------
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarPorId/{id}")]
 
@@ -88,6 +92,7 @@ namespace Satizen_Api.Controllers
         }
 
         // -------------- EndPoint que actualiza un registro en la base de datos -----------
+        [Authorize(Policy = "Admin")]
         [HttpPut]
         [Route("ActualizarUsuario/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -138,6 +143,7 @@ namespace Satizen_Api.Controllers
 
 
         //--------------- EndPoint que desactiva un registro en la base de datos ------------
+        [Authorize(Policy = "Admin")]
         [HttpPatch]
         [Route("EliminarUsuario/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

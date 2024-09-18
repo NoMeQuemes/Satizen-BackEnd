@@ -11,7 +11,7 @@ using System.Net;
 namespace Satizen_Api.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class PersonalController : ControllerBase
     {
@@ -24,6 +24,7 @@ namespace Satizen_Api.Controllers
             _response = new();
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarPersonal")]
         //[Authorize(Policy = "Admin")]
@@ -34,6 +35,7 @@ namespace Satizen_Api.Controllers
                                                         .ToListAsync();
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarPorId/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,6 +52,7 @@ namespace Satizen_Api.Controllers
             return Ok(institucion);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         [Route("CrearPersonal")]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Personal))]
@@ -91,6 +94,7 @@ namespace Satizen_Api.Controllers
             return _response;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut]
         [Route("ActualizarPersonal/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -123,6 +127,7 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPatch]
         [Route("EliminarPersonal/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.JsonPatch;
@@ -15,6 +14,7 @@ using System.Threading;
 
 namespace Satizen_Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PacientesController : ControllerBase
@@ -30,7 +30,7 @@ namespace Satizen_Api.Controllers
             _response = new ApiResponse();
         }
 
-        //[Authorize(Policy = "Admin")]
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpGet]
         [Route("ListarPacientes")]
         public async Task<ActionResult<ApiResponse>> GetPaciente()
@@ -52,6 +52,7 @@ namespace Satizen_Api.Controllers
             return _response;
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpGet("{id:int}", Name = "GetPaciente")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -70,6 +71,7 @@ namespace Satizen_Api.Controllers
             return Ok(paciente);
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -96,6 +98,7 @@ namespace Satizen_Api.Controllers
             return CreatedAtRoute("GetPaciente", new { id = modelo.idPaciente }, modelo);
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPatch]
         [Route("DesactivarPaciente/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -123,6 +126,7 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -147,6 +151,7 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPatch("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

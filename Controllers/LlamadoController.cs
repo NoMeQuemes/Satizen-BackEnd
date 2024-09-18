@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ using System.Net;
 
 namespace Satizen_Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LlamadoController : ControllerBase
@@ -26,6 +28,7 @@ namespace Satizen_Api.Controllers
         }
 
 
+        [Authorize(Policy = "AdminDoctor")]
         [HttpGet]
         [Route("ListarLlamados")]
         public async Task<ActionResult<ApiResponse>> GetLlamados()
@@ -49,6 +52,7 @@ namespace Satizen_Api.Controllers
         }
 
 
+        [Authorize(Policy = "AdminDoctor")]
         [HttpGet("{id:int}", Name = "GetLlamado")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -80,6 +84,7 @@ namespace Satizen_Api.Controllers
 
 
 
+        [Authorize(Policy = "AdminDoctor")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -123,6 +128,7 @@ namespace Satizen_Api.Controllers
 
 
 
+        [Authorize(Policy = "AdminDoctor")]
         [HttpPatch]
         [Route("EliminarLlamado/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -152,6 +158,7 @@ namespace Satizen_Api.Controllers
 
 
 
+        [Authorize(Policy = "AdminDoctor")]
         [HttpPut]
         [Route("ActualizarLlamado/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -198,6 +205,7 @@ namespace Satizen_Api.Controllers
 
         }
 
+        [Authorize(Policy = "AdminDoctor")]
         [HttpPatch("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

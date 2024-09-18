@@ -11,10 +11,12 @@ using System.Collections.Generic;
 using Satizen_Api.Data;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Institucion;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Proyec_Satizen_Api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class InstitucionController : ControllerBase
     {
@@ -30,6 +32,7 @@ namespace Proyec_Satizen_Api.Controllers
         }
 
 
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarInstituciones")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -53,6 +56,7 @@ namespace Proyec_Satizen_Api.Controllers
             return _response;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarPorId/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -69,6 +73,7 @@ namespace Proyec_Satizen_Api.Controllers
             return Ok(institucion);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         [Route("CrearInstitucion")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -109,6 +114,7 @@ namespace Proyec_Satizen_Api.Controllers
             return _response;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut]
         [Route("ActualizarInstitucion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -139,6 +145,7 @@ namespace Proyec_Satizen_Api.Controllers
         }
 
 
+        [Authorize(Policy = "Admin")]
         [HttpPatch]
         [Route("EliminarInstitucion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
