@@ -231,6 +231,12 @@ namespace Satizen_Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idPaciente"));
 
+                    b.Property<string>("apellido")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("dni")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("estadoPaciente")
                         .HasColumnType("datetime2");
 
