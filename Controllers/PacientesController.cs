@@ -30,7 +30,7 @@ namespace Satizen_Api.Controllers
             _response = new ApiResponse();
         }
 
-        //[Authorize(Policy = "AdminDoctorEnfermero")]
+        [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpGet]
         [Route("ListarPacientes")]
         public async Task<ActionResult<ApiResponse>> GetPaciente()
