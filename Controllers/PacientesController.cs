@@ -53,7 +53,8 @@ namespace Satizen_Api.Controllers
         }
 
         [Authorize(Policy = "AdminDoctorEnfermero")]
-        [HttpGet("{id:int}", Name = "GetPaciente")]
+        [HttpGet]
+        [Route("ListarPorId/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -73,6 +74,7 @@ namespace Satizen_Api.Controllers
 
         [Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPost]
+        [Route("CrearPaciente")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<CreatePacientesDto>> CrearPaciente([FromBody] CreatePacientesDto pacientesDto)
@@ -129,7 +131,8 @@ namespace Satizen_Api.Controllers
         }
 
         [Authorize(Policy = "AdminDoctorEnfermero")]
-        [HttpPut("{id:int}")]
+        [HttpPut]
+        [Route("ActualizarPaciente/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdatePaciente(int id, [FromBody] UpdatePacientesDto pacientesDto)
@@ -155,56 +158,6 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
-        [Authorize(Policy = "AdminDoctorEnfermero")]
-        [HttpPatch("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdatePartialPaciente(int id, [FromBody] JsonPatchDocument<PacientesDto> patchDto)
-        {
-            if (patchDto == null || id <= 0)
-            {
-                return BadRequest();
-            }
-
-            var pacientes = await _applicationDbContext.Pacientes.FindAsync(id);
-            if (pacientes == null)
-            {
-                return NotFound();
-            }
-
-            var pacienteDto = new PacientesDto
-            {
-                idPaciente = pacientes.idPaciente,
-                idUsuario = pacientes.idUsuario,
-                idInstitucion = pacientes.idInstitucion,
-                nombrePaciente = pacientes.nombrePaciente,
-                apellido = pacientes.apellido,
-                dni = pacientes.dni,
-                numeroHabitacionPaciente = pacientes.numeroHabitacionPaciente,
-                fechaIngreso = pacientes.fechaIngreso,
-                observacionPaciente = pacientes.observacionPaciente
-            };
-
-            patchDto.ApplyTo(pacienteDto, ModelState);
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            pacientes.idUsuario = pacienteDto.idUsuario;
-            pacientes.idInstitucion = pacienteDto.idInstitucion;
-            pacientes.nombrePaciente = pacienteDto.nombrePaciente;
-            pacientes.apellido = pacienteDto.apellido;
-            pacientes.dni = pacienteDto.dni;
-            pacientes.numeroHabitacionPaciente = pacienteDto.numeroHabitacionPaciente;
-            pacientes.fechaIngreso = pacienteDto.fechaIngreso;
-            pacientes.observacionPaciente = pacienteDto.observacionPaciente;
-
-            _applicationDbContext.Pacientes.Update(pacientes);
-            await _applicationDbContext.SaveChangesAsync();
-
-            return NoContent();
-        }
+        
     }
 }
