@@ -119,29 +119,45 @@ namespace Proyec_Satizen_Api.Controllers
         [Route("ActualizarInstitucion/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult UpdateInstitucion(int id, [FromBody] InstitucionUpdateDto institucionupdateDto)
+        public async Task<ActionResult<ApiResponse>> ActualizarInstitucion(int id, [FromBody] InstitucionUpdateDto institucionDto)
         {
-            if (institucionupdateDto == null || id != institucionupdateDto.idInstitucion)
+            try
             {
-                return BadRequest();
+                if(institucionDto == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+
+                var institucionExistente = await _db.Instituciones.FirstOrDefaultAsync(e => e.idInstitucion == id);
+
+                if(institucionExistente == null)
+                {
+                    _response.IsExitoso = false;
+                    _response.statusCode = HttpStatusCode.NotFound;
+                    _response.ErrorMessages = new List<string> { "La institución no existe" };
+                    return _response;
+                }
+
+                institucionExistente.nombreInstitucion = institucionDto.nombreInstitucion;
+                institucionExistente.direccionInstitucion = institucionDto.direccionInstitucion;
+                institucionExistente.telefonoInstitucion = institucionDto.telefonoInstitucion;
+                institucionExistente.correoInstitucion = institucionDto.correoInstitucion;
+                institucionExistente.celularInstitucion = institucionDto.celularInstitucion;
+
+                _db.Instituciones.Update(institucionExistente);
+                await _db.SaveChangesAsync();
+
+                _response.statusCode = HttpStatusCode.NoContent;
+                return _response;
             }
-
-            var institucion = _db.Instituciones.FirstOrDefault(v => v.idInstitucion == id);
-
-            if (institucion == null)
+            catch(Exception ex)
             {
-                return NotFound(); // Agregar manejo para cuando no se encuentra la institución
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
             }
-
-            institucion.nombreInstitucion = institucionupdateDto.nombreInstitucion;
-            institucion.direccionInstitucion = institucionupdateDto.direccionInstitucion;
-            institucion.telefonoInstitucion = institucionupdateDto.telefonoInstitucion;
-            institucion.correoInstitucion = institucionupdateDto.correoInstitucion;
-            institucion.celularInstitucion = institucionupdateDto.celularInstitucion;
-
-            _db.SaveChanges(); // Guardar los cambios en la base de datos
-
-            return NoContent();
+            return _response;
         }
 
 

@@ -12,6 +12,7 @@ using Satizen_Api.Data;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Usuarios;
 using Microsoft.AspNetCore.Authorization;
+using Satizen_Api.Custom;
 
 namespace Satizen_Api.Controllers
 {
@@ -23,13 +24,15 @@ namespace Satizen_Api.Controllers
 
         private readonly ILogger<UsuariosController> _logger;
         private readonly ApplicationDbContext _db;
+        private readonly Utilidades _utilidades;
         protected ApiResponse _response;
 
-        public UsuariosController(ILogger<UsuariosController> logger, ApplicationDbContext db)
+        public UsuariosController(ILogger<UsuariosController> logger, ApplicationDbContext db, Utilidades utilidades)
         {
             _logger = logger;
             _db = db;
             _response = new();
+            _utilidades = utilidades;
         }
 
         //--------------- EndPoint que trae la lista completa de usuarios -------------------
@@ -121,7 +124,7 @@ namespace Satizen_Api.Controllers
 
                 usuarioExistente.nombreUsuario = usuarioDto.nombreUsuario;
                 usuarioExistente.correo = usuarioDto.correo;
-                usuarioExistente.password = usuarioDto.password;
+                //usuarioExistente.password = _utilidades.encriptarSHA256(usuarioDto.password);
                 usuarioExistente.idRoles = usuarioDto.idRoles;
                 usuarioExistente.fechaActualizacion = DateTime.Now;
 
@@ -171,5 +174,20 @@ namespace Satizen_Api.Controllers
             _response.statusCode = HttpStatusCode.NoContent;
             return Ok(_response);
         }
+
+
+        [HttpGet]
+        [Route("ListarRoles")]
+        public async Task<ActionResult<ApiResponse>> ListarRoles()
+        {
+            var roles = await _db.Roles.ToListAsync();
+            return Ok(new ApiResponse
+            {
+                Resultado = roles,
+                statusCode = HttpStatusCode.OK,
+                IsExitoso = true
+            });
+        }
+
     }
 }

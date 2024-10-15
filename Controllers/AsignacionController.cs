@@ -37,7 +37,7 @@ namespace Satizen_Api.Controllers
             {
                 var asignaciones = await _applicationDbContext.Asignaciones
                                           .Where(a => a.fechaEliminacion == null)
-                                          .Include(a => a.Turno)  // Incluyendo el turno
+                                          .Include(a => a.Turnos)  // Incluyendo el turno
                                           .ToListAsync();
 
                 _response.Resultado = asignaciones;

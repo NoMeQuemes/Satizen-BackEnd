@@ -525,33 +525,44 @@ namespace Satizen_Api.Migrations
                     b.HasIndex("idRoles");
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            idUsuario = 1,
+                            correo = "admin@gmail.com",
+                            fechaCreacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            idRoles = 1,
+                            nombreUsuario = "admin",
+                            password = "123"
+                        });
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Asignacion", b =>
                 {
-                    b.HasOne("Satizen_Api.Models.Personal", "Personal")
+                    b.HasOne("Satizen_Api.Models.Personal", "Personals")
                         .WithMany()
                         .HasForeignKey("idPersonal")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Satizen_Api.Models.Sector", "Sector")
+                    b.HasOne("Satizen_Api.Models.Sector", "Sectores")
                         .WithMany()
                         .HasForeignKey("idSector")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Satizen_Api.Models.Turno", "Turno")
+                    b.HasOne("Satizen_Api.Models.Turno", "Turnos")
                         .WithMany()
                         .HasForeignKey("idTurno")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Personal");
+                    b.Navigation("Personals");
 
-                    b.Navigation("Sector");
+                    b.Navigation("Sectores");
 
-                    b.Navigation("Turno");
+                    b.Navigation("Turnos");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Contacto", b =>
@@ -684,10 +695,15 @@ namespace Satizen_Api.Migrations
             modelBuilder.Entity("Satizen_Api.Models.Usuario", b =>
                 {
                     b.HasOne("Satizen_Api.Models.Roles", "Roles")
-                        .WithMany()
+                        .WithMany("Usuarios")
                         .HasForeignKey("idRoles");
 
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("Satizen_Api.Models.Roles", b =>
+                {
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

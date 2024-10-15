@@ -7,19 +7,20 @@ namespace Satizen_Api.Models
     {
         [Key]
         public int idAsignacion { get; set; }
+
         public int idPersonal { get; set; }
         [ForeignKey("idPersonal")]
-        public Personal Personal { get; set; }
+        public virtual Personal Personals { get; set; }
 
         public int idSector { get; set; }
         [ForeignKey("idSector")]
-        public Sector Sector { get; set; }
+        public virtual Sector Sectores { get; set; }
 
         public string diaSemana { get; set; }
 
         public int idTurno { get; set; } // Clave foránea
         [ForeignKey("idTurno")]
-        public virtual Turno Turno { get; set; } // Navegación
+        public virtual Turno Turnos { get; set; } // Navegación
 
         public DateTime horaInicio { get; set; }
         public TimeSpan horaFinalizacion { get; set; }

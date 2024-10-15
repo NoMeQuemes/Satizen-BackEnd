@@ -14,5 +14,7 @@ namespace Satizen_Api.Models
         public int? idPermiso { get; set; }
         [ForeignKey("idPermiso")]
         public virtual Permiso Permiso { get; set; }
+
+        public ICollection<Usuario> Usuarios { get; set; }
     }
 }

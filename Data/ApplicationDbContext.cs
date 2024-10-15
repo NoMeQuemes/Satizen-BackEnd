@@ -45,6 +45,10 @@ namespace Satizen_Api.Data
                 new Turno() { idTurno = 3, Nombre = "Noche"}
             );
 
+            modelBuilder.Entity<Usuario>().HasData(
+                new Usuario() { idUsuario = 1, nombreUsuario = "admin", correo = "admin@gmail.com", password = "123", idRoles = 1 }
+                );
+
             modelBuilder.Entity<RefreshToken>()
                 .Property(o => o.esActivo)
                 .HasComputedColumnSql("IIF(fechaExpiracion < GETDATE(), CONVERT(BIT, 0), CONVERT(BIT, 1))");
@@ -62,14 +66,21 @@ namespace Satizen_Api.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Asignacion>()
-                .HasOne(a => a.Personal)
+                .HasOne(a => a.Personals)
                 .WithMany()
                 .HasForeignKey(a => a.idPersonal);
 
             modelBuilder.Entity<Asignacion>()
-                .HasOne(a => a.Sector)
+                .HasOne(a => a.Sectores)
                 .WithMany()
-                .HasForeignKey(a => a.idSector);
+                .HasForeignKey(a => a.idSector)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Asignacion>()
+                .HasOne(a => a.Turnos)
+                .WithMany()
+                .HasForeignKey(a => a.idTurno)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

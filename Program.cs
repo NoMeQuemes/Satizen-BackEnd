@@ -64,15 +64,15 @@ builder.Services.AddAuthorization(options =>
 
     options.AddPolicy("AdminDoctorEnfermero", policy =>
         policy.RequireAssertion(context =>
-            context.User.HasClaim(c => (c.Type == "Rol" && (c.Value == "1" || c.Value == "2" || c.Value == "3")))));
+            context.User.HasClaim(c => (c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" && (c.Value == "1" || c.Value == "2" || c.Value == "3")))));
 
     options.AddPolicy("AdminDoctor", policy =>
         policy.RequireAssertion(context =>
-            context.User.HasClaim(c => (c.Type == "Rol" && (c.Value == "1" || c.Value == "2")))));
+            context.User.HasClaim(c => (c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" && (c.Value == "1" || c.Value == "2")))));
 
     options.AddPolicy("DoctorOrEnfermero", policy =>
         policy.RequireAssertion(context =>
-            context.User.HasClaim(c => (c.Type == "Rol" && (c.Value == "2" || c.Value == "3")))));
+            context.User.HasClaim(c => (c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" && (c.Value == "2" || c.Value == "3")))));
 
 });
 
