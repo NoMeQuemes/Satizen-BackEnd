@@ -87,6 +87,8 @@ namespace Satizen_Api.Controllers
                 idUsuario = pacientesDto.idUsuario,
                 idInstitucion = pacientesDto.idInstitucion,
                 nombrePaciente = pacientesDto.nombrePaciente,
+                apellido = pacientesDto.apellido,
+                dni = pacientesDto.dni,
                 numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
                 observacionPaciente = pacientesDto.observacionPaciente,
                 fechaIngreso = DateTime.Now
@@ -142,6 +144,8 @@ namespace Satizen_Api.Controllers
 
             paciente.idInstitucion = pacientesDto.idInstitucion;
             paciente.nombrePaciente = pacientesDto.nombrePaciente;
+            paciente.apellido = pacientesDto.apellido;
+            paciente.dni = pacientesDto.dni;
             paciente.numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente;
             paciente.observacionPaciente = pacientesDto.observacionPaciente;
 
@@ -174,6 +178,8 @@ namespace Satizen_Api.Controllers
                 idUsuario = pacientes.idUsuario,
                 idInstitucion = pacientes.idInstitucion,
                 nombrePaciente = pacientes.nombrePaciente,
+                apellido = pacientes.apellido,
+                dni = pacientes.dni,
                 numeroHabitacionPaciente = pacientes.numeroHabitacionPaciente,
                 fechaIngreso = pacientes.fechaIngreso,
                 observacionPaciente = pacientes.observacionPaciente
@@ -189,6 +195,8 @@ namespace Satizen_Api.Controllers
             pacientes.idUsuario = pacienteDto.idUsuario;
             pacientes.idInstitucion = pacienteDto.idInstitucion;
             pacientes.nombrePaciente = pacienteDto.nombrePaciente;
+            pacientes.apellido = pacienteDto.apellido;
+            pacientes.dni = pacienteDto.dni;
             pacientes.numeroHabitacionPaciente = pacienteDto.numeroHabitacionPaciente;
             pacientes.fechaIngreso = pacienteDto.fechaIngreso;
             pacientes.observacionPaciente = pacienteDto.observacionPaciente;

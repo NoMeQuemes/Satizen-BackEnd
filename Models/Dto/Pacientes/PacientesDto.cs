@@ -12,6 +12,8 @@ namespace Satizen_Api.Models.Dto.Pacientes
         public int? idUsuario { get; set; }
         public int idInstitucion { get; set; }
         public string? nombrePaciente { get; set; }
+        public string? apellido { get; set; }
+        public string? dni { get; set; }
         public int numeroHabitacionPaciente { get; set; }
         public DateTime fechaIngreso { get; set; }
         public DateTime? estadoPaciente { get; set; }

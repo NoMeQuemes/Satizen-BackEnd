@@ -20,6 +20,8 @@ namespace Satizen_Api.Models
         
 
         public string? nombrePaciente { get; set; }
+        public string? apellido { get; set; }
+        public string? dni { get; set; }
         public int numeroHabitacionPaciente { get; set; }
         public DateTime fechaIngreso { get; set; }
         public string? observacionPaciente { get; set; }
