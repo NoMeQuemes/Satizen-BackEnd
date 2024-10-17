@@ -10,7 +10,7 @@ namespace Satizen_Api.Models.Dto.Personal
         public int idUsuario { get; set; }
         public string? nombrePersonal { get; set; }
         [Required(ErrorMessage = "El rol propio tiene que estar especificado")]
-        public string? rolPersonal { get; set; }
+        public int? rolPersonal { get; set; }
         [Required(ErrorMessage = "El numero tiene que estar especificado")]
         public int celularPersonal { get; set; }
         [Required(ErrorMessage = "El numero tiene que estar especificado")]

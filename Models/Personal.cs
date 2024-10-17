@@ -20,8 +20,12 @@ namespace Satizen_Api.Models
 
         [Required]
         public string? nombrePersonal { get; set; }
+
         [Required]
-        public string? rolPersonal { get; set; }
+        public int? rolPersonal { get; set; }
+        [ForeignKey("idRol")]
+        public virtual Roles Roles { get; set; }
+
         [Required]
         public int celularPersonal { get; set; }
         [Required]

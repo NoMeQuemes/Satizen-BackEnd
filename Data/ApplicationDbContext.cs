@@ -47,7 +47,7 @@ namespace Satizen_Api.Data
 
             modelBuilder.Entity<Usuario>().HasData(
                 new Usuario() { idUsuario = 1, nombreUsuario = "admin", correo = "admin@gmail.com", password = "123", idRoles = 1 }
-                );
+                );  
 
             modelBuilder.Entity<RefreshToken>()
                 .Property(o => o.esActivo)
