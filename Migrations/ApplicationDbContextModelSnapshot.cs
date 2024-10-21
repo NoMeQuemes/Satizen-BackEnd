@@ -59,7 +59,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idTurno");
 
-                    b.ToTable("Asignaciones", (string)null);
+                    b.ToTable("Asignaciones");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Contacto", b =>
@@ -92,7 +92,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idPaciente");
 
-                    b.ToTable("Contactos", (string)null);
+                    b.ToTable("Contactos");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.DispositivoLaboral", b =>
@@ -128,7 +128,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idPersonal");
 
-                    b.ToTable("DispositivosLaborales", (string)null);
+                    b.ToTable("DispositivosLaborales");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Institucion", b =>
@@ -159,7 +159,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasKey("idInstitucion");
 
-                    b.ToTable("Instituciones", (string)null);
+                    b.ToTable("Instituciones");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Llamado", b =>
@@ -197,7 +197,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idPersonal");
 
-                    b.ToTable("Llamados", (string)null);
+                    b.ToTable("Llamados");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Mensaje", b =>
@@ -220,7 +220,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idReceptor");
 
-                    b.ToTable("Mensajes", (string)null);
+                    b.ToTable("Mensajes");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Paciente", b =>
@@ -264,7 +264,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idUsuario");
 
-                    b.ToTable("Pacientes", (string)null);
+                    b.ToTable("Pacientes");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Permiso", b =>
@@ -280,7 +280,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasKey("idPermiso");
 
-                    b.ToTable("Permisos", (string)null);
+                    b.ToTable("Permisos");
 
                     b.HasData(
                         new
@@ -326,19 +326,12 @@ namespace Satizen_Api.Migrations
                     b.Property<int>("idInstitucion")
                         .HasColumnType("int");
 
-                    b.Property<int?>("idRol")
-                        .HasColumnType("int");
-
                     b.Property<int>("idUsuario")
                         .HasColumnType("int");
 
                     b.Property<string>("nombrePersonal")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("rolPersonal")
-                        .IsRequired()
-                        .HasColumnType("int");
 
                     b.Property<int>("telefonoPersonal")
                         .HasColumnType("int");
@@ -347,11 +340,9 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idInstitucion");
 
-                    b.HasIndex("idRol");
-
                     b.HasIndex("idUsuario");
 
-                    b.ToTable("Personals", (string)null);
+                    b.ToTable("Personals");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.RefreshToken", b =>
@@ -386,7 +377,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idUsuario");
 
-                    b.ToTable("RefreshTokens", (string)null);
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Roles", b =>
@@ -410,7 +401,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idPermiso");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
 
                     b.HasData(
                         new
@@ -466,7 +457,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idInstitucion");
 
-                    b.ToTable("Sectores", (string)null);
+                    b.ToTable("Sectores");
                 });
 
             modelBuilder.Entity("Satizen_Api.Models.Turno", b =>
@@ -482,7 +473,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasKey("idTurno");
 
-                    b.ToTable("Turnos", (string)null);
+                    b.ToTable("Turnos");
 
                     b.HasData(
                         new
@@ -535,7 +526,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasIndex("idRoles");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
 
                     b.HasData(
                         new
@@ -661,10 +652,6 @@ namespace Satizen_Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Satizen_Api.Models.Roles", "Roles")
-                        .WithMany()
-                        .HasForeignKey("idRol");
-
                     b.HasOne("Satizen_Api.Models.Usuario", "Usuarios")
                         .WithMany()
                         .HasForeignKey("idUsuario")
@@ -672,8 +659,6 @@ namespace Satizen_Api.Migrations
                         .IsRequired();
 
                     b.Navigation("Instituciones");
-
-                    b.Navigation("Roles");
 
                     b.Navigation("Usuarios");
                 });

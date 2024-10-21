@@ -11,7 +11,7 @@ using System.Net;
 
 namespace Satizen_Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LlamadoController : ControllerBase
@@ -28,7 +28,7 @@ namespace Satizen_Api.Controllers
         }
 
 
-        [Authorize(Policy = "AdminDoctor")]
+        //[Authorize(Policy = "AdminDoctor")]
         [HttpGet]
         [Route("ListarLlamados")]
         public async Task<ActionResult<ApiResponse>> GetLlamados()
@@ -39,6 +39,18 @@ namespace Satizen_Api.Controllers
 
                 _response.Resultado = await _llamadoContext.Llamados
                                               .Where(u => u.fechaEliminacion == null)
+                                              .Include(p => p.Pacientes)
+                                              .Include(u => u.Personals)
+                                              .Select(p => new
+                                              {
+                                                  p.idLlamado,
+                                                  Pacientes = p.Pacientes.nombrePaciente,
+                                                  Personals = p.Personals.nombrePersonal,
+                                                  p.fechaHoraLlamado,
+                                                  p.estadoLlamado,
+                                                  p.prioridadLlamado,
+                                                  p.observacionLlamado
+                                              })
                                               .ToListAsync();
                 _response.statusCode = HttpStatusCode.OK;
                 return Ok(_response);
@@ -52,8 +64,9 @@ namespace Satizen_Api.Controllers
         }
 
 
-        [Authorize(Policy = "AdminDoctor")]
-        [HttpGet("{id:int}", Name = "GetLlamado")]
+        //[Authorize(Policy = "AdminDoctor")]
+        [HttpGet]
+        [Route("ListarPorID/{id:int} ")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ApiResponse>> GetLlamado(int id)
@@ -84,8 +97,9 @@ namespace Satizen_Api.Controllers
 
 
 
-        [Authorize(Policy = "AdminDoctor")]
+        //[Authorize(Policy = "AdminDoctor")]
         [HttpPost]
+        [Route("AgregarLlamado")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<ApiResponse>> CrearLlamado([FromBody] LlamadoCreateDto createDto)
@@ -115,20 +129,20 @@ namespace Satizen_Api.Controllers
 
                 _response.Resultado = llamado;
                 _response.statusCode = HttpStatusCode.Created;
-                return CreatedAtRoute("GetLlamado", new { id = llamado.idLlamado }, _response);
+                return StatusCode((int) _response.statusCode, _response) ;
             }
             catch (Exception ex)
             {
                 _response.IsExitoso = false;
                 _response.ErrorMessages = new List<string> { ex.ToString() };
                 _response.statusCode = HttpStatusCode.InternalServerError;
+                return StatusCode((int)_response.statusCode, _response);
             }
-            return StatusCode((int)_response.statusCode, _response);
         }
 
 
 
-        [Authorize(Policy = "AdminDoctor")]
+        //[Authorize(Policy = "AdminDoctor")]
         [HttpPatch]
         [Route("EliminarLlamado/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -158,7 +172,7 @@ namespace Satizen_Api.Controllers
 
 
 
-        [Authorize(Policy = "AdminDoctor")]
+        //[Authorize(Policy = "AdminDoctor")]
         [HttpPut]
         [Route("ActualizarLlamado/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -205,7 +219,7 @@ namespace Satizen_Api.Controllers
 
         }
 
-        [Authorize(Policy = "AdminDoctor")]
+        //[Authorize(Policy = "AdminDoctor")]
         [HttpPatch("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

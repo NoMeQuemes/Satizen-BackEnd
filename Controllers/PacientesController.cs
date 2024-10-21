@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace Satizen_Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PacientesController : ControllerBase
@@ -30,7 +30,7 @@ namespace Satizen_Api.Controllers
             _response = new ApiResponse();
         }
 
-        [Authorize(Policy = "AdminDoctorEnfermero")]
+        //[Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpGet]
         [Route("ListarPacientes")]
         public async Task<ActionResult<ApiResponse>> GetPaciente()
@@ -40,6 +40,20 @@ namespace Satizen_Api.Controllers
 
                 _response.Resultado = await _applicationDbContext.Pacientes
                                               .Where(u => u.estadoPaciente == null)
+                                              .Include(i => i.Instituciones)
+                                              .Include(u => u.usuario)
+                                              .Select(i => new
+                                              {
+                                                  i.idPaciente,
+                                                  Instituciones = i.Instituciones.nombreInstitucion,
+                                                  Usuarios = i.usuario.nombreUsuario,
+                                                  i.nombrePaciente,
+                                                  i.apellido,
+                                                  i.dni,
+                                                  i.numeroHabitacionPaciente,
+                                                  i.fechaIngreso,
+                                                  i.observacionPaciente
+                                              })
                                               .ToListAsync();
                 _response.statusCode = HttpStatusCode.OK;
                 return Ok(_response);
@@ -52,7 +66,7 @@ namespace Satizen_Api.Controllers
             return _response;
         }
 
-        [Authorize(Policy = "AdminDoctorEnfermero")]
+        //[Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpGet]
         [Route("ListarPorId/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -72,37 +86,59 @@ namespace Satizen_Api.Controllers
             return Ok(paciente);
         }
 
-        [Authorize(Policy = "AdminDoctorEnfermero")]
+        //[Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPost]
         [Route("CrearPaciente")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<CreatePacientesDto>> CrearPaciente([FromBody] CreatePacientesDto pacientesDto)
+        public async Task<ActionResult<ApiResponse>> CrearPaciente(CreatePacientesDto pacientesDto)
         {
-            if (pacientesDto == null)
+            try
             {
-                return BadRequest();
+                if( pacientesDto == null )
+                {
+                    return BadRequest(pacientesDto);
+                }
+                
+                Paciente modelo = new()
+                {
+                    idUsuario = pacientesDto.idUsuario,
+                    idInstitucion = pacientesDto.idInstitucion,
+                    nombrePaciente = pacientesDto.nombrePaciente,
+                    apellido = pacientesDto.apellido,
+                    dni = pacientesDto.dni,
+                    numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
+                    observacionPaciente = pacientesDto.observacionPaciente,
+                    fechaIngreso = DateTime.Now
+                };
+
+                await _applicationDbContext.Pacientes.AddAsync(modelo);
+                await _applicationDbContext.SaveChangesAsync();
+
+                if(modelo.idPaciente != 0)
+                {
+                    _response.statusCode = HttpStatusCode.OK;
+                    _response.IsExitoso = true;
+                    _response.Resultado = modelo;
+                }
+                else
+                {
+                    _response.statusCode = HttpStatusCode.InternalServerError;
+                    _response.IsExitoso = false;
+                    _response.ErrorMessages = new List<string> { "Error al registrar pacientes " };
+                }
+
+                return StatusCode((int)_response.statusCode, _response);
             }
-
-            Paciente modelo = new()
+            catch (Exception ex)
             {
-                idUsuario = pacientesDto.idUsuario,
-                idInstitucion = pacientesDto.idInstitucion,
-                nombrePaciente = pacientesDto.nombrePaciente,
-                apellido = pacientesDto.apellido,
-                dni = pacientesDto.dni,
-                numeroHabitacionPaciente = pacientesDto.numeroHabitacionPaciente,
-                observacionPaciente = pacientesDto.observacionPaciente,
-                fechaIngreso = DateTime.Now
-            };
-
-            await _applicationDbContext.Pacientes.AddAsync(modelo);
-            await _applicationDbContext.SaveChangesAsync();
-
-            return CreatedAtRoute("GetPaciente", new { id = modelo.idPaciente }, modelo);
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+                return StatusCode((int)_response.statusCode, _response);
+            }
         }
 
-        [Authorize(Policy = "AdminDoctorEnfermero")]
+        //[Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPatch]
         [Route("DesactivarPaciente/{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -130,7 +166,7 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
-        [Authorize(Policy = "AdminDoctorEnfermero")]
+        //[Authorize(Policy = "AdminDoctorEnfermero")]
         [HttpPut]
         [Route("ActualizarPaciente/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -158,6 +194,32 @@ namespace Satizen_Api.Controllers
             return NoContent();
         }
 
-        
+        //------- EndPoints para listar -------
+        [HttpGet]
+        [Route("ListarInstituciones")]
+        public async Task<ActionResult<ApiResponse>> ListarInstituciones()
+        {
+            var instituciones = await _applicationDbContext.Instituciones.ToListAsync();
+            return Ok(new ApiResponse
+            {
+                Resultado = instituciones,
+                statusCode = HttpStatusCode.OK,
+                IsExitoso = true
+            });
+        }
+
+        [HttpGet]
+        [Route("ListarUsuarios")]
+        public async Task<ActionResult<ApiResponse>> ListarUsuarios()
+        {
+            var usuarios = await _applicationDbContext.Usuarios.ToListAsync();
+            return Ok(new ApiResponse
+            {
+                Resultado = usuarios,
+                statusCode = HttpStatusCode.OK,
+                IsExitoso = true
+            });
+        }
+
     }
 }

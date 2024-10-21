@@ -24,15 +24,38 @@ namespace Satizen_Api.Controllers
             _response = new();
         }
 
+        //--------------- EndPoint que trae la lista completa de personal -------------------
         [Authorize(Policy = "Admin")]
         [HttpGet]
         [Route("ListarPersonal")]
-        //[Authorize(Policy = "Admin")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Personal>))]
-        public async Task<ActionResult<IEnumerable<Personal>>> GetPersonals()
+        public async Task<ActionResult<ApiResponse>> GetPersonal()
         {
-            return await _applicationDbContext.Personals.Where(u => u.fechaEliminacion == null)
-                                                        .ToListAsync();
+            try
+            {
+                _response.Resultado = await _applicationDbContext.Personals
+                                              .Where(u => u.fechaEliminacion == null)
+                                              .Include(i => i.Instituciones)
+                                              .Include(u => u.Usuarios)
+                                              .Select(i => new
+                                              {
+                                                  i.idPersonal,
+                                                  Instituciones = i.Instituciones.nombreInstitucion,
+                                                  Usuarios = i.Usuarios.nombreUsuario,
+                                                  i.nombrePersonal,
+                                                  i.celularPersonal,
+                                                  i.telefonoPersonal,
+                                                  i.correoPersonal
+                                              })
+                                              .ToListAsync();
+                _response.statusCode = HttpStatusCode.OK;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
         }
 
         [Authorize(Policy = "Admin")]
@@ -71,7 +94,7 @@ namespace Satizen_Api.Controllers
                     idInstitucion = Personal.idInstitucion,
                     idUsuario = Personal.idUsuario,
                     nombrePersonal = Personal.nombrePersonal,
-                    rolPersonal = Personal.rolPersonal,
+                    //rolPersonal = Personal.rolPersonal,
                     celularPersonal = Personal.celularPersonal,
                     telefonoPersonal = Personal.telefonoPersonal,
                     correoPersonal = Personal.correoPersonal
@@ -116,7 +139,7 @@ namespace Satizen_Api.Controllers
             personal.idInstitucion = personalupdatedto.idInstitucion;
             personal.idUsuario = personalupdatedto.idUsuario;
             personal.nombrePersonal = personalupdatedto.nombrePersonal;
-            personal.rolPersonal = personalupdatedto.rolPersonal;
+            //personal.rolPersonal = personalupdatedto.rolPersonal;
             personal.celularPersonal = personalupdatedto.celularPersonal;
             personal.telefonoPersonal = personalupdatedto.telefonoPersonal;
             personal.correoPersonal = personalupdatedto.correoPersonal;
@@ -152,6 +175,33 @@ namespace Satizen_Api.Controllers
             await _applicationDbContext.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        //------- EndPoints para listar -------
+        [HttpGet]
+        [Route("ListarInstituciones")]
+        public async Task<ActionResult<ApiResponse>> ListarInstituciones()
+        {
+            var instituciones = await _applicationDbContext.Instituciones.ToListAsync();
+            return Ok(new ApiResponse
+            {
+                Resultado = instituciones,
+                statusCode = HttpStatusCode.OK,
+                IsExitoso = true
+            });
+        }
+
+        [HttpGet]
+        [Route("ListarUsuarios")]
+        public async Task<ActionResult<ApiResponse>> ListarUsuarios()
+        {
+            var usuarios = await _applicationDbContext.Usuarios.ToListAsync();
+            return Ok(new ApiResponse
+            {
+                Resultado = usuarios,
+                statusCode = HttpStatusCode.OK,
+                IsExitoso = true
+            });
         }
 
     }

@@ -11,8 +11,8 @@ namespace Satizen_Api.Models.Dto.Personal
 
         [Required]
         public string? nombrePersonal { get; set; }
-        [Required]
-        public int? rolPersonal { get; set; }
+        //[Required]
+        //public int? rolPersonal { get; set; }
         [Required]
         public int celularPersonal { get; set; }
         [Required]

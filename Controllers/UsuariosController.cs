@@ -47,6 +47,17 @@ namespace Satizen_Api.Controllers
 
                 _response.Resultado = await _db.Usuarios
                                               .Where(u => u.fechaEliminacion == null)
+                                              .Include( r => r.Roles)
+                                              .Select(r => new
+                                              {
+                                                  r.idUsuario,
+                                                  r.nombreUsuario,
+                                                  r.correo,
+                                                  Roles = r.Roles.nombre,
+                                                  r.fechaCreacion,
+                                                  r.fechaActualizacion,
+                                                  r.fechaEliminacion
+                                              })
                                               .ToListAsync();
                 _response.statusCode = HttpStatusCode.OK;
                 return Ok(_response);
