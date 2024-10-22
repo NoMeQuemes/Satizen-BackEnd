@@ -7,20 +7,24 @@
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\hubs\\alertahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:hubs\\alertahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\controllers\\personalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\personalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,8 +34,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\repos\\Satizen\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Models\\Usuario.cs",
+              "ToolTip": "C:\\repos\\Satizen\\Models\\Usuario.cs",
+              "RelativeToolTip": "Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T13:10:23.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccesoController.cs",
+              "DocumentMoniker": "C:\\repos\\Satizen\\Controllers\\AccesoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccesoController.cs",
+              "ToolTip": "C:\\repos\\Satizen\\Controllers\\AccesoController.cs",
+              "RelativeToolTip": "Controllers\\AccesoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T13:10:18.03Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,14 +70,14 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\repos\\Satizen\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-21T21:43:22.542Z",
+              "WhenOpened": "2024-10-22T05:14:27.536Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\repos\\Satizen\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -55,51 +85,34 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T20:07:42.469Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PersonalController.cs",
-              "DocumentMoniker": "C:\\repos\\Satizen\\Controllers\\PersonalController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PersonalController.cs",
-              "ToolTip": "C:\\repos\\Satizen\\Controllers\\PersonalController.cs",
-              "RelativeToolTip": "Controllers\\PersonalController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAA5wAYAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T19:18:34.402Z",
+              "WhenOpened": "2024-10-22T03:27:31.486Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Paciente.cs",
-              "DocumentMoniker": "C:\\repos\\Satizen\\Models\\Paciente.cs",
-              "RelativeDocumentMoniker": "Models\\Paciente.cs",
-              "ToolTip": "C:\\repos\\Satizen\\Models\\Paciente.cs",
-              "RelativeToolTip": "Models\\Paciente.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwA8AAAArAAAAAAAAAA==",
+              "Title": "AlertaHub.cs",
+              "DocumentMoniker": "C:\\repos\\Satizen\\Hubs\\AlertaHub.cs",
+              "RelativeDocumentMoniker": "Hubs\\AlertaHub.cs",
+              "ToolTip": "C:\\repos\\Satizen\\Hubs\\AlertaHub.cs",
+              "RelativeToolTip": "Hubs\\AlertaHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T01:59:37.987Z",
+              "WhenOpened": "2024-10-22T01:56:21.881Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "LlamadoController.cs",
               "DocumentMoniker": "C:\\repos\\Satizen\\Controllers\\LlamadoController.cs",
               "RelativeDocumentMoniker": "Controllers\\LlamadoController.cs",
               "ToolTip": "C:\\repos\\Satizen\\Controllers\\LlamadoController.cs",
               "RelativeToolTip": "Controllers\\LlamadoController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAcwC8AAABYAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAIwIMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T17:50:28.393Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         }
