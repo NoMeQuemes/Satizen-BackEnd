@@ -208,6 +208,21 @@ namespace Satizen_Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Enviado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FileUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Visto")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("contenidoMensaje")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("idAutor")
                         .HasColumnType("int");
 
@@ -333,7 +348,8 @@ namespace Satizen_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("telefonoPersonal")
+                    b.Property<int?>("telefonoPersonal")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("idPersonal");
