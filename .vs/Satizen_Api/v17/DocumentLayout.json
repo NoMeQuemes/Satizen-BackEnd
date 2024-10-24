@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\repos\\Satizen\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\dto\\llamados\\asignarllamadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\llamados\\asignarllamadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\dto\\llamados\\llamadoupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\llamados\\llamadoupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\dto\\llamados\\llamadocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\dto\\llamados\\llamadocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\hubs\\alertahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:hubs\\alertahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:controllers\\llamadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|c:\\repos\\satizen\\models\\llamado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3134DFF1-D17E-4A3C-BA3D-8F95151C9309}|Satizen_Api.csproj|solutionrelative:models\\llamado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +34,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\repos\\Satizen\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "Models\\Usuario.cs",
-              "ToolTip": "C:\\repos\\Satizen\\Models\\Usuario.cs",
-              "RelativeToolTip": "Models\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T13:10:23.192Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccesoController.cs",
-              "DocumentMoniker": "C:\\repos\\Satizen\\Controllers\\AccesoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccesoController.cs",
-              "ToolTip": "C:\\repos\\Satizen\\Controllers\\AccesoController.cs",
-              "RelativeToolTip": "Controllers\\AccesoController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T13:10:18.03Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\repos\\Satizen\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\repos\\Satizen\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-22T05:14:27.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T23:13:04.342Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\repos\\Satizen\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\repos\\Satizen\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T03:27:31.486Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AlertaHub.cs",
-              "DocumentMoniker": "C:\\repos\\Satizen\\Hubs\\AlertaHub.cs",
-              "RelativeDocumentMoniker": "Hubs\\AlertaHub.cs",
-              "ToolTip": "C:\\repos\\Satizen\\Hubs\\AlertaHub.cs",
-              "RelativeToolTip": "Hubs\\AlertaHub.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T01:56:21.881Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "LlamadoController.cs",
               "DocumentMoniker": "C:\\repos\\Satizen\\Controllers\\LlamadoController.cs",
               "RelativeDocumentMoniker": "Controllers\\LlamadoController.cs",
               "ToolTip": "C:\\repos\\Satizen\\Controllers\\LlamadoController.cs",
               "RelativeToolTip": "Controllers\\LlamadoController.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAIwIMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUBAAAAAAAAAAAQwCUBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T17:50:28.393Z",
+              "WhenOpened": "2024-10-22T23:10:10.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Llamado.cs",
+              "DocumentMoniker": "C:\\repos\\Satizen\\Models\\Llamado.cs",
+              "RelativeDocumentMoniker": "Models\\Llamado.cs",
+              "ToolTip": "C:\\repos\\Satizen\\Models\\Llamado.cs",
+              "RelativeToolTip": "Models\\Llamado.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T23:09:47.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LlamadoCreateDto.cs",
+              "DocumentMoniker": "C:\\repos\\Satizen\\Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
+              "ToolTip": "C:\\repos\\Satizen\\Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
+              "RelativeToolTip": "Models\\Dto\\Llamados\\LlamadoCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T23:10:03.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AsignarLlamadoDto.cs",
+              "DocumentMoniker": "C:\\repos\\Satizen\\Models\\Dto\\Llamados\\AsignarLlamadoDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\Llamados\\AsignarLlamadoDto.cs",
+              "ToolTip": "C:\\repos\\Satizen\\Models\\Dto\\Llamados\\AsignarLlamadoDto.cs",
+              "RelativeToolTip": "Models\\Dto\\Llamados\\AsignarLlamadoDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T22:36:21.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LlamadoUpdateDto.cs",
+              "DocumentMoniker": "C:\\repos\\Satizen\\Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
+              "ToolTip": "C:\\repos\\Satizen\\Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
+              "RelativeToolTip": "Models\\Dto\\Llamados\\LlamadoUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T23:14:41.254Z",
               "EditorCaption": ""
             }
           ]

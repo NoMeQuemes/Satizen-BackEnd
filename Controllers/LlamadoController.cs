@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 using Satizen_Api.Data;
+using Satizen_Api.Hubs;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Llamados;
 
@@ -19,12 +21,14 @@ namespace Satizen_Api.Controllers
         private readonly ILogger<LlamadoController> _logger;
         private readonly ApplicationDbContext _llamadoContext;
         protected ApiResponse _response;
+        private IHubContext<AlertaHub> _hubContext;
 
-        public LlamadoController(ILogger<LlamadoController> logger, ApplicationDbContext llamadoContext)
+        public LlamadoController(ILogger<LlamadoController> logger, ApplicationDbContext llamadoContext, IHubContext<AlertaHub> hubContext)
         {
             _logger = logger;
             _llamadoContext = llamadoContext;
             _response = new();
+            _hubContext = hubContext;
         }
 
 
@@ -126,6 +130,7 @@ namespace Satizen_Api.Controllers
 
                 await _llamadoContext.Llamados.AddAsync(llamado);
                 await _llamadoContext.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("nuevoLlamado");
 
                 _response.Resultado = llamado;
                 _response.statusCode = HttpStatusCode.Created;
@@ -268,7 +273,39 @@ namespace Satizen_Api.Controllers
 
             return Ok(_response);
         }
+
+        //[Authorize(Policy = "AdminDoctor")]
+        [HttpPatch]
+        [Route("AsignarLlamado/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> AsignarLlamado(int id, [FromBody] AsignarLlamadoDto asignarDto)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var llamado = await _llamadoContext.Llamados.FirstOrDefaultAsync(v => v.idLlamado == id);
+
+            if (llamado == null)
+            {
+                return NotFound();
+            }
+
+            llamado.fechaEliminacion = DateTime.Now;
+
+            _llamadoContext.Llamados.Update(llamado);
+            await _llamadoContext.SaveChangesAsync();
+
+            _response.statusCode = HttpStatusCode.NoContent;
+            return Ok(_response);
+        }
+
+
+
     }
+
 
 }
 

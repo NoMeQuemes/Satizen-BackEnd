@@ -182,7 +182,7 @@ namespace Satizen_Api.Migrations
                     b.Property<int>("idPaciente")
                         .HasColumnType("int");
 
-                    b.Property<int>("idPersonal")
+                    b.Property<int?>("idPersonal")
                         .HasColumnType("int");
 
                     b.Property<string>("observacionLlamado")
@@ -207,6 +207,21 @@ namespace Satizen_Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Enviado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FileUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Visto")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("contenidoMensaje")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("idAutor")
                         .HasColumnType("int");
@@ -333,7 +348,8 @@ namespace Satizen_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("telefonoPersonal")
+                    b.Property<int?>("telefonoPersonal")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("idPersonal");
@@ -599,9 +615,7 @@ namespace Satizen_Api.Migrations
 
                     b.HasOne("Satizen_Api.Models.Personal", "Personals")
                         .WithMany()
-                        .HasForeignKey("idPersonal")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("idPersonal");
 
                     b.Navigation("Pacientes");
 

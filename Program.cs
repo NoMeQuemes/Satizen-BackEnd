@@ -11,13 +11,16 @@ using Satizen_Api.Models;
 using Satizen_Api.Data;
 using Proyec_Satizen_Api;
 using Satizen_Api;
+using Satizen_Api.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddScoped<Utilidades>(); // Acá se agregan las utilidades
-
+builder.Services.AddSignalR(); // Acá se agregan las utilidades
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 // ------------- Seguridad JWT para los usuarios -------------------
 
 builder.Services.AddAuthentication(config =>
@@ -78,11 +81,12 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "NuevaPolitica", policy =>
+    options.AddPolicy("CorsPolicy", builder =>
     {
-        policy.SetIsOriginAllowed(_ => true)
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        builder.AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(_ => true) // Permite cualquier origen
+               .AllowCredentials();
     });
 });
 
@@ -91,11 +95,13 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 app.UseSwagger();
 app.UseSwaggerUI();
-//app.UseHttpsRedirection();
-app.UseCors("NuevaPolitica");
+app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");  // Asegúrate que está antes de UseAuthorization
+app.UseAuthentication();    // Asegúrate de que UseAuthentication está antes
 app.UseAuthorization();
+app.MapHub<ChatHub>("/chatHub");
+app.MapHub<AlertaHub>("/alertaHub");
 app.MapControllers();
 app.Run();

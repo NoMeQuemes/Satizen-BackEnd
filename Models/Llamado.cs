@@ -13,12 +13,12 @@ namespace Satizen_Api.Models
         [ForeignKey("idPaciente")]
         public virtual Paciente Pacientes { get; set; }
 
-        public int idPersonal { get; set; }
+        public int? idPersonal { get; set; }
         [ForeignKey("idPersonal")]
         public virtual Personal Personals { get; set; }
+
         public DateTime fechaHoraLlamado { get; set; }
         public string estadoLlamado { get; set; }
-
         public string prioridadLlamado { get; set; }
         public string observacionLlamado { get; set; }
         public DateTime? fechaEliminacion { get; set; }

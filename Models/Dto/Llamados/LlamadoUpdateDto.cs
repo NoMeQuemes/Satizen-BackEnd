@@ -9,7 +9,7 @@ namespace Satizen_Api.Models.Dto.Llamados
         [Required]
         public int idPaciente { get; set; } //clave foranea (tabla pacientes)
         [Required]
-        public int idPersonal { get; set; }//clave foranea (tabla personal)
+        public int? idPersonal { get; set; }//clave foranea (tabla personal)
         [Required]
         public DateTime fechaHoraLlamado { get; set; }
         [Required]
