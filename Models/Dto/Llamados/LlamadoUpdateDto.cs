@@ -11,8 +11,6 @@ namespace Satizen_Api.Models.Dto.Llamados
         [Required]
         public int? idPersonal { get; set; }//clave foranea (tabla personal)
         [Required]
-        public DateTime fechaHoraLlamado { get; set; }
-        [Required]
         public string estadoLlamado { get; set; }
         [Required]
         public string prioridadLlamado { get; set; }

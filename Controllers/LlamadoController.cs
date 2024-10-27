@@ -8,7 +8,7 @@ using Satizen_Api.Data;
 using Satizen_Api.Hubs;
 using Satizen_Api.Models;
 using Satizen_Api.Models.Dto.Llamados;
-
+using SatizenLlamados.Modelos.Dto;
 using System.Net;
 
 namespace Satizen_Api.Controllers
@@ -122,7 +122,7 @@ namespace Satizen_Api.Controllers
                 {
                     idPaciente = createDto.idPaciente,
                     idPersonal = createDto.idPersonal,
-                    fechaHoraLlamado = createDto.fechaHoraLlamado,
+                    fechaHoraLlamado = DateTime.Now,
                     estadoLlamado = createDto.estadoLlamado,
                     prioridadLlamado = createDto.prioridadLlamado,
                     observacionLlamado = createDto.observacionLlamado
@@ -204,7 +204,6 @@ namespace Satizen_Api.Controllers
 
                 llamadoExistente.idPaciente = updateDto.idPaciente;
                 llamadoExistente.idPersonal = updateDto.idPersonal;
-                llamadoExistente.fechaHoraLlamado = updateDto.fechaHoraLlamado;
                 llamadoExistente.estadoLlamado = updateDto.estadoLlamado;
                 llamadoExistente.prioridadLlamado = updateDto.prioridadLlamado;
                 llamadoExistente.observacionLlamado = updateDto.observacionLlamado;
@@ -224,55 +223,6 @@ namespace Satizen_Api.Controllers
 
         }
 
-        //[Authorize(Policy = "AdminDoctor")]
-        [HttpPatch("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdatePartialLlamado(int id, JsonPatchDocument<LlamadoUpdateDto> patchDto)
-        {
-            if (patchDto == null || id == 0)
-            {
-                return BadRequest();
-            }
-            var llamado = await _llamadoContext.Llamados.FindAsync(id);
-
-
-            LlamadoUpdateDto llamadoDto = new()
-            {
-                idLlamado = llamado.idLlamado,
-                idPaciente = llamado.idPaciente,
-                idPersonal = llamado.idPersonal,
-                fechaHoraLlamado = llamado.fechaHoraLlamado,
-                estadoLlamado = llamado.estadoLlamado,
-                prioridadLlamado = llamado.prioridadLlamado,
-                observacionLlamado = llamado.observacionLlamado
-            };
-
-            if (llamado == null) return BadRequest();
-
-            patchDto.ApplyTo(llamadoDto, ModelState);
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            Llamado modelo = new()
-            {
-                idLlamado = llamadoDto.idLlamado,
-                idPaciente = llamadoDto.idPaciente,
-                idPersonal = llamadoDto.idPersonal,
-                fechaHoraLlamado = llamadoDto.fechaHoraLlamado,
-                estadoLlamado = llamadoDto.estadoLlamado,
-                prioridadLlamado = llamadoDto.prioridadLlamado,
-                observacionLlamado = llamadoDto.observacionLlamado
-            };
-
-            _llamadoContext.Llamados.Update(modelo);
-            _response.statusCode = HttpStatusCode.NoContent;
-
-            return Ok(_response);
-        }
 
         //[Authorize(Policy = "AdminDoctor")]
         [HttpPatch]
@@ -293,13 +243,79 @@ namespace Satizen_Api.Controllers
                 return NotFound();
             }
 
-            llamado.fechaEliminacion = DateTime.Now;
+            llamado.idPersonal = asignarDto.idPersonal;
+            llamado.estadoLlamado = "Atendido";
 
             _llamadoContext.Llamados.Update(llamado);
             await _llamadoContext.SaveChangesAsync();
 
             _response.statusCode = HttpStatusCode.NoContent;
             return Ok(_response);
+        }
+
+        //[Authorize(Policy = "AdminDoctor")]
+        [HttpGet]
+        [Route("ListarLlamadosNoAsignados")]
+        public async Task<ActionResult<ApiResponse>> GetLlamadosNoAsignados()
+        {
+            try
+            {
+                _logger.LogInformation("Obtener los usuarios"); // Esto solo muestra en consola que se ejecutó este endpoint
+
+                _response.Resultado = await _llamadoContext.Llamados
+                                              .Where(u => u.fechaEliminacion == null && u.idPersonal == null)
+                                              .Include(p => p.Pacientes)
+                                              .Include(u => u.Personals)
+                                              .Select(p => new
+                                              {
+                                                  p.idLlamado,
+                                                  Pacientes = p.Pacientes.nombrePaciente,
+                                                  Personals = p.Personals.nombrePersonal,
+                                                  p.fechaHoraLlamado,
+                                                  p.estadoLlamado,
+                                                  p.prioridadLlamado,
+                                                  p.observacionLlamado
+                                              })
+                                              .ToListAsync();
+                _response.statusCode = HttpStatusCode.OK;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsExitoso = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
+
+        [HttpGet]
+        [Route("ListarPacientes")]
+        public async Task<ActionResult<ApiResponse>> ListarPacientes()
+        {
+            var pacientes = await _llamadoContext.Pacientes
+                                                            .Where(u => u.estadoPaciente == null)
+                                                            .ToListAsync();
+            return Ok(new ApiResponse
+            {
+                Resultado = pacientes,
+                statusCode = HttpStatusCode.OK,
+                IsExitoso = true
+            });
+        }
+
+        [HttpGet]
+        [Route("ListarPersonal")]
+        public async Task<ActionResult<ApiResponse>> ListarPersonal()
+        {
+            var personals = await _llamadoContext.Personals
+                                                            .Where(u => u.fechaEliminacion == null)
+                                                            .ToListAsync();
+            return Ok(new ApiResponse
+            {
+                Resultado = personals,
+                statusCode = HttpStatusCode.OK,
+                IsExitoso = true
+            });
         }
 
 
