@@ -68,7 +68,6 @@ namespace Satizen_Api.Controllers
                 idReceptor = CreateMensajeDto.idReceptor,
                 contenidoMensaje = CreateMensajeDto.contenidoMensaje,
                 Timestamp = DateTime.UtcNow,
-                Enviado = true, 
                 Visto = false   
             };
 
@@ -90,7 +89,7 @@ namespace Satizen_Api.Controllers
         public async Task<ActionResult<IEnumerable<Mensaje>>> MarcarComoVisto(int idAutor, int idReceptor)
         {
             var mensajes = await _context.Mensajes
-                .Where(m => (m.idAutor == idAutor && m.idReceptor == idReceptor) || (m.idAutor == idReceptor && m.idReceptor == idAutor))
+                .Where(m => (m.idAutor == idReceptor && m.idReceptor == idAutor))
                 .ToListAsync();
 
             if (mensajes == null || !mensajes.Any())
@@ -115,34 +114,7 @@ namespace Satizen_Api.Controllers
             return Ok(mensajes);
         }
 
-        [HttpPut("MarcarComoEnviado/{idAutor}")]
-        public async Task<ActionResult<IEnumerable<Mensaje>>> MarcarComoEnviado(int idAutor)
-        {
-            var mensajes = await _context.Mensajes
-                .Where(m => (m.idAutor == idAutor))
-                .ToListAsync();
-
-            if (mensajes == null || !mensajes.Any())
-            {
-                return Ok();
-            }
-
-            if (mensajes.Count == 0)
-            {
-                return NotFound("No se encontraron mensajes entre los usuarios especificados.");
-            }
-
-            foreach (var mensaje in mensajes)
-            {
-                mensaje.Enviado = true;
-            }
-
-            await _context.SaveChangesAsync(); 
-
-
-
-            return Ok(mensajes);
-        }
+     
 
 
     }

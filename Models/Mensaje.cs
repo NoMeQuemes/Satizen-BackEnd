@@ -16,15 +16,12 @@ namespace Satizen_Api.Models
         public int idReceptor { get; set; }
         [ForeignKey("idReceptor")]
         public virtual Usuario Receptor { get; set; }
+         public bool Visto { get; set; }
 
-        public bool Visto { get; set; }
-
-        public bool Enviado { get; set; }
 
         public string contenidoMensaje { get; set; }
         public DateTime Timestamp { get; set; }
 
-        public string? FileUrl { get; set; }
-
+        public string? FileUrl { get; set; } 
     }
 }

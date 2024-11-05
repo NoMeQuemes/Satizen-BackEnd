@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 public class ChatHub : Hub
 {
-    private static ConcurrentDictionary<string, int> groupUserCount = new ConcurrentDictionary<string, int>();
-    private static ConcurrentDictionary<string, HashSet<string>> groupConnections = new ConcurrentDictionary<string, HashSet<string>>();
+    private static readonly Dictionary<string, HashSet<string>> groupConnections = new Dictionary<string, HashSet<string>>();
+    private static readonly Dictionary<string, int> groupUserCount = new Dictionary<string, int>();
 
     public async Task JoinGroup(int idAutor, int idReceptor)
     {
         string groupName = GetGroupName(idAutor, idReceptor);
         string connectionId = Context.ConnectionId;
+        Console.WriteLine($"groupName: {groupName}, connectionId: {connectionId}");
 
         // Asegurarse de que el grupo exista
         if (!groupUserCount.ContainsKey(groupName))
@@ -24,13 +25,20 @@ public class ChatHub : Hub
         {
             groupConnections[groupName].Add(connectionId);
 
-            // Incrementar el conteo solo si no hay más de 2 usuarios en el grupo
+            // Solo permitir unirse si el grupo tiene menos de 2 usuarios
             if (groupUserCount[groupName] < 2)
             {
                 groupUserCount[groupName]++;
+                Console.WriteLine($"groupUserCount: {groupUserCount[groupName]}, connectionId: {connectionId}");
+
+     
                 await Groups.AddToGroupAsync(connectionId, groupName);
                 await Clients.Group(groupName).SendAsync("UpdateGroupCount", groupUserCount[groupName]);
             }
+        }
+        else
+        {
+            Console.WriteLine("El usuario ya está en el grupo.");
         }
     }
 
@@ -39,36 +47,44 @@ public class ChatHub : Hub
         string groupName = GetGroupName(idAutor, idReceptor);
         string connectionId = Context.ConnectionId;
 
-        if (groupConnections.ContainsKey(groupName) && groupConnections[groupName].Contains(connectionId))
+        if (groupConnections.ContainsKey(groupName))
         {
+            // Remover la conexión del grupo
             groupConnections[groupName].Remove(connectionId);
+
+            // Si no hay más conexiones en el grupo, eliminar el grupo y el contador
+            if (groupConnections[groupName].Count == 0)
+            {
+                groupConnections.Remove(groupName);
+                groupUserCount.Remove(groupName);
+            }
+            else
+            {
+                // Actualizar el contador de usuarios para el grupo
+                groupUserCount[groupName]--;
+            }
+
+            // Remover el usuario del grupo en SignalR
             await Groups.RemoveFromGroupAsync(connectionId, groupName);
 
-            if (groupUserCount.ContainsKey(groupName))
-            {
-                groupUserCount[groupName]--;
-
-                if (groupUserCount[groupName] <= 0)
-                {
-                    groupUserCount.TryRemove(groupName, out _);
-                    groupConnections.TryRemove(groupName, out _);
-                }
-                else
-                {
-                    await Clients.Group(groupName).SendAsync("UpdateGroupCount", groupUserCount[groupName]);
-                }
-            }
+            // Enviar el conteo actualizado a todos los usuarios en el grupo
+            await Clients.Group(groupName).SendAsync("UpdateGroupCount", groupUserCount.ContainsKey(groupName) ? groupUserCount[groupName] : 0);
         }
     }
 
-    public async Task SendMessage(int idAutor, int idReceptor, string message, bool visto)
+    // Método para enviar un mensaje a todos los miembros del grupo
+    public async Task SendMessageToGroup(int idAutor, int idReceptor, string contenidoMensaje)
     {
         string groupName = GetGroupName(idAutor, idReceptor);
-        await Clients.Group(groupName).SendAsync("ReceiveMessage", new { idAutor, contenidoMensaje = message, visto });
+   
+            await Clients.Group(groupName).SendAsync("ReceiveMessage", idAutor, idReceptor, contenidoMensaje, DateTime.Now.ToString("HH:mm:ss"), false);
+
     }
 
     private string GetGroupName(int idAutor, int idReceptor)
     {
-        return $"{Math.Min(idAutor, idReceptor)}-{Math.Max(idAutor, idReceptor)}";
+        var ids = new List<int> { idAutor, idReceptor };
+        ids.Sort();
+        return string.Join("-", ids);
     }
 }
