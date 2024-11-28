@@ -1,90 +1,58 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
+[Authorize]
 public class ChatHub : Hub
 {
-    private static readonly Dictionary<string, HashSet<string>> groupConnections = new Dictionary<string, HashSet<string>>();
-    private static readonly Dictionary<string, int> groupUserCount = new Dictionary<string, int>();
+    private static Dictionary<string, string> ConnectedUsers = new Dictionary<string, string>();
 
-    public async Task JoinGroup(int idAutor, int idReceptor)
+    public override async Task OnConnectedAsync()
     {
-        string groupName = GetGroupName(idAutor, idReceptor);
-        string connectionId = Context.ConnectionId;
-        Console.WriteLine($"groupName: {groupName}, connectionId: {connectionId}");
+        var userId = Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var nombre = Context.User.FindFirst(ClaimTypes.Name)?.Value;
 
-        // Asegurarse de que el grupo exista
-        if (!groupUserCount.ContainsKey(groupName))
+        if (userId != null)
         {
-            groupUserCount[groupName] = 0;
-            groupConnections[groupName] = new HashSet<string>();
+            ConnectedUsers[userId] = nombre;
+            var userList = ConnectedUsers.Select(kvp => new { UserId = kvp.Key, Nombre = kvp.Value }).ToList();
+            await Clients.All.SendAsync("UpdateConnectedUsers", userList);
+            await Clients.All.SendAsync("UpdateUserCount", ConnectedUsers.Count);
         }
 
-        // Verificar si la conexión ya está en el grupo
-        if (!groupConnections[groupName].Contains(connectionId))
-        {
-            groupConnections[groupName].Add(connectionId);
+        Console.WriteLine($"Usuario conectado: {Context.ConnectionId}, ID: {userId}, Nombre: {nombre}");
 
-            // Solo permitir unirse si el grupo tiene menos de 2 usuarios
-            if (groupUserCount[groupName] < 2)
-            {
-                groupUserCount[groupName]++;
-                Console.WriteLine($"groupUserCount: {groupUserCount[groupName]}, connectionId: {connectionId}");
-
-     
-                await Groups.AddToGroupAsync(connectionId, groupName);
-                await Clients.Group(groupName).SendAsync("UpdateGroupCount", groupUserCount[groupName]);
-            }
-        }
-        else
-        {
-            Console.WriteLine("El usuario ya está en el grupo.");
-        }
+        await base.OnConnectedAsync();
     }
 
-    public async Task LeaveGroup(int idAutor, int idReceptor)
+    public override async Task OnDisconnectedAsync(Exception exception)
     {
-        string groupName = GetGroupName(idAutor, idReceptor);
-        string connectionId = Context.ConnectionId;
-
-        if (groupConnections.ContainsKey(groupName))
+        var userId = Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId != null)
         {
-            // Remover la conexión del grupo
-            groupConnections[groupName].Remove(connectionId);
-
-            // Si no hay más conexiones en el grupo, eliminar el grupo y el contador
-            if (groupConnections[groupName].Count == 0)
-            {
-                groupConnections.Remove(groupName);
-                groupUserCount.Remove(groupName);
-            }
-            else
-            {
-                // Actualizar el contador de usuarios para el grupo
-                groupUserCount[groupName]--;
-            }
-
-            // Remover el usuario del grupo en SignalR
-            await Groups.RemoveFromGroupAsync(connectionId, groupName);
-
-            // Enviar el conteo actualizado a todos los usuarios en el grupo
-            await Clients.Group(groupName).SendAsync("UpdateGroupCount", groupUserCount.ContainsKey(groupName) ? groupUserCount[groupName] : 0);
+            ConnectedUsers.Remove(userId);
+            await Clients.All.SendAsync("UpdateConnectedUsers", ConnectedUsers.ToList());
+            await Clients.All.SendAsync("UpdateUserCount", ConnectedUsers.Count);
         }
+
+        await base.OnDisconnectedAsync(exception);
     }
 
-    // Método para enviar un mensaje a todos los miembros del grupo
-    public async Task SendMessageToGroup(int idAutor, int idReceptor, string contenidoMensaje)
+    public async Task SendMessage(string contenidoMensaje)
     {
-        string groupName = GetGroupName(idAutor, idReceptor);
-   
-            await Clients.Group(groupName).SendAsync("ReceiveMessage", idAutor, idReceptor, contenidoMensaje, DateTime.Now.ToString("HH:mm:ss"), false);
-
+        var userId = Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        await Clients.All.SendAsync("ReceiveMessage", userId, contenidoMensaje);
     }
 
-    private string GetGroupName(int idAutor, int idReceptor)
+    public async Task SendPrivateMessage(string userId, string contenidoMensaje)
     {
-        var ids = new List<int> { idAutor, idReceptor };
-        ids.Sort();
-        return string.Join("-", ids);
+        var senderId = Context.UserIdentifier;
+        await Clients.User(userId).SendAsync("ReceivePrivateMessage", senderId, contenidoMensaje);
+
+        await Clients.Caller.SendAsync("NotifyMessageSent", userId, contenidoMensaje);
     }
 }

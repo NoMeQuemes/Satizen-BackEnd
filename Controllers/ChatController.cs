@@ -21,8 +21,8 @@ namespace Satizen_Api.Controllers
         }
 
         // GET: api/Mensajes
-       [HttpGet]
-       public async Task<ActionResult<IEnumerable<Mensaje>>> GetMensajes()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Mensaje>>> GetMensajes()
         {
             return await _context.Mensajes.OrderBy(m => m.Timestamp).ToListAsync();
         }
@@ -39,7 +39,7 @@ namespace Satizen_Api.Controllers
 
             if (mensajes == null || !mensajes.Any())
             {
-                return Ok(); 
+                return Ok();
             }
 
             return mensajes;
@@ -68,14 +68,14 @@ namespace Satizen_Api.Controllers
                 idReceptor = CreateMensajeDto.idReceptor,
                 contenidoMensaje = CreateMensajeDto.contenidoMensaje,
                 Timestamp = DateTime.UtcNow,
-                Visto = false   
+                Visto = false
             };
 
             _context.Mensajes.Add(nuevoMensaje);
             await _context.SaveChangesAsync();
 
             string groupName = $"{Math.Min(nuevoMensaje.idAutor, nuevoMensaje.idReceptor)}-{Math.Max(nuevoMensaje.idAutor, nuevoMensaje.idReceptor)}";
-            await _hubContext.Clients.Group(groupName).SendAsync("ReceiveMessage", nuevoMensaje.idAutor, nuevoMensaje.idReceptor, nuevoMensaje.contenidoMensaje, nuevoMensaje.Timestamp , nuevoMensaje.Visto);
+            await _hubContext.Clients.Group(groupName).SendAsync("ReceiveMessage", nuevoMensaje.idAutor, nuevoMensaje.idReceptor, nuevoMensaje.contenidoMensaje, nuevoMensaje.Timestamp, nuevoMensaje.Visto);
 
             return CreatedAtAction(nameof(GetMensajes), new { id = nuevoMensaje.Id }, nuevoMensaje);
         }
@@ -83,38 +83,20 @@ namespace Satizen_Api.Controllers
 
 
 
-        // PUT: api/Mensajes/MarcarComoVisto/{idAutor}/{idReceptor}
 
-        [HttpPut("MarcarComoVisto/{idAutor}/{idReceptor}")]
-        public async Task<ActionResult<IEnumerable<Mensaje>>> MarcarComoVisto(int idAutor, int idReceptor)
+        [HttpDelete("borrar-todo")]
+        public IActionResult BorrarTodo()
         {
-            var mensajes = await _context.Mensajes
-                .Where(m => (m.idAutor == idReceptor && m.idReceptor == idAutor))
-                .ToListAsync();
+            // Obtiene todos los registros de la tabla
+            var todaelhistorial = _context.Mensajes.ToList();
 
-            if (mensajes == null || !mensajes.Any())
-            {
-                return Ok();
-            }
+            // Elimina todos los registros
+            _context.Mensajes.RemoveRange(todaelhistorial);
+            _context.SaveChanges();
 
-            if (mensajes.Count == 0)
-            {
-                return NotFound("No se encontraron mensajes entre los usuarios especificados.");
-            }
-
-            foreach (var mensaje in mensajes)
-            {
-                mensaje.Visto = true;
-            }
-
-            await _context.SaveChangesAsync();
-            string groupName = $"{Math.Min(idAutor, idReceptor)}-{Math.Max(idAutor, idReceptor)}";
-
-
-            return Ok(mensajes);
+            return NoContent(); // Devuelve 204 No Content
         }
 
-     
 
 
     }
